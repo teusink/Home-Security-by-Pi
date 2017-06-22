@@ -15,6 +15,8 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - xscreensaver: `sudo apt-get install xscreensaver`
 
 ## Informational Sources
+- Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
+
 - StackExchange: https://raspberrypi.stackexchange.com/
 - Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
 - Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
@@ -41,13 +43,22 @@ Hardening is the process of disabling or uninstalling application, services and 
 
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
 
-   Add lines below in the config.txt file: `sudo nano /boot/config.txt`
-```
-# Uncomment this to disable WiFi and Bluetooth
-dtoverlay=pi3-disable-wifi
-dtoverlay=pi3-disable-bt
-```
+   Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
+   ```
+   # Uncomment this to disable WiFi and Bluetooth
+   dtoverlay=pi3-disable-wifi
+   dtoverlay=pi3-disable-bt
+   ```
 - Automatically locking is a handy feature to prevent access when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
+- Because I live in Europe, I like to use a timeserver that resides in Europe.
+
+   Use the lines below to replace the similar ones in the ntp.conf file: `sudo nano /etc/ntp.conf`
+   ```
+   server 0.europe.pool.ntp.org iburst
+   server 1.europe.pool.ntp.org iburst
+   server 2.europe.pool.ntp.org iburst
+   server 3.europe.pool.ntp.org iburst
+   ```
 
 ## Pi-hole
 
