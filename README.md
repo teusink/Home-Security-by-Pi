@@ -41,8 +41,23 @@ Hardening is the process of disabling or uninstalling application, services and 
 
 ## Raspberry Pi
 
+- Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
+   - System: Change User Password
+   - System: Hostname
+   - Interface: Only enable the services you need (for instance SSH)
+- Make sure you set/change the following default configurations using `sudo raspi-config`
+   - Change User Password
+   - Hostname
+   - Advanced Options: Expand Filesystem
+- It is nice to have a fixed IP-address for your Pi, so let's change that using: `sudo nano /etc/dhcpcd.conf`
+   Change the lines below to your proper internal IP-addresses.
+   ```
+   interface eth0
+   static ip_address=192.168.xxx.xxx/24
+   static routers=192.168.xxx.xxx
+   static domain_name_servers=192.168.xxx.xxx
+   ```
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
-
    Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
    ```
    # Uncomment this to disable WiFi and Bluetooth
@@ -72,10 +87,6 @@ Hardening is the process of disabling or uninstalling application, services and 
    server 2.europe.pool.ntp.org iburst
    server 3.europe.pool.ntp.org iburst
    ```
-- Make sure you set/change the following default configurations using `sudo raspi-config`
-   - Change User Password
-   - Hostname
-   - Advanced Options: Expand Filesystem
 - Uncomment the following lines in the file sysctl.conf: `sudo nano /etc/sysctl.conf`
    ```net.ipv4.conf.default.rp_filter=1
    net.ipv4.conf.all.rp_filter=1
