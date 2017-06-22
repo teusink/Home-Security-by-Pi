@@ -50,6 +50,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    - Hostname
    - Advanced Options: Expand Filesystem
 - It is nice to have a fixed IP-address for your Pi, so let's change that using: `sudo nano /etc/dhcpcd.conf`
+
    Change the lines below to your proper internal IP-addresses.
    ```
    interface eth0
@@ -58,6 +59,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    static domain_name_servers=192.168.xxx.xxx
    ```
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
+
    Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
    ```
    # Uncomment this to disable WiFi and Bluetooth
