@@ -49,6 +49,19 @@ Hardening is the process of disabling or uninstalling application, services and 
    dtoverlay=pi3-disable-wifi
    dtoverlay=pi3-disable-bt
    ```
+   Add the lines below in the
+   ```
+   # disable WLAN
+   blacklist brcmfmac
+   blacklist brcmutil
+   blacklist cfg80211
+   blacklist rfkill
+   
+   # disable Bluetooth
+   blacklist btbcm
+   blacklist hci_uart
+   ```
+   And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
 - Automatically locking is a handy feature to prevent access when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 - Because I live in Europe, I like to use a timeserver that resides in Europe.
 
@@ -59,6 +72,11 @@ Hardening is the process of disabling or uninstalling application, services and 
    server 2.europe.pool.ntp.org iburst
    server 3.europe.pool.ntp.org iburst
    ```
+- Make sure you set/change the following default configurations using `sudo raspi-config`
+   - Change User Password
+   - Hostname
+   - Advanced Options: Expand Filesystem
+   - 
 
 ## Pi-hole
 
