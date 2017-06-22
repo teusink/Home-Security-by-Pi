@@ -41,7 +41,7 @@ Hardening is the process of disabling or uninstalling application, services and 
 
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
 
-...Add lines below in the config.txt file: `sudo nano /boot/config.txt`
+⋅⋅⋅Add lines below in the config.txt file: `sudo nano /boot/config.txt`
 ```
 # Uncomment this to disable WiFi and Bluetooth
 dtoverlay=pi3-disable-wifi
