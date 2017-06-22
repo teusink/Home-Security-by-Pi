@@ -12,6 +12,7 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
 - Pi-hole: https://pi-hole.net/ - `curl -sSL https://install.pi-hole.net | bash`
 - OpenVPN: http://www.pivpn.io/ - `curl -L https://install.pivpn.io | bash`
+- xscreensaver: `sudo apt-get install xscreensaver`
 
 ## Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
@@ -33,8 +34,20 @@ In this chapter I will explain the basics I undertook in order to install all th
 
 ## DNSCrypt
 
-# Hardening
-Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough.
+# Hardening & Configuration
+Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough. So, while you are busy with some configuration work, harden your Pi also.
+
+## Raspberry Pi
+
+- Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
+...`sudo nano /boot/config.txt`
+...Add lines below
+...```
+# Uncomment this to disable WiFi and Bluetooth
+dtoverlay=pi3-disable-wifi
+dtoverlay=pi3-disable-bt
+...```
+- Automatically locking is a handy feature to prevent access when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 
 ## Pi-hole
 
@@ -43,6 +56,8 @@ Hardening is the process of disabling or uninstalling application, services and 
 ## DNSCrypt
 
 # Keeping it updated
+
+## Raspberry Pi
 
 ## Pi-hole
 
