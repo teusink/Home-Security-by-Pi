@@ -49,7 +49,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    dtoverlay=pi3-disable-wifi
    dtoverlay=pi3-disable-bt
    ```
-   Add the lines below in the
+   Add the lines below in the raspi-blacklist.conf file: `sudo nano /etc/modprobe.d/raspi-blacklist.conf`
    ```
    # disable WLAN
    blacklist brcmfmac
@@ -76,7 +76,15 @@ Hardening is the process of disabling or uninstalling application, services and 
    - Change User Password
    - Hostname
    - Advanced Options: Expand Filesystem
-   - 
+- Uncomment the following lines in the file sysctl.conf: `sudo nano /etc/sysctl.conf`
+   ```net.ipv4.conf.default.rp_filter=1
+   net.ipv4.conf.all.rp_filter=1
+   net.ipv4.conf.all.accept_redirects = 0
+   net.ipv6.conf.all.accept_redirects = 0
+   net.ipv4.conf.all.send_redirects = 0
+   net.ipv4.conf.all.accept_source_route = 0
+   net.ipv6.conf.all.accept_source_route = 0
+   ```
 
 ## Pi-hole
 
