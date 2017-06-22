@@ -1,5 +1,4 @@
 #!/bin/sh
-echo ------------------------------------
 echo Initiating apt update and upgrade...
 date
 echo ------------------------------------
