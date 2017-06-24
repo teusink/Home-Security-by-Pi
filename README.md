@@ -106,10 +106,14 @@ Hardening is the process of disabling or uninstalling application, services and 
 ## DNSCrypt
 
 # Keeping it updated
+Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
-## Raspberry Pi
+## Raspberry Pi & Pi-hole
+Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
-## Pi-hole
+- Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
+- Edit your crontab to plan a regular execution of the script using `crontab -e`.
+- Add this line and save the edit: `0 5 * * SUN sudo sh /home/pi/pi-update.sh >/home/pi/pi-update.log`. This line means that it will do an update every Sunday at 5 am and it outputs it logs to a log file.
 
 ## OpenVPN
 
