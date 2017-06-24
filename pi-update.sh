@@ -23,5 +23,11 @@ echo ------------------------------------
 sudo apt-get autoclean -y
 echo ------------------------------------
 echo
+echo Initiating Pi-hole update...........
+date
+echo ------------------------------------
+sudo pihole -up
+echo ------------------------------------
+echo
 echo Initiating reboot of Raspberry Pi...
 sudo reboot
