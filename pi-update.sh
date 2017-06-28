@@ -26,7 +26,7 @@ echo
 echo Initiating Pi-hole update...........
 date
 echo ------------------------------------
-sudo pihole -up
+sudo pihole -up -g
 echo ------------------------------------
 echo
 echo Initiating reboot of Raspberry Pi...
