@@ -46,6 +46,9 @@ In this chapter I will explain the basics I undertook in order to install all th
 ## DNSCrypt
 To be investigated...
 
+## fail2ban
+To be investigated...
+
 # Hardening & Configuration
 Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough. So, while you are busy with some configuration work, harden your Pi also.
 
@@ -138,6 +141,9 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
 ## DNSCrypt
 To be investigated...
 
+## fail2ban
+To be investigated...
+
 # Keeping it updated
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
@@ -152,4 +158,7 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
 ## DNSCrypt
+To be investigated...
+
+## fail2ban
 To be investigated...
