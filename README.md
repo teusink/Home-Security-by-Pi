@@ -14,11 +14,12 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
 - xscreensaver: `sudo apt-get install xscreensaver`
 
-## Informational Sources
+## Used Informational Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
 - See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
 
+## Other Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
 - Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
 - Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
@@ -132,8 +133,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       push "redirect-gateway def1"
       ```
    - Save and exit
-
-Now reboot your Pi.
+- Now reboot your Pi.
 
 ## DNSCrypt
 To be investigated...
@@ -149,5 +149,7 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 - Add this line and save the edit: `0 5 * * SUN sudo sh /home/pi/pi-update.sh >/home/pi/pi-update.log`. This line means that it will do an update every Sunday at 5 am and it outputs it logs to a log file.
 
 ## OpenVPN
+OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
 ## DNSCrypt
+To be investigated...
