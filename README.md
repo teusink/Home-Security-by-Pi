@@ -10,12 +10,14 @@ Anything that I create is all done under MIT-license, so please do use it as you
 
 ## Installation Sources
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
-- Pi-hole: https://pi-hole.net/ - `curl -sSL https://install.pi-hole.net | bash`
-- OpenVPN: http://www.pivpn.io/ - `curl -L https://install.pivpn.io | bash`
+- Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
+- OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
 - xscreensaver: `sudo apt-get install xscreensaver`
 
 ## Informational Sources
+Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
+- See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
 
 - StackExchange: https://raspberrypi.stackexchange.com/
 - Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
@@ -32,9 +34,16 @@ In this chapter I will explain the basics I undertook in order to install all th
 
 ## Pi-hole
 
+- Install Pi-hole with the command: `sudo curl -sSL https://install.pi-hole.net | bash`
+- Follow instructions for installation here: https://github.com/pi-hole/pi-hole/#one-step-automated-install
+
 ## OpenVPN
 
+- Install OpenVPN server with the command: `sudo curl -L https://install.pivpn.io | bash`
+- Follow instructions for installation here: https://www.sitepoint.com/setting-up-a-home-vpn-using-your-raspberry-pi/
+
 ## DNSCrypt
+To be investigated...
 
 # Hardening & Configuration
 Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough. So, while you are busy with some configuration work, harden your Pi also.
@@ -99,11 +108,35 @@ Hardening is the process of disabling or uninstalling application, services and 
    net.ipv6.conf.all.accept_source_route = 0
    ```
 
-## Pi-hole
+## Pi-hole & OpenVPN
+I did some additional configuration to get the Pi-hole and OpenVPN up-and-running. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
 
-## OpenVPN
+- Go to your admin panel of Pi-hole: `http://192.168.xxx.xxx/admin/`
+
+   - Go to Settings.
+   - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
+   - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
+
+- Now we need to do some stuff to configure OpenVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
+
+   - Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
+   - Add line: `interface=tun0`, save and exit
+   - Edit the file: `sudo nano /etc/dnsmasq.d/01-pihole.conf`
+   - Add line: `interface=tun0` below the line: `interface=eth0`, save and exit
+   - Edit the file: `sudo nano /etc/openvpn/server.conf`
+   - Add line: `dev tun` at te top
+   - Add the following lines after the `push "route` lines:
+   
+      ```
+      push "dhcp-option DNS 192.168.xxx.xxx"
+      push "redirect-gateway def1"
+      ```
+   - Save and exit
+
+Now reboot your Pi.
 
 ## DNSCrypt
+To be investigated...
 
 # Keeping it updated
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
