@@ -2,7 +2,7 @@
 Description on how I configured the installation and Security of my Raspberry Pi and how I keep it fit for use and purpose.
 
 ## Goal
-The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Raspberry Pi with the following features: Pi-Hole DNS-resolver, DNSSEC, DHCP, OpenVPN-server, and DNSCrypt (not sure). It is possible that by gaining new insights features are either removed or added.
+The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Raspberry Pi with the following features: Pi-Hole DNS-resolver, DNSSEC, DHCP, and OpenVPN-server. It is possible that by gaining new insights features are either removed or added.
 
 My other goal is to gain a good understanding on DNS, Hardening and other Security-related aspects concerning Network Security. I feel that as a Chief Information Security Officer it is important to upkeep (general) knowledge about Technology.
 
@@ -12,12 +12,14 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
 - Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
 - OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
-- xscreensaver: `sudo apt-get install xscreensaver`
+- xscreensaver: `sudo apt install xscreensaver`
 
 ## Used Informational Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
+- Tips for accessing your pi-hole remotely: https://pi-hole.net/2016/09/15/tips-for-accessing-your-pi-hole-remotely/
 - Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
 - See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
+- Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 
 ## Other Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
@@ -34,26 +36,17 @@ In this chapter I will explain the basics I undertook in order to install all th
 - Concerning the installation itself, I followed the already online and well documented installation guide: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 
 ## Pi-hole
-
 - Install Pi-hole with the command: `sudo curl -sSL https://install.pi-hole.net | bash`
 - Follow instructions for installation here: https://github.com/pi-hole/pi-hole/#one-step-automated-install
 
 ## OpenVPN
-
 - Install OpenVPN server with the command: `sudo curl -L https://install.pivpn.io | bash`
 - Follow instructions for installation here: https://www.sitepoint.com/setting-up-a-home-vpn-using-your-raspberry-pi/
-
-## DNSCrypt
-To be investigated...
-
-## fail2ban
-To be investigated...
 
 # Hardening & Configuration
 Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough. So, while you are busy with some configuration work, harden your Pi also.
 
 ## Raspberry Pi
-
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
    - System: Change User Password
    - System: Hostname
@@ -92,7 +85,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    blacklist hci_uart
    ```
    And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
-- Automatically locking is a handy feature to prevent access when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
+- Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt install xscreensaver`
 - Because I live in Europe, I like to use a timeserver that resides in Europe.
 
    Use the lines below to replace the similar ones in the ntp.conf file: `sudo nano /etc/ntp.conf`
@@ -120,6 +113,28 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
    - Go to Settings.
    - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
    - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
+   - Make sure that the following domainnames are in the whitelist:
+   
+      ```
+      ad.doubleclick.net
+      clickserve.dartsearch.net
+      googleads.g.doubleclick.net
+      hosts-file.net
+      ipv6.msftncsi.com
+      mirror1.malwaredomains.com
+      msftncsi.com
+      pubads.g.doubleclick.net
+      raw.githubusercontent.com
+      s.youtube.com
+      s3.amazonaws.com
+      sysctl.org
+      www.googleadservices.com
+      www.googletagmanager.com
+      www.googletagservices.com
+      www.malwaredomainlist.com
+      www.msftncsi.com
+      zeustracker.abuse.ch
+      ```
 
 - Now we need to do some stuff to configure OpenVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
 
@@ -138,17 +153,11 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
    - Save and exit
 - Now reboot your Pi.
 
-## DNSCrypt
-To be investigated...
-
-## fail2ban
-To be investigated...
-
 # Keeping it updated
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
 ## Raspberry Pi & Pi-hole
-Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
+Your Pi and all software installed through `apt` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
 - Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
@@ -156,9 +165,3 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 
 ## OpenVPN
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
-
-## DNSCrypt
-To be investigated...
-
-## fail2ban
-To be investigated...
