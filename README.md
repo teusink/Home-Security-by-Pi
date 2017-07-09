@@ -12,7 +12,7 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
 - Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
 - OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
-- xscreensaver: `sudo apt install xscreensaver`
+- xscreensaver: `sudo apt-get install xscreensaver`
 
 ## Used Informational Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
@@ -20,6 +20,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
 - See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
 - Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
+- How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
+- Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 
 ## Other Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
@@ -85,7 +87,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    blacklist hci_uart
    ```
    And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
-- Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt install xscreensaver`
+- Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 - Because I live in Europe, I like to use a timeserver that resides in Europe.
 
    Use the lines below to replace the similar ones in the ntp.conf file: `sudo nano /etc/ntp.conf`
@@ -104,6 +106,13 @@ Hardening is the process of disabling or uninstalling application, services and 
    net.ipv4.conf.all.accept_source_route = 0
    net.ipv6.conf.all.accept_source_route = 0
    ```
+- Now it is time to remove some unneeded software and games from Pi.
+
+   - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
+   - Remove LibreOffice: `sudo apt-get remove libreoffice`
+   - Remove Python Games: `rm -rf ~/python_games`
+   - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get autoremove`
+- And everything is done, so do a reboot now: `sudo reboot`
 
 ## Pi-hole & OpenVPN
 I did some additional configuration to get the Pi-hole and OpenVPN up-and-running. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
@@ -157,7 +166,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
 ## Raspberry Pi & Pi-hole
-Your Pi and all software installed through `apt` can be updated with a single script, and you can incorporate additional commands to update additional sources.
+Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
 - Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
