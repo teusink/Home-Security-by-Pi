@@ -111,8 +111,8 @@ Hardening is the process of disabling or uninstalling application, services and 
    - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
    - Remove LibreOffice: `sudo apt-get remove libreoffice`
    - Remove Python Games: `rm -rf ~/python_games`
-   - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get autoremove`
-- And everything is done, so do a reboot now: `sudo reboot`
+   - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
+- This part is done now, so do a reboot now: `sudo reboot`
 
 ## Pi-hole & OpenVPN
 I did some additional configuration to get the Pi-hole and OpenVPN up-and-running. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
@@ -160,7 +160,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       push "redirect-gateway def1"
       ```
    - Save and exit
-- Now reboot your Pi.
+- This part is done now, so do a reboot now: `sudo reboot`
 
 # Keeping it updated
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
