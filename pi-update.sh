@@ -2,6 +2,7 @@
 echo To: your_account_name@domain.tld
 echo From: your_account_name@domain.tld
 echo "Subject: Raspberry Pi Update-log: $(date)"
+echo
 echo "** Raspberry Pi Update-log: $(date) **"
 echo
 echo * Initiating apt update and upgrade *
