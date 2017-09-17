@@ -116,6 +116,7 @@ Hardening is the process of disabling or uninstalling application, services and 
       hostname=<Your Raspberry pi’s name should already be here>
       AuthUser=<your_account_name>@domain.tld
       AuthPass=<your_password>
+      useTLS=YES
       useSTARTTLS=YES
       ```
       
