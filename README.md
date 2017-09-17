@@ -12,7 +12,7 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
 - Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
 - OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
-- xscreensaver: `sudo apt-get install xscreensaver`
+- Various apps through the use of `sudo apt-get install`
 
 ## Used Informational Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
@@ -97,7 +97,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    server 2.europe.pool.ntp.org iburst
    server 3.europe.pool.ntp.org iburst
    ```
-- Uncomment the following lines in the file sysctl.conf: `sudo nano /etc/sysctl.conf`
+- Uncomment the following lines in the file sysctl.conf to enhance network security: `sudo nano /etc/sysctl.conf`
    ```net.ipv4.conf.default.rp_filter=1
    net.ipv4.conf.all.rp_filter=1
    net.ipv4.conf.all.accept_redirects = 0
@@ -106,6 +106,24 @@ Hardening is the process of disabling or uninstalling application, services and 
    net.ipv4.conf.all.accept_source_route = 0
    net.ipv6.conf.all.accept_source_route = 0
    ```
+- Time to install mail-services to make sure that an email after important events are sent.
+
+   - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
+   - Edit the ssmtp.conf file: `sudo nano /etc/ssmtp/ssmtp.conf` and add/edit the lines below
+      ```
+      root=<your_account_name>@domain.tld
+      mailhub=smtp.domain.tld:587
+      hostname=<Your Raspberry pi’s name should already be here>
+      AuthUser=<your_account_name>@domain.tld
+      AuthPass=<your_password>
+      useSTARTTLS=YES
+      ```
+      
+   - Edit the aliases: `sudo nano /etc/ssmtp/revaliases`
+      ```
+      root:<your_account_name>@domain.tld:smtp.domain.tld:587
+      pi:<your_account_name>@domain.tld:smtp.domain.tld:587
+      ```
 - Now it is time to remove some unneeded software and games from Pi.
 
    - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
