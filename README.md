@@ -118,6 +118,7 @@ Hardening is the process of disabling or uninstalling application, services and 
       AuthPass=<your_password>
       useTLS=YES
       useSTARTTLS=YES
+      FromLineOverride=NO 
       ```
       
    - Edit the aliases: `sudo nano /etc/ssmtp/revaliases`
