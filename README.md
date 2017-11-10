@@ -123,8 +123,10 @@ Hardening is the process of disabling or uninstalling application, services and 
       
    - Edit the aliases: `sudo nano /etc/ssmtp/revaliases`
       ```
-      root:<your_account_name>@domain.tld:smtp.domain.tld:587
-      pi:<your_account_name>@domain.tld:smtp.domain.tld:587
+      # Port 587 for STARTTLS
+      # Port 465 for TLS
+      root:<your_account_name>@domain.tld:smtp.domain.tld:465
+      pi:<your_account_name>@domain.tld:smtp.domain.tld:465
       ```
 - Now it is time to remove some unneeded software and games from Pi.
 
