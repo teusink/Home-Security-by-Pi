@@ -1,4 +1,4 @@
-# Secure-my-Pi
+# Home-Security-by-Pi
 Description on how I configured the installation and Security of my Raspberry Pi and how I keep it fit for use and purpose.
 
 ## Goal
@@ -22,6 +22,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 - How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
+- Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 
 ## Other Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
@@ -144,6 +145,8 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
    - Go to Settings.
    - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
    - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
+   - Fill in custom IPv4 DNS (Quad9): 9.9.9.9
+   - Fill in custom IPv6 DNS (Quad9): 2620:fe::fe
    - Make sure that the following domainnames are in the whitelist:
    
       ```
