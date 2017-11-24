@@ -30,7 +30,6 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
 - Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
 - Pi-hole OpenVPN-server Wiki: https://github.com/pi-hole/pi-hole/wiki/Pi-hole---OpenVPN-server
-- Pi-hole DNSCrypt Wiki: https://github.com/pi-hole/pi-hole/wiki/DNSCrypt
 
 # Installation
 In this chapter I will explain the basics I undertook in order to install all the software required. In the chapter Hardening I will go more indepth on what has been changed after the installation.
