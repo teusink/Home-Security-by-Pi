@@ -129,6 +129,49 @@ Hardening is the process of disabling or uninstalling application, services and 
       root:<your_account_name>@domain.tld:smtp.domain.tld:465
       pi:<your_account_name>@domain.tld:smtp.domain.tld:465
       ```
+- Now install fail2ban to add some security to SSH and OpenVPN.
+
+   - Install it with: `sudo apt-get install fail2ban`
+   - Create the jail.local file: `sudo nano /etc/fail2ban/jail.local` and add the lines below
+      ```
+      # Custom settings for jail.conf
+      ignoreip = 127.0.0.1/8 192.168.xxx.1/24
+      destemail = <your_account_name>@domain.tld
+      sender = <your_account_name>@domain.tld
+      ```
+   - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/openvpn.local` and add the lines below
+      ```
+      # Fail2Ban filter for selected OpenVPN rejections
+      #
+      #
+      
+      [Definition]
+      
+      # Example messages (other matched messages not seen in the testing server's logs):
+      # Fri Sep 23 11:55:36 2016 TLS Error: incoming packet authentication failed from [AF_INET]59.90.146.160:51223
+      # Thu Aug 25 09:36:02 2016 117.207.115.143:58922 TLS Error: TLS handshake failed
+      
+      failregex = ^ TLS Error: incoming packet authentication failed from \[AF_INET\]<HOST>:\d+$
+                  ^ <HOST>:\d+ Connection reset, restarting
+                  ^ <HOST>:\d+ TLS Auth Error
+                  ^ <HOST>:\d+ TLS Error: TLS handshake failed$
+                 ^ <HOST>:\d+ VERIFY ERROR
+      
+      ignoreregex = 
+      ```
+   - Create the openvpn.local file: `sudo nano /etc/fail2ban/jail.d/openvpn.local` and add the lines below
+      ```
+      # Fail2Ban configuration fragment for OpenVPN
+
+      [openvpn]
+      enabled  = true
+      port     = 1194
+      protocol = udp
+      filter   = openvpn
+      logpath  = /var/log/openvpn.log
+      maxretry = 3
+      ```
+   - SSH is enabled by default :).
 - Now it is time to remove some unneeded software and games from Pi.
 
    - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
