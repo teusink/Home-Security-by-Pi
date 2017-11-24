@@ -23,6 +23,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
+- fail2ban documentation: https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
 
 ## Other Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
