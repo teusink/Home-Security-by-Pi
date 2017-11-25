@@ -212,7 +212,8 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       www.msftncsi.com
       zeustracker.abuse.ch
       ```
-      - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
+      
+   - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
 
 - Now we need to do some stuff to configure OpenVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
 
