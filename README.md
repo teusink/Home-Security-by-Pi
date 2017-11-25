@@ -63,7 +63,7 @@ Hardening is the process of disabling or uninstalling application, services and 
    Change the lines below to your proper internal IP-addresses.
    ```
    interface eth0
-   static ip_address=192.168.xxx.xxx/24
+   static ip_address=192.168.xxx.xxx
    static routers=192.168.xxx.xxx
    static domain_name_servers=192.168.xxx.xxx
    ```
