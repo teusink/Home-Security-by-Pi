@@ -135,9 +135,11 @@ Hardening is the process of disabling or uninstalling application, services and 
    - Create the jail.local file: `sudo nano /etc/fail2ban/jail.local` and add the lines below
       ```
       # Custom settings for jail.conf
-      ignoreip = 127.0.0.1/8 192.168.xxx.0/24
-      destemail = <your_account_name>@domain.tld
-      sender = <your_account_name>@domain.tld
+
+      [DEFAULT]
+      ignoreip = 127.0.0.1/8 192.168.178.0/24
+      destemail = security@teusink.eu
+      sender = joram@teusink.eu
       ```
    - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/openvpn.local` and add the lines below
       ```
