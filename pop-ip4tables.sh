@@ -63,7 +63,9 @@ iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
 
 # Allow incoming and outgoing OpenVPN (all)
 iptables -A INPUT -p tcp --dport 1194 -j ACCEPT
+iptables -A INPUT -p udp --dport 1194 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 1194 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 
 # Allow outgoing SMTP-over-TLS (LAN)
 iptables -A OUTPUT -o eth0 -p tcp --dport 587 -j ACCEPT
