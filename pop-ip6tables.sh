@@ -32,6 +32,12 @@ ip6tables -A OUTPUT -p ipv6-icmp -j ACCEPT
 # Block incoming HTTPS advertisement assets (anywhere)
 ip6tables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
 
+# Allow DHCP (all)
+ip6tables -A INPUT -p udp --dport 67 -j ACCEPT
+ip6tables -A INPUT -p udp --dport 68 -j ACCEPT
+ip6tables -A OUTPUT -p udp --dport 67 -j ACCEPT
+ip6tables -A OUTPUT -p udp --dport 68 -j ACCEPT
+
 # Allow DNS (all)
 ip6tables -A INPUT -p tcp --dport 53 -j ACCEPT
 ip6tables -A INPUT -p udp --dport 53 -j ACCEPT
