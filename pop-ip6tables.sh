@@ -21,6 +21,10 @@ ip6tables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
 ip6tables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
 
+# Forward VPN Traffic
+ip6tables -A FORWARD -i tun0 -j ACCEPT
+ip6tables -A FORWARD -o tun0 -j ACCEPT
+
 # Allow loopback traffic
 ip6tables -A INPUT -i lo -j ACCEPT
 ip6tables -A OUTPUT -o lo -j ACCEPT
