@@ -78,4 +78,4 @@ echo -------------------------
 echo
 echo Now test the functionality of your Pi-Hole yourself!
 echo - If anything is faulty, just restart your Pi.
-echo - If all looks well, run 'sudo iptables-save > /etc/pihole/rules.v4'.
+echo - If all looks well, run 'sudo iptables-save'.
