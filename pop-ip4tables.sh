@@ -32,6 +32,12 @@ iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
 # Block incoming HTTPS advertisement assets (anywhere)
 iptables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
 
+# Allow DHCP (all)
+iptables -A INPUT -p udp --dport 67 -j ACCEPT
+iptables -A INPUT -p udp --dport 68 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 67 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 68 -j ACCEPT
+
 # Allow DNS (all)
 iptables -A INPUT -p tcp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
