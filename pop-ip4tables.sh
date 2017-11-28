@@ -21,49 +21,49 @@ iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -i eth0 -p udp --dport 80 -j ACCEPT
 
 # Allow incoming SSH (OpenVPN, LAN)
-iptables -A INPUT -p tun0 tcp --dport 22 -j ACCEPT
-iptables -A INPUT -p eth0 tcp --dport 22 -j ACCEPT
+iptables -A INPUT -i tun0 tcp --dport 22 -j ACCEPT
+iptables -A INPUT -i eth0 tcp --dport 22 -j ACCEPT
 
 # Allow incoming VNC (OpenVPN, LAN)
-iptables -A INPUT -p tun0 tcp --dport 5900 -j ACCEPT
-iptables -A INPUT -p eth0 tcp --dport 5900 -j ACCEPT
+iptables -A INPUT -i tun0 tcp --dport 5900 -j ACCEPT
+iptables -A INPUT -i eth0 tcp --dport 5900 -j ACCEPT
 
 # Allow incoming OpenVPN (OpenVPN, LAN)
-iptables -A INPUT -p tun0 tcp --dport 1194 -j ACCEPT
-iptables -A INPUT -p tun0 udp --dport 1194 -j ACCEPT
-iptables -A INPUT -p eth0 tcp --dport 1194 -j ACCEPT
-iptables -A INPUT -p eth0 udp --dport 1194 -j ACCEPT
+iptables -A INPUT -i tun0 tcp --dport 1194 -j ACCEPT
+iptables -A INPUT -i tun0 udp --dport 1194 -j ACCEPT
+iptables -A INPUT -i eth0 tcp --dport 1194 -j ACCEPT
+iptables -A INPUT -i eth0 udp --dport 1194 -j ACCEPT
 
 # Allow outgoing SMTP-over-TLS (LAN)
-iptables -A OUTPUT -p eth0 tcp --dport 587 -j ACCEPT
-
-# Block incoming HTTPS advertisement assets (anywhere)
-iptables -R INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
+iptables -A OUTPUT -o eth0 tcp --dport 587 -j ACCEPT
 
 # Allow outgoing HTTP(S) (LAN)
-iptables -R OUTPUT -p eth0 tcp --dport 80 -j ACCEPT
-iptables -R OUTPUT -p eth0 tcp --dport 443 -j ACCEPT
+iptables -A OUTPUT -o eth0 tcp --dport 80 -j ACCEPT
+iptables -A OUTPUT -o eth0 tcp --dport 443 -j ACCEPT
 
 # Allow outgoing (s)FTP (LAN)
-iptables -R OUTPUT -p eth0 tcp --dport 21 -j ACCEPT
-iptables -R OUTPUT -p eth0 tcp --dport 22 -j ACCEPT
+iptables -A OUTPUT -o eth0 tcp --dport 21 -j ACCEPT
+iptables -A OUTPUT -o eth0 tcp --dport 22 -j ACCEPT
 
 # Allow outgoing DNS (LAN)
-iptables -R OUTPUT -p eth0 tcp --dport 53 -j ACCEPT
-iptables -R OUTPUT -p eth0 udp --dport 53 -j ACCEPT
+iptables -A OUTPUT -o eth0 tcp --dport 53 -j ACCEPT
+iptables -A OUTPUT -o eth0 udp --dport 53 -j ACCEPT
 
 # Allow outgoing NTP (LAN)
-iptables -R OUTPUT -p eth0 udp --dport 123 -j ACCEPT
-
-# Allow TCP/IP three way handshakes (anywhere)
-iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 udp --dport 123 -j ACCEPT
 
 # Allow loopback traffic
 iptables -I INPUT -i lo -j ACCEPT
 iptables -I OUTPUT -o lo -j ACCEPT
 
+# Block incoming HTTPS advertisement assets (anywhere)
+iptables -R INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
+
+# Allow TCP/IP three way handshakes (anywhere)
+iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
 # Drop Invalid Packets
-iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+iptables -I INPUT -m conntrack --ctstate INVALID -j DROP
 
 # Drop anything else
 iptables -P INPUT DROP
