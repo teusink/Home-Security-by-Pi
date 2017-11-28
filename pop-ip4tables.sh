@@ -21,36 +21,36 @@ iptables -A INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -i eth0 -p udp --dport 80 -j ACCEPT
 
 # Allow incoming SSH (OpenVPN, LAN)
-iptables -A INPUT -i tun0 tcp --dport 22 -j ACCEPT
-iptables -A INPUT -i eth0 tcp --dport 22 -j ACCEPT
+iptables -A INPUT -i tun0 -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
 
 # Allow incoming VNC (OpenVPN, LAN)
-iptables -A INPUT -i tun0 tcp --dport 5900 -j ACCEPT
-iptables -A INPUT -i eth0 tcp --dport 5900 -j ACCEPT
+iptables -A INPUT -i tun0 -p tcp --dport 5900 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --dport 5900 -j ACCEPT
 
 # Allow incoming OpenVPN (OpenVPN, LAN)
-iptables -A INPUT -i tun0 tcp --dport 1194 -j ACCEPT
-iptables -A INPUT -i tun0 udp --dport 1194 -j ACCEPT
-iptables -A INPUT -i eth0 tcp --dport 1194 -j ACCEPT
-iptables -A INPUT -i eth0 udp --dport 1194 -j ACCEPT
+iptables -A INPUT -i tun0 -p tcp --dport 1194 -j ACCEPT
+iptables -A INPUT -i tun0 -p udp --dport 1194 -j ACCEPT
+iptables -A INPUT -i eth0 -p tcp --dport 1194 -j ACCEPT
+iptables -A INPUT -i eth0 -p udp --dport 1194 -j ACCEPT
 
 # Allow outgoing SMTP-over-TLS (LAN)
-iptables -A OUTPUT -o eth0 tcp --dport 587 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 587 -j ACCEPT
 
 # Allow outgoing HTTP(S) (LAN)
-iptables -A OUTPUT -o eth0 tcp --dport 80 -j ACCEPT
-iptables -A OUTPUT -o eth0 tcp --dport 443 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 80 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 443 -j ACCEPT
 
 # Allow outgoing (s)FTP (LAN)
-iptables -A OUTPUT -o eth0 tcp --dport 21 -j ACCEPT
-iptables -A OUTPUT -o eth0 tcp --dport 22 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 21 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 22 -j ACCEPT
 
 # Allow outgoing DNS (LAN)
-iptables -A OUTPUT -o eth0 tcp --dport 53 -j ACCEPT
-iptables -A OUTPUT -o eth0 udp --dport 53 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 53 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p udp --dport 53 -j ACCEPT
 
 # Allow outgoing NTP (LAN)
-iptables -A OUTPUT -o eth0 udp --dport 123 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p udp --dport 123 -j ACCEPT
 
 # Allow loopback traffic
 iptables -I INPUT -i lo -j ACCEPT
