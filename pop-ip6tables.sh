@@ -63,7 +63,9 @@ ip6tables -A OUTPUT -p tcp --dport 22 -j ACCEPT
 
 # Allow incoming and outgoing OpenVPN (all)
 ip6tables -A INPUT -p tcp --dport 1194 -j ACCEPT
+ip6tables -A INPUT -p udp --dport 1194 -j ACCEPT
 ip6tables -A OUTPUT -p tcp --dport 1194 -j ACCEPT
+ip6tables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 
 # Allow outgoing SMTP-over-TLS (LAN)
 ip6tables -A OUTPUT -o eth0 -p tcp --dport 587 -j ACCEPT
