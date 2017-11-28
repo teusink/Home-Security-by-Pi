@@ -67,6 +67,12 @@ Hardening is the process of disabling or uninstalling application, services and 
    static routers=192.168.xxx.xxx
    static domain_name_servers=192.168.xxx.xxx
    ```
+- Now add IPv6 in the network interfaces by editing the interfaces file: `sudo nano /etc/network/interfaces`
+   
+   Add the line below after the line `iface eth0 inet manual`
+   ```
+   iface eth0 inet6 manual
+   ```
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
 
    Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
