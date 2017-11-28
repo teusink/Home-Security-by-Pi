@@ -21,27 +21,28 @@ iptables -I OUTPUT -o lo -j ACCEPT
 # Block incoming HTTPS advertisement assets (anywhere)
 iptables -I INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
 
-# Allow incoming DNS (OpenVPN, LAN)
-iptables -I INPUT -i tun0 -p tcp --dport 53 -j ACCEPT
-iptables -I INPUT -i tun0 -p udp --dport 53 -j ACCEPT
-iptables -I INPUT -i eth0 -p tcp --dport 53 -j ACCEPT
-iptables -I INPUT -i eth0 -p udp --dport 53 -j ACCEPT
+# Allow DNS (all)
+iptables -I INPUT -p tcp --dport 53 -j ACCEPT
+iptables -I INPUT -p udp --dport 53 -j ACCEPT
+iptables -I OUTPUT -p tcp --dport 53 -j ACCEPT
+iptables -I OUTPUT -p udp --dport 53 -j ACCEPT
 
-# Allow incoming HTTP (OpenVPN, LAN)
-iptables -I INPUT -i tun0 -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -i tun0 -p udp --dport 80 -j ACCEPT
-iptables -I INPUT -i eth0 -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -i eth0 -p udp --dport 80 -j ACCEPT
+# Allow outgoing NTP (all)
+iptables -I OUTPUT -p udp --dport 123 -j ACCEPT
 
-# Allow incoming SSH (OpenVPN, LAN)
-iptables -I INPUT -i tun0 -p tcp --dport 22 -j ACCEPT
-iptables -I INPUT -i eth0 -p tcp --dport 22 -j ACCEPT
+# Allow HTTP (all)
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+iptables -I INPUT -p udp --dport 80 -j ACCEPT
+iptables -I OUTPUT -p tcp --dport 80 -j ACCEPT
+iptables -I OUTPUT -p udp --dport 80 -j ACCEPT
 
-# Allow incoming and outgoing VNC (OpenVPN, LAN)
-iptables -I INPUT -i tun0 -p tcp --dport 5900 -j ACCEPT
-iptables -I INPUT -i eth0 -p tcp --dport 5900 -j ACCEPT
-iptables -I OUTPUT -o tun0 -p tcp --dport 5900 -j ACCEPT
-iptables -I OUTPUT -o eth0 -p tcp --dport 5900 -j ACCEPT
+# Allow incoming and outgoing VNC (all)
+iptables -I INPUT -p tcp --dport 5900 -j ACCEPT
+iptables -I OUTPUT -p tcp --dport 5900 -j ACCEPT
+
+# Allow incoming and outgoing SSH (all)
+iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+iptables -I OUTPUT -p tcp --dport 22 -j ACCEPT
 
 # Allow incoming OpenVPN (OpenVPN, LAN)
 iptables -I INPUT -i tun0 -p tcp --dport 1194 -j ACCEPT
@@ -57,13 +58,6 @@ iptables -I OUTPUT -o eth0 -p tcp --dport 443 -j ACCEPT
 # Allow outgoing (s)FTP (LAN)
 iptables -I OUTPUT -o eth0 -p tcp --dport 21 -j ACCEPT
 iptables -I OUTPUT -o eth0 -p tcp --dport 22 -j ACCEPT
-
-# Allow outgoing DNS (LAN)
-iptables -I OUTPUT -o eth0 -p tcp --dport 53 -j ACCEPT
-iptables -I OUTPUT -o eth0 -p udp --dport 53 -j ACCEPT
-
-# Allow outgoing NTP (LAN)
-iptables -I OUTPUT -o eth0 -p udp --dport 123 -j ACCEPT
 
 # Drop anything else
 iptables -P INPUT DROP
