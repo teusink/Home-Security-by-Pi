@@ -1,6 +1,8 @@
+*Back to [Introduction page](https://github.com/teusink/Home-Security-by-Pi/blob/master/README.md)*
 # Configuration
 
 ## Configuration Sources
+Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 
