@@ -1,5 +1,7 @@
 *Back to [Introduction page](https://github.com/teusink/Home-Security-by-Pi/blob/master/README.md)*
+
 # Configuration
+This part is about the basic configuration of your installment. It has parts of hardening, but it is primarly aimed at configuring or removing installed software and hardware. 
 
 ## Configuration Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
