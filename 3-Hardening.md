@@ -14,7 +14,10 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 
 ## Raspberry Pi
 
+### Screenlock
 - Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
+
+## E-mail
 - Time to install mail-services to make sure that an email after important events are sent.
 
    - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
@@ -37,6 +40,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       root:<your_account_name>@domain.tld:smtp.domain.tld:465
       pi:<your_account_name>@domain.tld:smtp.domain.tld:465
       ```
+
+### fail2ban
 - Now install fail2ban to add some security to SSH and OpenVPN.
 
    - Install it with: `sudo apt-get install fail2ban`
@@ -83,11 +88,13 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       ```
    - SSH is enabled by default :).
 
+## Done
 - This part is done now, so do a reboot now: `sudo reboot`
 
 ## Pi-hole & OpenVPN
 I did some additional configuration to get the Pi-hole and OpenVPN up-and-running in a secure way. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
 
+### Pi-hole
 - Go to your admin panel of Pi-hole: `http://192.168.xxx.xxx/admin/`
 
    - Go to Settings.
@@ -120,6 +127,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       
    - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
 
+### OpenVPN
 - Now we need to do some stuff to configure OpenVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
 
    - Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
