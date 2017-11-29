@@ -162,6 +162,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       www.msftncsi.com
       zeustracker.abuse.ch
       ```
+      Note: To not cripple the Google search-engine to much (and annoy the spouse :), I have added the Google ad-servers. Google Analytics is not whitelisted though.
       
    - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
 
