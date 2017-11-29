@@ -1,7 +1,7 @@
 **Table of Contents**
 - [Introduction](https://github.com/teusink/Home-Security-by-Pi/blob/master/README.md)
 - [1 - Installation](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md)
-- [2 - Configuration](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-Configuration.md)
+- 2 - Configuration
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 
