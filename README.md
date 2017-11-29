@@ -14,5 +14,8 @@ Anything that I create is all done under MIT-license, so please do use it as you
 - Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
 - Pi-hole OpenVPN-server Wiki: https://github.com/pi-hole/pi-hole/wiki/Pi-hole---OpenVPN-server
 
-# Keeping it updated
-- This part is done now, so do a reboot now: `sudo reboot`
+# Table of Contents
+- [1 - Installation](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md)
+- [2 - Configuration](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-Configuration.md)
+- [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening)
+- [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance)
