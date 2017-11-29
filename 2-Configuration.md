@@ -1,6 +1,10 @@
 # Configuration
 
-## Configure installment
+## Configuration Sources
+- How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
+- Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
+
+## Configure Installment
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
    - System: Change User Password
    - System: Hostname
@@ -64,7 +68,7 @@
    net.ipv6.conf.all.accept_source_route = 0
    ```
 
-## Remove software and games
+## Remove Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
    - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
