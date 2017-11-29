@@ -18,5 +18,5 @@ In this chapter I will explain the basics I undertook in order to install all th
 - Install OpenVPN server with the command: `sudo curl -L https://install.pivpn.io | bash`
 - Follow instructions for installation here: https://www.sitepoint.com/setting-up-a-home-vpn-using-your-raspberry-pi/
 
-## Done
+# Done
 - This part is done now, so do a reboot now: `sudo reboot`
