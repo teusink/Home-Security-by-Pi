@@ -14,5 +14,11 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 ## OpenVPN
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
+## Package Integrity issues
+I faced some package integrity issues after an upgrade. You can fix thos with the following command:
+- `sudo apt-get install --reinstall <packagename> <packagename>`
+
+That way the package are reinstalled, no matter you have the latest version or not.
+
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
