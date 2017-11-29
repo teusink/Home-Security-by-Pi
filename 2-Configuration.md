@@ -76,5 +76,5 @@
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
 
-## Done
+# Done
 - This part is done now, so do a reboot now: `sudo reboot`
