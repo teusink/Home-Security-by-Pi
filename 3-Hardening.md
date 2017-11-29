@@ -17,6 +17,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 - fail2ban documentation: https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
 - Firewall configuration: https://github.com/pi-hole/pi-hole/wiki/OpenVPN-server:-Firewall-configuration-(using-iptables)
+- fail2ban VNC: https://github.com/fail2ban/fail2ban/issues/1008
 
 ## Raspberry Pi
 
@@ -60,6 +61,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       destemail = security@teusink.eu
       sender = joram@teusink.eu
       ```
+
+#### OpenVPN
    - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/openvpn.local` and add the lines below
       ```
       # Fail2Ban filter for selected OpenVPN rejections
@@ -92,6 +95,37 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       logpath  = /var/log/openvpn.log
       maxretry = 3
       ```
+#### VNC
+   - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/vnc.local` and add the lines below
+      ```
+      # Fail2Ban filter for vnc or screensharingd
+      #
+      
+      [INCLUDES]
+      before = common.conf
+      
+      [Definition]
+      _daemon = (?:screensharingd|vnc)
+      
+      failregex = ^%(__prefix_line)sAuthentication: FAILED :: User Name: .*? :: Viewer Address: <HOST> :: Type: (?:DH|.*?)$
+      
+      ignoreregex = 
+
+      # Author: Peter Franzén, 2015
+      ```
+   - Create the openvpn.local file: `sudo nano /etc/fail2ban/jail.d/vnc.local` and add the lines below
+      ```
+      # Fail2Ban configuration fragment for VNC
+
+      [vnc]
+      enabled  = true
+      port     = 5900
+      filter   = vnc
+      logpath  = /var/log/auth.log
+      maxretry = 3
+      ```
+
+#### SSH
    - SSH is enabled by default :).
 
 ### iptables & ip6tables
