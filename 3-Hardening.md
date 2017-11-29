@@ -1,3 +1,5 @@
+*Back to [Introduction page](https://github.com/teusink/Home-Security-by-Pi/blob/master/README.md)*
+
 # Hardening
 Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough. So, while you are busy with some configuration work, harden your Pi also.
 
