@@ -18,7 +18,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ### Screenlock
 - Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 
-## E-mail
+### E-mail
 - Time to install mail-services to make sure that an email after important events are sent.
 
    - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
@@ -89,7 +89,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       ```
    - SSH is enabled by default :).
 
-## iptables & ip6tables
+### iptables & ip6tables
 Hardening is not complete without proper firewalling. On Linux this can be done using iptables for IPv4 and ip6tables for IPv6.
 
 I have created two scripts:
@@ -121,7 +121,7 @@ Things I considered with building these firewall rules:
 - Allow outgoing HTTPS.
 - Allow outgoing (s)FTP.
 
-## Done
+### Done
 - This part is done now, so do a reboot now: `sudo reboot`
 
 ## Pi-hole & OpenVPN
@@ -177,5 +177,5 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       ```
    - Save and exit
 
-# Done
+### Done
 - This part is done now, so do a reboot now: `sudo reboot`
