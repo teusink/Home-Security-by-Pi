@@ -96,7 +96,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       maxretry = 3
       ```
 #### VNC
-   - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/vnc.local` and add the lines below
+   - Create the vnc.local file: `sudo nano /etc/fail2ban/filter.d/vnc.local` and add the lines below
       ```
       # Fail2Ban filter for vnc or screensharingd
       #
@@ -113,7 +113,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 
       # Author: Peter Franzén, 2015
       ```
-   - Create the openvpn.local file: `sudo nano /etc/fail2ban/jail.d/vnc.local` and add the lines below
+   - Create the vnc.local file: `sudo nano /etc/fail2ban/jail.d/vnc.local` and add the lines below
       ```
       # Fail2Ban configuration fragment for VNC
 
