@@ -1,7 +1,10 @@
+*Back to [Introduction page](https://github.com/teusink/Home-Security-by-Pi/blob/master/README.md)*
+
 # Installation
 In this chapter I will explain the basics I undertook in order to install all the software required. In the chapter Hardening I will go more indepth on what has been changed after the installation.
 
 ## Installation Sources
+Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
 - Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
 - OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
