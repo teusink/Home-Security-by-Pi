@@ -8,7 +8,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 
-## Configure Installment
+## Configuring software
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
    - System: Change User Password
    - System: Hostname
@@ -32,6 +32,26 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    ```
    iface eth0 inet6 manual
    ```
+- Because I live in Europe, I like to use a timeserver that resides in Europe.
+
+   Use the lines below to replace the similar ones in the ntp.conf file: `sudo nano /etc/ntp.conf`
+   ```
+   server 0.europe.pool.ntp.org iburst
+   server 1.europe.pool.ntp.org iburst
+   server 2.europe.pool.ntp.org iburst
+   server 3.europe.pool.ntp.org iburst
+   ```
+- Uncomment the following lines in the file sysctl.conf to enhance network security: `sudo nano /etc/sysctl.conf`
+   ```net.ipv4.conf.default.rp_filter=1
+   net.ipv4.conf.all.rp_filter=1
+   net.ipv4.conf.all.accept_redirects = 0
+   net.ipv6.conf.all.accept_redirects = 0
+   net.ipv4.conf.all.send_redirects = 0
+   net.ipv4.conf.all.accept_source_route = 0
+   net.ipv6.conf.all.accept_source_route = 0
+   ```
+   
+## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
 
    Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
@@ -53,26 +73,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    blacklist hci_uart
    ```
    And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
-- Because I live in Europe, I like to use a timeserver that resides in Europe.
 
-   Use the lines below to replace the similar ones in the ntp.conf file: `sudo nano /etc/ntp.conf`
-   ```
-   server 0.europe.pool.ntp.org iburst
-   server 1.europe.pool.ntp.org iburst
-   server 2.europe.pool.ntp.org iburst
-   server 3.europe.pool.ntp.org iburst
-   ```
-- Uncomment the following lines in the file sysctl.conf to enhance network security: `sudo nano /etc/sysctl.conf`
-   ```net.ipv4.conf.default.rp_filter=1
-   net.ipv4.conf.all.rp_filter=1
-   net.ipv4.conf.all.accept_redirects = 0
-   net.ipv6.conf.all.accept_redirects = 0
-   net.ipv4.conf.all.send_redirects = 0
-   net.ipv4.conf.all.accept_source_route = 0
-   net.ipv6.conf.all.accept_source_route = 0
-   ```
-
-## Remove Software and Games
+## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
    - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
