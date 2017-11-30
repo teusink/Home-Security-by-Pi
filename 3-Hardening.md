@@ -72,8 +72,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       ```
       # Port 587 for STARTTLS
       # Port 465 for TLS
-      root:<your_account_name>@domain.tld:smtp.domain.tld:465
-      pi:<your_account_name>@domain.tld:smtp.domain.tld:465
+      root:<your_account_name>@domain.tld:smtp.domain.tld:587
+      pi:<your_account_name>@domain.tld:smtp.domain.tld:587
       ```
 
 ## fail2ban
