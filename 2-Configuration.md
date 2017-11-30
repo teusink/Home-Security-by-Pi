@@ -112,6 +112,14 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       push "redirect-gateway def1"
       ```
    - Save and exit
+   - Add a new client with: `pivpn add`
+
+      - Enter an username
+      - Enter a password
+      - Open the generated `.ovpn`
+      - Add the following line: `block-outside-dns` before the `<ca>` tag.
+      - Copy the file from your Pi to your device
+      - Use it in combination with the password
 
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
