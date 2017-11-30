@@ -13,15 +13,11 @@ The goal of this project is to make a secure (or at least secure within a reason
 
 My other goal is to gain a good understanding on DNS, Hardening and other Security-related aspects concerning Network Security. I feel that as a Chief Information Security Officer it is important to upkeep (general) knowledge about Technology.
 
-Anything that I create is all done under MIT-license, so please do use it as you see fit. In regard to software created under other licences, those do not change and you need to check them for yourself.
-
 # The Hardware
 The hardware I use exists of the following components:
 - Raspberry Pi 3 Model B 1GB
 - SanDisk Ultra SDHC card - 16GB
 - Pi-Blox Case for Raspberry Pi - Black
-
-Note: currently moving from Jessie to Stretch, so I am updating this entire guide.
 
 **How it looks :)**
 
