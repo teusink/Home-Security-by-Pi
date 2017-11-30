@@ -18,7 +18,7 @@ Anything that I create is all done under MIT-license, so please do use it as you
 # The Hardware
 The hardware I use exists of the following components:
 - Raspberry Pi 3 Model B 1GB
-- SanDisk Ultra SDHC card - 8GB
+- SanDisk Ultra SDHC card - 16GB
 - Pi-Blox Case for Raspberry Pi - Black
 
 **How it looks :)**
