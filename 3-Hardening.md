@@ -19,12 +19,10 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Firewall configuration: https://github.com/pi-hole/pi-hole/wiki/OpenVPN-server:-Firewall-configuration-(using-iptables)
 - fail2ban VNC: https://github.com/fail2ban/fail2ban/issues/1008
 
-## Raspberry Pi
-
-### Screenlock
+## Screenlock
 - Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 
-### E-mail
+## E-mail
 - Time to install mail-services to make sure that an email after important events are sent. Important for the detection and response part of the Security.
 
    - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
@@ -48,7 +46,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       pi:<your_account_name>@domain.tld:smtp.domain.tld:465
       ```
 
-### fail2ban
+## fail2ban
 - Now install fail2ban to add some security to SSH and OpenVPN by blocking brute-force password guesses.
 
    - Install it with: `sudo apt-get install fail2ban`
@@ -62,7 +60,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       sender = joram@teusink.eu
       ```
 
-#### OpenVPN
+### OpenVPN
    - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/openvpn.local` and add the lines below
       ```
       # Fail2Ban filter for selected OpenVPN rejections
@@ -95,7 +93,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       logpath  = /var/log/openvpn.log
       maxretry = 3
       ```
-#### VNC
+### VNC
    - Create the vnc.local file: `sudo nano /etc/fail2ban/filter.d/vnc.local` and add the lines below
       ```
       # Fail2Ban filter for vnc or screensharingd
@@ -125,10 +123,10 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       maxretry = 3
       ```
 
-#### SSH
+### SSH
    - SSH is enabled by default :).
 
-### iptables & ip6tables
+## iptables & ip6tables
 Hardening is not complete without proper firewalling. On Linux this can be done using iptables for IPv4 and ip6tables for IPv6.
 
 I have created two scripts:
