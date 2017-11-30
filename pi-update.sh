@@ -31,7 +31,7 @@ echo -------------------------------------
 sudo pihole -up -g
 echo -------------------------------------
 echo
-if [$1 = no-reboot]
+if [ "$1" = "no-reboot" ]
 then
   echo "Skipping reboot @ $(date)"
 else
