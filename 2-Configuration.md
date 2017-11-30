@@ -15,15 +15,16 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 
 ## Configuring Raspberry Pi
-- Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
-   - System: Change User Password
-   - System: Hostname
-   - Interface: Only enable the services you need (for instance SSH)
-   - Set other settings you like to set.
+- When doing a headless configuration, make sure to create the file `ssh` in the `/boot` partition of your Pi. When booting, check your DHCP server for the Pi's IP-address and move on from there with SSH.
 - Make sure you set/change the following default configurations using `sudo raspi-config`
    - Change User Password
    - Hostname
    - Advanced Options: Expand Filesystem
+   - Set other settings you like to set.
+- Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
+   - System: Change User Password
+   - System: Hostname
+   - Interface: Only enable the services you need (for instance SSH)
    - Set other settings you like to set.
 - It is nice to have a fixed IP-address for your Pi, so let's change that using: `sudo nano /etc/dhcpcd.conf`
 
