@@ -14,6 +14,9 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
 - OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
 
+## Information Sources
+- Headless Pi Configuration: https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0
+
 ## Raspberry Pi
 - In regard to the base image, I choose that of Raspbian Jessie with Pixel. I am rather tech-savvy, but re-entering the Linux world with root only was a bit to much :).
 - Concerning the installation itself, I followed the already online and well documented installation guide: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
