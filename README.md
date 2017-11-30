@@ -21,6 +21,15 @@ The hardware I use exists of the following components:
 - SanDisk Ultra SDHC card - 16GB
 - Pi-Blox Case for Raspberry Pi - Black
 
+# The Software
+The base image that is used to build this guid is the following:
+- Image with desktop based on Debian Stretch
+- Version:September 2017
+- Release date:2017-09-07
+- Kernel version:4.9
+
+Note: currently moving from Jessie to Stretch, so I am updating this entire guide.
+
 **How it looks :)**
 
 ![Pi-Blox Case](https://3.bp.blogspot.com/-35IKtcxvbds/Wh_wxulKH_I/AAAAAAAC-qM/ZFdeJaGM5j0Rzs1o9cJ1gWrJ4--BZcxAQCPcBGAYYCw/s1600/Pi-Blox-Case.jpg)
