@@ -76,6 +76,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       hosts-file.net
       ipv6.msftncsi.com
       mirror1.malwaredomains.com
+      mirrordirector.raspbian.org
       msftncsi.com
       pubads.g.doubleclick.net
       raw.githubusercontent.com
