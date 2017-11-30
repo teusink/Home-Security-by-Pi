@@ -13,7 +13,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 
-## Configuring software
+## Raspberry Pi
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
    - System: Change User Password
    - System: Hostname
@@ -86,6 +86,60 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - Remove LibreOffice: `sudo apt-get remove libreoffice`
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
+
+## Pi-hole & OpenVPN
+I did some additional configuration to get the Pi-hole and OpenVPN up-and-running in a secure way. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
+
+### Pi-hole
+- Go to your admin panel of Pi-hole: `http://192.168.xxx.xxx/admin/`
+
+   - Go to Settings.
+   - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
+   - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
+   - Fill in custom IPv4 DNS (Quad9): 9.9.9.9
+   - Fill in custom IPv6 DNS (Quad9): 2620:fe::fe
+   - Make sure that the following domainnames are in the whitelist:
+   
+      ```
+      ad.doubleclick.net
+      clickserve.dartsearch.net
+      googleads.g.doubleclick.net
+      hosts-file.net
+      ipv6.msftncsi.com
+      mirror1.malwaredomains.com
+      msftncsi.com
+      pubads.g.doubleclick.net
+      raw.githubusercontent.com
+      s.youtube.com
+      s3.amazonaws.com
+      sysctl.org
+      www.googleadservices.com
+      www.googletagmanager.com
+      www.googletagservices.com
+      www.malwaredomainlist.com
+      www.msftncsi.com
+      zeustracker.abuse.ch
+      ```
+      Note: To not cripple the Google search-engine to much (and annoy the spouse :), I have added the Google ad-servers. Google Analytics is not whitelisted though.
+      
+   - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
+
+### OpenVPN
+- Now we need to do some stuff to configure OpenVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
+
+   - Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
+   - Add line: `interface=tun0`, save and exit
+   - Edit the file: `sudo nano /etc/dnsmasq.d/01-pihole.conf`
+   - Add line: `interface=tun0` below the line: `interface=eth0`, save and exit
+   - Edit the file: `sudo nano /etc/openvpn/server.conf`
+   - Add line: `dev tun` at te top
+   - Add the following lines after the `push "route` lines:
+   
+      ```
+      push "dhcp-option DNS 192.168.xxx.xxx"
+      push "redirect-gateway def1"
+      ```
+   - Save and exit
 
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
