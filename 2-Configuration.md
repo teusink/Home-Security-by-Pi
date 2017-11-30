@@ -14,6 +14,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 
 ## Raspberry Pi
+
+### Configuring Software
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
    - System: Change User Password
    - System: Hostname
@@ -56,7 +58,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    net.ipv6.conf.all.accept_source_route = 0
    ```
    
-## Disabling hardware
+### Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
 
    Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
@@ -79,7 +81,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    ```
    And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
 
-## Removing Software and Games
+### Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
    - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
