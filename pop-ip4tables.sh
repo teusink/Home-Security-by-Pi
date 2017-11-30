@@ -72,6 +72,7 @@ iptables -A OUTPUT -p tcp --dport 1194 -j ACCEPT
 iptables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 
 # Allow outgoing SMTP-over-TLS (LAN)
+iptables -A OUTPUT -o eth0 -p tcp --dport 465 -j ACCEPT
 iptables -A OUTPUT -o eth0 -p tcp --dport 587 -j ACCEPT
 
 # Allow outgoing HTTPS (LAN)
