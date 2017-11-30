@@ -29,7 +29,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - Set other settings you like to set.
 - It is nice to have a fixed IP-address for your Pi, so let's change that.
    - Option for Stretch: use the desktop for now
-   - Option avaiable after installation of Pi-hole: `sudo nano /etc/dhcpcd.conf`
+   - Option avaiable after installation of OpenVPN: `sudo nano /etc/dhcpcd.conf`
 
       Change the lines below to your proper internal IP-addresses.
       ```
@@ -40,6 +40,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       static domain_search=<for future DNS resolving, see issues>
       ```
 - Because I live in Europe, I like to use a timeserver that resides in Europe, so edit the file: `sudo nano /etc/systemd/timesyncd.conf`
+   
+   Change / add the lines below:
    ```
    [Time]
    NTP=0.europe.pool.ntp.org 1.europe.pool.ntp.org 2.europe.pool.ntp.org 3.europe.pool.ntp.org
