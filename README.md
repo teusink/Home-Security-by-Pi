@@ -15,6 +15,15 @@ My other goal is to gain a good understanding on DNS, Hardening and other Securi
 
 Anything that I create is all done under MIT-license, so please do use it as you see fit. In regard to software created under other licences, those do not change and you need to check them for yourself.
 
+# The Hardware
+The hardware I use exists of the following components:
+- Raspberry Pi 3 Model B 1GB
+- SanDisk Ultra SDHC card - 8GB
+- Pi-Blox Case for Raspberry Pi - Black
+
+How it looks :)
+![Pi-Blox Case](https://3.bp.blogspot.com/-35IKtcxvbds/Wh_wxulKH_I/AAAAAAAC-qM/ZFdeJaGM5j0Rzs1o9cJ1gWrJ4--BZcxAQCPcBGAYYCw/s1600/Pi-Blox-Case.jpg)
+
 # General Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
 - Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
