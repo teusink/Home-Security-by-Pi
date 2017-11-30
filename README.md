@@ -34,4 +34,4 @@ The hardware I use exists of the following components:
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-Pi/blob/master/LICENSE
 
-Feel free to remake, reshape and reuse whatever you like and need.
+Feel free to remake, reshape and reuse whatever you like or need.
