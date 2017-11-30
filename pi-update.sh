@@ -31,5 +31,10 @@ echo -------------------------------------
 sudo pihole -up -g
 echo -------------------------------------
 echo
-echo "Initiating reboot @ $(date)"
-sudo reboot
+if [$1 = no-reboot]
+then
+  echo "Skipping reboot @ $(date)"
+else
+  echo "Initiating reboot @ $(date)"
+  sudo reboot
+fi
