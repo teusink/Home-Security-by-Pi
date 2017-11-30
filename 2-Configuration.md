@@ -69,6 +69,7 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
    
       ```
       ad.doubleclick.net
+      archive.raspberrypi.org
       clickserve.dartsearch.net
       googleads.g.doubleclick.net
       hosts-file.net
