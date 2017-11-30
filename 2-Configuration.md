@@ -37,7 +37,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       static ip_address=192.168.xxx.xxx
       static routers=192.168.xxx.xxx
       static domain_name_servers=192.168.xxx.xxx
-      static domain_search=<for future DNS resolving, see issues>
+      static domain_search=local
       ```
 - Because I live in Europe, I like to use a timeserver that resides in Europe, so edit the file: `sudo nano /etc/systemd/timesyncd.conf`
    
