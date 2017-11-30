@@ -21,7 +21,8 @@ The hardware I use exists of the following components:
 - SanDisk Ultra SDHC card - 8GB
 - Pi-Blox Case for Raspberry Pi - Black
 
-How it looks :)
+**How it looks :)**
+
 ![Pi-Blox Case](https://3.bp.blogspot.com/-35IKtcxvbds/Wh_wxulKH_I/AAAAAAAC-qM/ZFdeJaGM5j0Rzs1o9cJ1gWrJ4--BZcxAQCPcBGAYYCw/s1600/Pi-Blox-Case.jpg)
 
 # General Informational Sources
