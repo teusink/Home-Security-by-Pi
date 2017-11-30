@@ -12,9 +12,6 @@ Hardening is the process of disabling or uninstalling application, services and 
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Tips for accessing your pi-hole remotely: https://pi-hole.net/2016/09/15/tips-for-accessing-your-pi-hole-remotely/
 - Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
-- See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
-- Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
-- Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 - fail2ban documentation: https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
 - Firewall configuration: https://github.com/pi-hole/pi-hole/wiki/OpenVPN-server:-Firewall-configuration-(using-iptables)
 - fail2ban VNC: https://github.com/fail2ban/fail2ban/issues/1008
