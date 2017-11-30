@@ -10,8 +10,6 @@ This part is about the basic configuration of your installment. It has parts of 
 
 ## Configuration Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
-- How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
-- Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 - See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
 - Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
@@ -21,10 +19,12 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - System: Change User Password
    - System: Hostname
    - Interface: Only enable the services you need (for instance SSH)
+   - Set other settings you like to set.
 - Make sure you set/change the following default configurations using `sudo raspi-config`
    - Change User Password
    - Hostname
    - Advanced Options: Expand Filesystem
+   - Set other settings you like to set.
 - It is nice to have a fixed IP-address for your Pi, so let's change that using: `sudo nano /etc/dhcpcd.conf`
 
    Change the lines below to your proper internal IP-addresses.
@@ -40,6 +40,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    ```
    iface eth0 inet6 manual
    ```
+   There might be an issue with this (see [issue list](https://github.com/teusink/Home-Security-by-Pi/issues/12))
 - Because I live in Europe, I like to use a timeserver that resides in Europe.
 
    Use the lines below to replace the similar ones in the ntp.conf file: `sudo nano /etc/ntp.conf`
