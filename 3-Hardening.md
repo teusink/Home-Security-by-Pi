@@ -15,6 +15,9 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - fail2ban documentation: https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
 - Firewall configuration: https://github.com/pi-hole/pi-hole/wiki/OpenVPN-server:-Firewall-configuration-(using-iptables)
 - fail2ban VNC: https://github.com/fail2ban/fail2ban/issues/1008
+- How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
+- Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
+- Remove software (Full Guide): http://www.howtoptec.com/2016/08/delete-pre-installed-applications-on.html
 
 ## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
