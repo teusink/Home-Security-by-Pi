@@ -16,9 +16,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 
-## Raspberry Pi
-
-### Configuring Software
+## Configuring Raspberry Pi
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
    - System: Change User Password
    - System: Hostname
@@ -60,37 +58,6 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    net.ipv4.conf.all.accept_source_route = 0
    net.ipv6.conf.all.accept_source_route = 0
    ```
-   
-### Disabling hardware
-- Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
-
-   Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
-   ```
-   # Uncomment this to disable WiFi and Bluetooth
-   dtoverlay=pi3-disable-wifi
-   dtoverlay=pi3-disable-bt
-   ```
-   Add the lines below in the raspi-blacklist.conf file: `sudo nano /etc/modprobe.d/raspi-blacklist.conf`
-   ```
-   # disable WLAN
-   blacklist brcmfmac
-   blacklist brcmutil
-   blacklist cfg80211
-   blacklist rfkill
-   
-   # disable Bluetooth
-   blacklist btbcm
-   blacklist hci_uart
-   ```
-   And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
-
-### Removing Software and Games
-- Now it is time to remove some unneeded software and games from Pi.
-
-   - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
-   - Remove LibreOffice: `sudo apt-get remove libreoffice`
-   - Remove Python Games: `rm -rf ~/python_games`
-   - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
 
 ## Pi-hole & OpenVPN
 I did some additional configuration to get the Pi-hole and OpenVPN up-and-running in a secure way. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
