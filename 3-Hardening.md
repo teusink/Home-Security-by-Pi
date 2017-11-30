@@ -16,6 +16,37 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Firewall configuration: https://github.com/pi-hole/pi-hole/wiki/OpenVPN-server:-Firewall-configuration-(using-iptables)
 - fail2ban VNC: https://github.com/fail2ban/fail2ban/issues/1008
 
+## Disabling hardware
+- Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
+
+   Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
+   ```
+   # Uncomment this to disable WiFi and Bluetooth
+   dtoverlay=pi3-disable-wifi
+   dtoverlay=pi3-disable-bt
+   ```
+   Add the lines below in the raspi-blacklist.conf file: `sudo nano /etc/modprobe.d/raspi-blacklist.conf`
+   ```
+   # disable WLAN
+   blacklist brcmfmac
+   blacklist brcmutil
+   blacklist cfg80211
+   blacklist rfkill
+   
+   # disable Bluetooth
+   blacklist btbcm
+   blacklist hci_uart
+   ```
+   And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
+
+## Removing Software and Games
+- Now it is time to remove some unneeded software and games from Pi.
+
+   - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
+   - Remove LibreOffice: `sudo apt-get remove libreoffice`
+   - Remove Python Games: `rm -rf ~/python_games`
+   - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
+
 ## Screenlock
 - Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 
