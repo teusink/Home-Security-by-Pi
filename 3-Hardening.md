@@ -42,8 +42,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
-   - Remove Minecraft Pi: `sudo apt-get remove minecraft-pi`
-   - Remove LibreOffice: `sudo apt-get remove libreoffice`
+   - Remove Redundant stuff: `sudo apt-get remove bluej geany greenfoot libreoffice minecraft-pi nodered nuscratch python-pygame scratch sonic-pi wolfram-engine`
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
 
