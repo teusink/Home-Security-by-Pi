@@ -57,8 +57,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    net.ipv6.conf.all.accept_source_route = 0
    ```
 
-## Pi-hole & OpenVPN
-I did some additional configuration to get the Pi-hole and OpenVPN up-and-running in a secure way. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
+## Pi-hole & PiVPN (OpenVPN)
+I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-and-running in a secure way. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
 
 ### Pi-hole
 - Go to your admin panel of Pi-hole: `http://192.168.xxx.xxx/admin/`
@@ -96,8 +96,8 @@ I did some additional configuration to get the Pi-hole and OpenVPN up-and-runnin
       
    - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
 
-### OpenVPN
-- Now we need to do some stuff to configure OpenVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
+### PiVPN (OpenVPN)
+- Now we need to do some stuff to configure PiVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
 
    - Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
    - Add line: `interface=tun0`, save and exit
