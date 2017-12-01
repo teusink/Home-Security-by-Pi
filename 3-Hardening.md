@@ -90,7 +90,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       sender = joram@teusink.eu
       ```
 
-### OpenVPN
+### PiVPN (OpenVPN)
    - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/openvpn.local` and add the lines below
       ```
       # Fail2Ban filter for selected OpenVPN rejections
