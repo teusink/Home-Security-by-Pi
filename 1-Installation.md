@@ -12,7 +12,7 @@ In this chapter I will explain the basics I undertook in order to install all th
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Raspberry Pi: https://www.raspberrypi.org/downloads/raspbian/
 - Pi-hole: https://pi-hole.net/ - `sudo curl -sSL https://install.pi-hole.net | bash`
-- OpenVPN: http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
+- PiVPN (OpenVPN): http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
 
 ## Information Sources
 - Headless Pi Configuration: https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0
@@ -28,8 +28,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Install Pi-hole with the command: `sudo curl -sSL https://install.pi-hole.net | bash`
 - Follow instructions for installation here: https://github.com/pi-hole/pi-hole/#one-step-automated-install
 
-## OpenVPN
-- Install OpenVPN server with the command: `sudo curl -L https://install.pivpn.io | bash`
+## PiVPN (OpenVPN)
+- Install PiVPN server with the command: `sudo curl -L https://install.pivpn.io | bash`
 - Follow instructions for installation here: https://www.sitepoint.com/setting-up-a-home-vpn-using-your-raspberry-pi/
 
 # Done
