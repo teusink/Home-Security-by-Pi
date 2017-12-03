@@ -48,7 +48,7 @@ The base image that is used to build this guid is the following:
 - Pi-hole OpenVPN-server Wiki: https://github.com/pi-hole/pi-hole/wiki/Pi-hole---OpenVPN-server
 
 # Word of thanks
-A special word of thanks goes to Jacob Salmela with his up-to-date [manual](http://users.telenet.be/MySQLplaylist/pi-hole.pdf) (PDF). This guide is inspired on his, although I go a step further with more features. Nevertheless, his contribution to (not only) this guide is worth my sincere gratitude. Thanks!
+A special word of thanks goes to Jacob Salmela with his up-to-date [manual](http://users.telenet.be/MySQLplaylist/pi-hole.pdf) (PDF). This guide is inspired on his, although I go a step further in terms of features. Nevertheless, his contribution to (not only) this guide is worth my sincere gratitude. Thanks!
 
 # Licensing
 All the licensing and copyrights of any of the code and applications belong to their respective owners. All other coding falls under the MIT-license: https://github.com/teusink/Home-Security-by-Pi/blob/master/LICENSE
