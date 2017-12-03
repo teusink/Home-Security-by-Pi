@@ -19,14 +19,12 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Configuring Raspberry Pi
 - When doing a headless configuration, make sure to create the file `ssh` in the `/boot` partition of your Pi. When booting, check your DHCP server for the Pi's IP-address and move on from there with SSH.
 - Make sure you set/change the following default configurations using `sudo raspi-config`
-   - Change User Password
-   - Hostname
+   - Change password of the user `pi`
+   - Change the hostname
    - Advanced Options: Expand Filesystem
    - Set other settings you like to set.
 - Make sure you set/change the following default configurations using Jessie Raspberry Pi Configuration
-   - System: Change User Password
-   - System: Hostname
-   - Interface: Only enable the services you need (for instance SSH)
+   - Interface: Only enable the services you need (for instance SSH and VNC)
    - Set other settings you like to set.
 - It is nice to have a fixed IP-address for your Pi, so let's change that.
    - Option for Stretch: use the desktop for now
@@ -96,6 +94,7 @@ I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-an
       Note: To not cripple the Google search-engine to much (and annoy the spouse :), I have added the Google ad-servers. Google Analytics is not whitelisted though.
       
    - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
+   - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
 
 ### PiVPN (OpenVPN)
 - Now we need to do some stuff to configure PiVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
