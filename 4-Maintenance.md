@@ -23,9 +23,15 @@ OpenVPN has unattended upgrades and it upgrades itself. No further configuration
 ## Back-up the SD-card
 Place-holder for future info on how to make a back-up of the SD-card.
 
-## Package Integrity issues
+## Package kept back
+Sometimes you will see in your log that a package has been kepted back with the command `sudo apt-get upgrade`. Best is to manually fix this with the following command:
+- `sudo apt-get install <packagename>`
+
+This could be automated with `sudo dist-upgrade`, but read it [here](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md) why I did not opt-in for that.
+
+## Package integrity issues
 I faced some package integrity issues after an upgrade. You can fix thos with the following command:
-- `sudo apt-get install --reinstall <packagename> <packagename>`
+- `sudo apt-get install --reinstall <packagename>`
 
 That way the package are reinstalled, no matter you have the latest version or not.
 
