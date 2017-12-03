@@ -193,13 +193,13 @@ Things I considered with building these firewall rules:
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator). Also according to Jacob Salmela it can help prevent weird erros in your logs.
 - Install it with this command: `sudo apt-get install rng-tools`
 - Edit the configuration file: `sudo nano /etc/default/rng-tools`
-- Add make sure the file looks like this:
-
-   ```
-   #HRNGDEVICE=/dev/hwrng
-   #HRNGDEVICE=/dev/null
-   HRNGDEVICE=/dev/urandom
-   ```
+   - Add make sure the the lines below are in it the file:
+   
+      ```
+      #HRNGDEVICE=/dev/hwrng
+      #HRNGDEVICE=/dev/null
+      HRNGDEVICE=/dev/urandom
+      ```
    
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
