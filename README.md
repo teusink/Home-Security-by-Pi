@@ -28,7 +28,7 @@ The hardware I use exists of the following components:
 The base image that is used to build this guid is the following:
 - Image with desktop based on Debian Stretch
 - Version: September 2017
-- Release date: 2017-09-07
+- Release date: 2017-11-29
 - Kernel version: 4.9
 
 # Steps to take
