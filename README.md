@@ -17,7 +17,7 @@ My other goal is to gain a good understanding on DNS, Hardening and other Securi
 # The Hardware
 The hardware I use exists of the following components:
 - Raspberry Pi 3 Model B 1GB
-- SanDisk Ultra SDHC card - 16GB
+- SanDisk Ultra SDHC card Class 10 - 16GB
 - Pi-Blox Case for Raspberry Pi - Black
 
 **How it looks :)**
