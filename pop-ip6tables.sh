@@ -101,7 +101,6 @@ ip6tables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 
 # Allow HTTP - incoming
 ip6tables -A INPUT -p tcp --dport 80 -j ACCEPT
-ip6tables -A INPUT -p udp --dport 80 -j ACCEPT
 
 # Allow VNC - incoming & outgoing
 ip6tables -A INPUT -p tcp -m multiport --dport 5900:5903 -j ACCEPT
