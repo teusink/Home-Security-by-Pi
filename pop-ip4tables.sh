@@ -94,7 +94,6 @@ iptables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 
 # Allow HTTP - incoming
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-iptables -A INPUT -p udp --dport 80 -j ACCEPT
 
 # Allow VNC - incoming & outgoing
 iptables -A INPUT -p tcp -m multiport --dport 5900:5903 -j ACCEPT
