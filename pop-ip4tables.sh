@@ -16,22 +16,23 @@ iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 
 # Drop everything that comes from Bogon-addresses
-iptables -A INPUT -s 0.0.0.0/0 -j DROP        # Default (can be advertised in BGP if desired)
-iptables -A INPUT -s 0.0.0.0/8 -j DROP        # Self identification
-iptables -A INPUT -s 0.0.0.0/32 -j DROP       # Broadcast
+#iptables -A INPUT -s 0.0.0.0/0 -j DROP        # Default (can be advertised in BGP if desired)
+#iptables -A INPUT -s 0.0.0.0/8 -j DROP        # Self identification (RFC 1700)
+#iptables -A INPUT -s 0.0.0.0/32 -j DROP       # Broadcast
 #iptables -A INPUT -s 10.0.0.0/8 -j DROP       # Private Networks (RFC 1918)
-iptables -A INPUT -s 127.0.0.0/8 -j DROP      # Loopback
+iptables -A INPUT -s 39.0.0.0/8 -j DROP       # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 127.0.0.0/8 -j DROP      # Loopback (RFC 1700)
 iptables -A INPUT -s 128.0.0.0/16 -j DROP     # IANA Reserved (RFC 3330)
-iptables -A INPUT -s 169.254.0.0/16 -j DROP   # Local
+#iptables -A INPUT -s 169.254.0.0/16 -j DROP   # Local (RFC 3330)
 iptables -A INPUT -s 172.16.0.0/12 -j DROP    # Private Networks (RFC 1918)
-iptables -A INPUT -s 191.255.0.0/16 -j DROP   # Reserved (RFC 3330)
+iptables -A INPUT -s 191.255.0.0/16 -j DROP   # IANA Reserved (RFC 3330)
 iptables -A INPUT -s 192.0.0.0/24  -j DROP    # IANA Reserved (RFC 3330)
 iptables -A INPUT -s 192.0.2.0/24 -j DROP     # Test-Net (RFC 3330)
-#iptables -A INPUT -s 192.168.0.0/16 -j DROP   # Networks (RFC 1918)
-iptables -A INPUT -s 198.18.0.0/15 -j DROP    # Network Interconnect Device Benchmark Testing
-iptables -A INPUT -s 223.255.255.0/24 -j DROP # Special Use Networks (RFC 3330)
-iptables -A INPUT -s 224.0.0.0/4 -j DROP      # Multicast
-iptables -A INPUT -s 240.0.0.0/4 -j DROP      # Class E Reserved
+#iptables -A INPUT -s 192.168.0.0/16 -j DROP   # Private Networks (RFC 1918)
+iptables -A INPUT -s 198.18.0.0/15 -j DROP    # Network Interconnect Device Benchmark Testing (RFC 2544)
+iptables -A INPUT -s 223.255.255.0/24 -j DROP # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 224.0.0.0/4 -j DROP      # Multicast (RFC 3171)
+iptables -A INPUT -s 240.0.0.0/4 -j DROP      # IANA Reserved (RFC 3330)
 
 # Drop Invalid Packets
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
