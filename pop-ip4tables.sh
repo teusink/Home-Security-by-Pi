@@ -15,7 +15,7 @@ iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 
-# Drop everything Bogon
+# Drop everything that comes from Bogon-addresses
 iptables -A INPUT -s 0.0.0.0/0 -j DROP        # Default (can be advertised in BGP if desired)
 iptables -A INPUT -s 0.0.0.0/8 -j DROP        # Self identification
 iptables -A INPUT -s 0.0.0.0/32 -j DROP       # Broadcast
