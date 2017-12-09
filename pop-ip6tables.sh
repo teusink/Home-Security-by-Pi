@@ -17,29 +17,29 @@ ip6tables -P FORWARD DROP
 
 # Drop everything that comes from Bogon-addresses
 #ip6tables -A INPUT -s ::/0 -j DROP              # Default (can be advertised as a route in BGP to peers if desired)
-ip6tables -A INPUT -s ::/96 -j DROP             # IPv4-compatible IPv6 address – deprecated by RFC4291
-ip6tables -A INPUT -s ::/128 -j DROP            # Unspecified address
-#ip6tables -A INPUT -s ::1/128 -j DROP           # Local host loopback address
-ip6tables -A INPUT -s ::ffff:0.0.0.0/96 -j DROP # IPv4-mapped addresses
-ip6tables -A INPUT -s ::224.0.0.0/100 -j DROP   # Compatible address (IPv4 format)
-ip6tables -A INPUT -s ::127.0.0.0/104 -j DROP   # Compatible address (IPv4 format)
-ip6tables -A INPUT -s ::0.0.0.0/104 -j DROP     # Compatible address (IPv4 format)
-ip6tables -A INPUT -s ::255.0.0.0/104 -j DROP   # Compatible address (IPv4 format)
-ip6tables -A INPUT -s 0000::/8 -j DROP          # Pool used for unspecified, loopback and embedded IPv4 addresses
+#ip6tables -A INPUT -s ::/96 -j DROP             # IPv4-compatible IPv6 address – deprecated by RFC4291
+#ip6tables -A INPUT -s ::/128 -j DROP            # Unspecified address
+#ip6tables -A INPUT -s ::1/128 -j DROP          # Local host loopback address
+#ip6tables -A INPUT -s ::ffff:0.0.0.0/96 -j DROP # IPv4-mapped addresses
+#ip6tables -A INPUT -s ::224.0.0.0/100 -j DROP   # Compatible address (IPv4 format)
+#ip6tables -A INPUT -s ::127.0.0.0/104 -j DROP   # Compatible address (IPv4 format)
+#ip6tables -A INPUT -s ::0.0.0.0/104 -j DROP     # Compatible address (IPv4 format)
+#ip6tables -A INPUT -s ::255.0.0.0/104 -j DROP   # Compatible address (IPv4 format)
+#ip6tables -A INPUT -s 0000::/8 -j DROP          # Pool used for unspecified, loopback and embedded IPv4 addresses
 ip6tables -A INPUT -s 0200::/7 -j DROP          # OSI NSAP-mapped prefix set (RFC4548) – deprecated by RFC4048
 ip6tables -A INPUT -s 3ffe::/16 -j DROP         # Former 6bone, now decommissioned
 ip6tables -A INPUT -s 2001:db8::/32 -j DROP     # Reserved by IANA for special purposes and documentation
-ip6tables -A INPUT -s 2002:e000::/20 -j DROP    # Invalid 6to4 packets (IPv4 multicast)
-ip6tables -A INPUT -s 2002:7f00::/24 -j DROP    # Invalid 6to4 packets (IPv4 loopback)
-ip6tables -A INPUT -s 2002:0000::/24 -j DROP    # Invalid 6to4 packets (IPv4 default)
-ip6tables -A INPUT -s 2002:ff00::/24 -j DROP    # Invalid 6to4 packets
-ip6tables -A INPUT -s 2002:0a00::/24 -j DROP    # Invalid 6to4 packets (IPv4 private 10.0.0.0/8 network)
-ip6tables -A INPUT -s 2002:ac10::/28 -j DROP    # Invalid 6to4 packets (IPv4 private 172.16.0.0/12 network)
-ip6tables -A INPUT -s 2002:c0a8::/32 -j DROP    # Invalid 6to4 packets (IPv4 private 192.168.0.0/16 network)
-#ip6tables -A INPUT -s fc00::/7 -j DROP          # Unicast Unique Local Addresses (ULA) – RFC 4193
+#ip6tables -A INPUT -s 2002:e000::/20 -j DROP    # Invalid 6to4 packets (IPv4 multicast)
+#ip6tables -A INPUT -s 2002:7f00::/24 -j DROP    # Invalid 6to4 packets (IPv4 loopback)
+#ip6tables -A INPUT -s 2002:0000::/24 -j DROP    # Invalid 6to4 packets (IPv4 default)
+#ip6tables -A INPUT -s 2002:ff00::/24 -j DROP    # Invalid 6to4 packets
+#ip6tables -A INPUT -s 2002:0a00::/24 -j DROP    # Invalid 6to4 packets (IPv4 private 10.0.0.0/8 network)
+#ip6tables -A INPUT -s 2002:ac10::/28 -j DROP    # Invalid 6to4 packets (IPv4 private 172.16.0.0/12 network)
+#ip6tables -A INPUT -s 2002:c0a8::/32 -j DROP    # Invalid 6to4 packets (IPv4 private 192.168.0.0/16 network)
+#ip6tables -A INPUT -s fc00::/7 -j DROP         # Unicast Unique Local Addresses (ULA) – RFC 4193
 #ip6tables -A INPUT -s fe80::/10 -j DROP         # Link-local Unicast
 ip6tables -A INPUT -s fec0::/10 -j DROP         # Site-local Unicast – deprecated by RFC 3879 (replaced by ULA)
-#ip6tables -A INPUT -s ff00::/8 -j DROP          # Multicast
+#ip6tables -A INPUT -s ff00::/8 -j DROP         # Multicast
 
 # Drop Invalid Packets
 ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
