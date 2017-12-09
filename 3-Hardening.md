@@ -174,6 +174,7 @@ It is important to test what has been set. Obviously I tested it also and are us
 Things I considered with building these firewall rules:
 - Default drop on all incoming, outgoing and forwarded traffic.
 - Default allowing all connections that already have been setup (for performance reasons!).
+- Drop packets from most Bogon-address-types.
 - Drop all invalid packets.
 - Forward all VPN traffic on tun0 interface.
 - Allow all local loopback traffic (127.0.0.0/8).
