@@ -35,7 +35,7 @@
 - PPTP-tunnel: 1723 (TCP/UDP)
 
 ## TCP-block-list
-List of TCP port-numbers to block (on the LAN-Internet interface) when opening the services mentioned above, *except* the General Network Services.
+List of TCP port-numbers to block (on the LAN-Internet interface) when opening the services mentioned above.
 
 1-20
 23-24
@@ -66,7 +66,7 @@ List of TCP port-numbers to block (on the LAN-Internet interface) when opening t
 8881-65535
 
 ## UDP-block-list
-List of UDP port-numbers to block (on the LAN-Internet interface) when opening the services mentioned above, *except* the General Network Services.
+List of UDP port-numbers to block (on the LAN-Internet interface) when opening the services mentioned above.
 
 1-21
 23-24
