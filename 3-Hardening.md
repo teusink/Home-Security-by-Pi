@@ -188,6 +188,7 @@ Things I considered with building these firewall rules:
 - Allow outgoing SMTP-over-TLS (for email).
 - Allow outgoing HTTPS.
 - Allow outgoing (s)FTP.
+- See a list of [Well-known TCP-UDP Protocols and Port-numbers](https://github.com/teusink/Home-Security-by-Pi/blob/master/Well-known-TCP-UDP-Protocols-and-Port-numbers.md)
 
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator). Also according to Jacob Salmela it can help prevent weird erros in your logs.
