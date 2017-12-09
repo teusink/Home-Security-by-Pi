@@ -15,6 +15,24 @@ iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 
+# Drop everything Bogon
+iptables -A INPUT -s 0.0.0.0/0 -j DROP        # Default (can be advertised in BGP if desired)
+iptables -A INPUT -s 0.0.0.0/8 -j DROP        # Self identification
+iptables -A INPUT -s 0.0.0.0/32 -j DROP       # Broadcast
+#iptables -A INPUT -s 10.0.0.0/8 -j DROP       # Private Networks (RFC 1918)
+iptables -A INPUT -s 127.0.0.0/8 -j DROP      # Loopback
+iptables -A INPUT -s 128.0.0.0/16 -j DROP     # IANA Reserved (RFC 3330)
+iptables -A INPUT -s 169.254.0.0/16 -j DROP   # Local
+iptables -A INPUT -s 172.16.0.0/12 -j DROP    # Private Networks (RFC 1918)
+iptables -A INPUT -s 191.255.0.0/16 -j DROP   # Reserved (RFC 3330)
+iptables -A INPUT -s 192.0.0.0/24  -j DROP    # IANA Reserved (RFC 3330)
+iptables -A INPUT -s 192.0.2.0/24 -j DROP     # Test-Net (RFC 3330)
+#iptables -A INPUT -s 192.168.0.0/16 -j DROP   # Networks (RFC 1918)
+iptables -A INPUT -s 198.18.0.0/15 -j DROP    # Network Interconnect Device Benchmark Testing
+iptables -A INPUT -s 223.255.255.0/24 -j DROP # Special Use Networks (RFC 3330)
+iptables -A INPUT -s 224.0.0.0/4 -j DROP      # Multicast
+iptables -A INPUT -s 240.0.0.0/4 -j DROP      # Class E Reserved
+
 # Drop Invalid Packets
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
@@ -42,17 +60,27 @@ iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
 
 ## REQUIRED FOR SERVICES DELIVERED BY PI
 
-# Allow DHCP - incoming & outgoing
-iptables -A INPUT -p udp --dport 67 -j ACCEPT
-iptables -A INPUT -p udp --dport 68 -j ACCEPT
-iptables -A OUTPUT -p udp --dport 67 -j ACCEPT
-iptables -A OUTPUT -p udp --dport 68 -j ACCEPT
-
-# Allow DNS - incoming & outgoing
+# Allow DNS & DNS-over-TLS - incoming & outgoing
 iptables -A INPUT -p tcp --dport 53 -j ACCEPT
 iptables -A INPUT -p udp --dport 53 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT
 iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
+iptables -A INPUT -p tcp --dport 853 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 853 -j ACCEPT
+
+# Allow DHCP & DHCPv6 - incoming & outgoing
+iptables -A INPUT -p udp --dport 67 -j ACCEPT
+iptables -A INPUT -p udp --dport 68 -j ACCEPT
+iptables -A INPUT -p tcp --dport 546 -j ACCEPT
+iptables -A INPUT -p tcp --dport 547 -j ACCEPT
+iptables -A INPUT -p udp --dport 546 -j ACCEPT
+iptables -A INPUT -p udp --dport 547 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 67 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 68 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 546 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 547 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 546 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 547 -j ACCEPT
 
 # Allow NTP - outgoing
 iptables -A OUTPUT -p udp --dport 123 -j ACCEPT
@@ -79,19 +107,24 @@ iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
 
 # Allow HTTP (LAN) - outgoing
 iptables -A OUTPUT -o eth0 -p tcp --dport 80 -j ACCEPT
-iptables -A OUTPUT -o eth0 -p udp --dport 80 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 8080 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 8880 -j ACCEPT
 
 # Allow HTTPS (LAN) - outgoing
 iptables -A OUTPUT -o eth0 -p tcp --dport 443 -j ACCEPT
-iptables -A OUTPUT -o eth0 -p udp --dport 443 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 8443 -j ACCEPT
 
 # Allow SMTP-over-TLS (LAN) - outgoing
 iptables -A OUTPUT -o eth0 -p tcp --dport 465 -j ACCEPT
 iptables -A OUTPUT -o eth0 -p tcp --dport 587 -j ACCEPT
 
-# Allow (s)FTP (LAN) - outgoing
+# Allow (s)FTP(S) (LAN) - outgoing
 iptables -A OUTPUT -o eth0 -p tcp --dport 21 -j ACCEPT
 iptables -A OUTPUT -o eth0 -p tcp --dport 22 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 989 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 990 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p udp --dport 989 -j ACCEPT
+iptables -A OUTPUT -o eth0 -p udp --dport 990 -j ACCEPT
 
 ## TEST FASE
 
