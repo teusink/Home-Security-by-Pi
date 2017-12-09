@@ -19,6 +19,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - How do I remove 'Python Games' from Raspbian?: https://raspberrypi.stackexchange.com/questions/50247/how-do-i-remove-python-games-from-raspbian
 - Remove Libreoffice Completely: https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=126274
 - Remove software (Full Guide): http://www.howtoptec.com/2016/08/delete-pre-installed-applications-on.html
+- Bogon IPv4 and IPv6 addresses: https://6session.wordpress.com/2009/04/08/ipv6-martian-and-bogon-filters/
 
 ## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
