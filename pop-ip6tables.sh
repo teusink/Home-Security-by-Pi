@@ -15,6 +15,14 @@ ip6tables -P INPUT DROP
 ip6tables -P OUTPUT DROP
 ip6tables -P FORWARD DROP
 
+# Drop Invalid Packets
+ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
+ip6tables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
+
+# Accept all already established connections
+ip6tables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+ip6tables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
 # Drop everything that comes from Bogon-addresses
 #ip6tables -A INPUT -s ::/0 -j DROP              # Default (can be advertised as a route in BGP to peers if desired)
 #ip6tables -A INPUT -s ::/96 -j DROP             # IPv4-compatible IPv6 address – deprecated by RFC4291
@@ -41,14 +49,6 @@ ip6tables -A INPUT -s 2001:db8::/32 -j DROP     # Reserved by IANA for special p
 ip6tables -A INPUT -s fec0::/10 -j DROP         # Site-local Unicast – deprecated by RFC 3879 (replaced by ULA)
 #ip6tables -A INPUT -s ff00::/8 -j DROP         # Multicast
 
-# Drop Invalid Packets
-ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
-ip6tables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
-
-# Accept all already established connections
-ip6tables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-ip6tables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-
 # Block incoming HTTPS advertisement assets (anywhere)
 ip6tables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
 
@@ -62,38 +62,28 @@ ip6tables -A FORWARD -o tun0 -j ACCEPT
 ip6tables -A INPUT -i lo -j ACCEPT
 ip6tables -A OUTPUT -o lo -j ACCEPT
 
-# Allow PING
+# Allow ICMP
 ip6tables -A INPUT -p ipv6-icmp -j ACCEPT
 ip6tables -A OUTPUT -p ipv6-icmp -j ACCEPT
 
 ## REQUIRED FOR SERVICES DELIVERED BY PI
 
 # Allow DNS & DNS-over-TLS - incoming & outgoing
-ip6tables -A INPUT -p tcp --dport 53 -j ACCEPT
+ip6tables -A INPUT -p tcp --match multiport --dports 53,853 -j ACCEPT
 ip6tables -A INPUT -p udp --dport 53 -j ACCEPT
-ip6tables -A OUTPUT -p tcp --dport 53 -j ACCEPT
+ip6tables -A OUTPUT -p tcp --match multiport --dports 53,853 -j ACCEPT
 ip6tables -A OUTPUT -p udp --dport 53 -j ACCEPT
-ip6tables -A INPUT -p tcp --dport 853 -j ACCEPT
-ip6tables -A OUTPUT -p tcp --dport 853 -j ACCEPT
 
-# Allow DHCP - incoming & outgoing
-ip6tables -A INPUT -p udp --dport 67 -j ACCEPT
-ip6tables -A INPUT -p udp --dport 68 -j ACCEPT
-ip6tables -A INPUT -p tcp --dport 546 -j ACCEPT
-ip6tables -A INPUT -p tcp --dport 547 -j ACCEPT
-ip6tables -A INPUT -p udp --dport 546 -j ACCEPT
-ip6tables -A INPUT -p udp --dport 547 -j ACCEPT
-ip6tables -A OUTPUT -p udp --dport 67 -j ACCEPT
-ip6tables -A OUTPUT -p udp --dport 68 -j ACCEPT
-ip6tables -A OUTPUT -p tcp --dport 546 -j ACCEPT
-ip6tables -A OUTPUT -p tcp --dport 547 -j ACCEPT
-ip6tables -A OUTPUT -p udp --dport 546 -j ACCEPT
-ip6tables -A OUTPUT -p udp --dport 547 -j ACCEPT
+# Allow DHCP & DHCPv6 - incoming & outgoing
+ip6tables -A INPUT -p udp --match multiport --dports 67,68,546,547 -j ACCEPT
+ip6tables -A INPUT -p tcp --match multiport --dports 546,547 -j ACCEPT
+ip6tables -A OUTPUT -p udp --match multiport --dports 67,68,546,547 -j ACCEPT
+ip6tables -A OUTPUT -p tcp --match multiport --dports 546,547 -j ACCEPT
 
 # Allow NTP - outgoing
 ip6tables -A OUTPUT -p udp --dport 123 -j ACCEPT
 
-# Allow Allow OpenVPN - incoming & outgoing
+# Allow OpenVPN - incoming & outgoing
 ip6tables -A INPUT -p tcp --dport 1194 -j ACCEPT
 ip6tables -A INPUT -p udp --dport 1194 -j ACCEPT
 ip6tables -A OUTPUT -p tcp --dport 1194 -j ACCEPT
@@ -103,8 +93,8 @@ ip6tables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 ip6tables -A INPUT -p tcp --dport 80 -j ACCEPT
 
 # Allow VNC - incoming & outgoing
-ip6tables -A INPUT -p tcp -m multiport --dport 5900:5903 -j ACCEPT
-ip6tables -A OUTPUT -p tcp -m multiport --dport 5900:5903 -j ACCEPT
+ip6tables -A INPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
+ip6tables -A OUTPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
 
 # Allow SSH - incoming & outgoing
 ip6tables -A INPUT -p tcp --dport 22 -j ACCEPT
@@ -113,25 +103,17 @@ ip6tables -A OUTPUT -p tcp --dport 22 -j ACCEPT
 ## REQUIRED FOR SERVICES NEEDED BY PI
 
 # Allow HTTP (LAN) - outgoing
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 80 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 8080 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 8880 -j ACCEPT
+ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 80,8080,8880 -j ACCEPT
 
 # Allow HTTPS (LAN) - outgoing
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 443 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 8443 -j ACCEPT
+ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 443,8443 -j ACCEPT
 
 # Allow SMTP-over-TLS (LAN) - outgoing
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 465 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 587 -j ACCEPT
+ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 465,587 -j ACCEPT
 
 # Allow (s)FTP(S) (LAN) - outgoing
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 21 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 22 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 989 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p tcp --dport 990 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p udp --dport 989 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p udp --dport 990 -j ACCEPT
+ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 21,22,989,990 -j ACCEPT
+ip6tables -A OUTPUT -o eth0 -p udp --match multiport --dports 989,990 -j ACCEPT
 
 ## TEST FASE
 
