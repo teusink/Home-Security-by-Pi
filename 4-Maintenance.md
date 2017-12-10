@@ -21,7 +21,15 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
 ## Back-up the SD-card
-Place-holder for future info on how to make a back-up of the SD-card.
+Once in a while backing up your SD-card might be smart. Especially when you have the tendency to tinker with it :). The steps below here can help you do this.
+
+- Download, install and start Win32DiskImager: https://sourceforge.net/projects/win32diskimager/
+- Insert the SD-card in your computer, and remember, you might need a SD-card adapter for that.
+- At `Image File`, browse to your desired localtion and give it a name, in example: `yyyy-mm-dd Backup Pi.img`.
+- At `Device`: Select the drive which holds the SD-card.
+- Press the button `Read`.
+
+When you need to restore it, you can reverse the process. Select the `yyyy-mm-dd Backup Pi.img` file, the SD-card as the destination and press `Write`.
 
 ## Package kept back
 Sometimes you will see in your log that a package has been kepted back with the command `sudo apt-get upgrade`. Best is to manually fix this with the following command:
