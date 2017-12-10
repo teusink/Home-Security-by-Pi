@@ -178,7 +178,7 @@ Things I considered with building these firewall rules:
 - Drop all invalid packets.
 - Forward all VPN traffic on tun0 interface.
 - Allow all local loopback traffic (127.0.0.0/8).
-- Allow ping (ICMP-request) to go in and out.
+- Allow ICMP-traffic to go in and out.
 - Block all incoming https advertisement assets.
 - Allow incoming and outgoing DHCP traffic.
 - Allow incoming and outgoing DNS traffic.
