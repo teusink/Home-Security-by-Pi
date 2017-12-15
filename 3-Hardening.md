@@ -197,6 +197,7 @@ Things I considered with building these firewall rules:
 - See a list of [Well-known TCP-UDP Protocols and Port-numbers](https://github.com/teusink/Home-Security-by-Pi/blob/master/Well-known-TCP-UDP-Protocols-and-Port-numbers.md)
 
 ## Hardening OpenSSH
+To disallow root-login and the use of old SSH-protocol versions, do the steps below.
 - Edit the config file of ssh using `sudo nano /etc/ssh/sshd_config`.
 - Add the lines:
 
