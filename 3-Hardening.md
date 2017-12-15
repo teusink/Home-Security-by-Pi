@@ -23,6 +23,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - ClamAV Debian: https://wiki.debian.org/ClamAV
 - ClamAV Database Error Log: https://askubuntu.com/questions/909273/clamav-error-var-log-clamav-freshclam-log-is-locked-by-another-process
 - Rootkit Hunter update issues: http://cybersec.linuxhorizon.ro/2017/09/the-rkhunter-142-update-issue.html
+- ClamAV & rkhunter resources: https://raspberrytips.nl/raspberry-pi-virus-malware-scanner/
 
 ## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
