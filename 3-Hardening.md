@@ -209,19 +209,14 @@ In order to protect yourself from an attack, or in order to prevent infection fr
 
 - Install ClamAV using: `sudo apt-get install clamav clamav-daemon`.
 - Install Rootkit Hunter using: `sudo apt-get install libwww-perl rkhunter`
-- Edit the config file of rkhunter using `sudo nano /etc/rkhunter.conf`
+- Create a local config file of rkhunter using `sudo nano /etc/rkhunter.conf.local`
 
-   - Change the lines below:
-   ```
-   From UPDATE_MIRRORS=0
-   From MIRRORS_MODE=1
-   From WEB_CMD="/bin/false"
-   ```
-   - To these values:
+   - Add the lines below:
    ```
    UPDATE_MIRRORS=1
    MIRRORS_MODE=0
    WEB_CMD=""
+   PKGMGR=NONE
    ```
 - Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/clam-work.sh
 - Configure a daily scans using crontab: `crontab -e`
