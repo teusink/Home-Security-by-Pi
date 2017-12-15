@@ -22,6 +22,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Bogon IPv4 and IPv6 addresses: https://6session.wordpress.com/2009/04/08/ipv6-martian-and-bogon-filters/
 - ClamAV Debian: https://wiki.debian.org/ClamAV
 - ClamAV Database Error Log: https://askubuntu.com/questions/909273/clamav-error-var-log-clamav-freshclam-log-is-locked-by-another-process
+- Rootkit Hunter update issues: http://cybersec.linuxhorizon.ro/2017/09/the-rkhunter-142-update-issue.html
 
 ## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
@@ -197,14 +198,26 @@ Things I considered with building these firewall rules:
 ## Anti-malware, -virus, -exploit and -rootkits
 In order to protect yourself from an attack, or in order to prevent infection from spreading to other vulnerable systems, it is key to utilize anti-malware and -rootkit solutions. ClamAV is used to fight of malware, virusses, trojans and what not. RootKit Hunter is used to scan for rootkits and kill those.
 
-### ClamAV
 - Install ClamAV using: `sudo apt-get install clamav clamav-daemon`.
-- Configure a daily scan using crontab: `crontab -e`
+- Install Rootkit Hunter using: `sudo apt-get install libwww-perl rkhunter`
+- Edit the config file of rkhunter using `sudo nano /etc/rkhunter.conf`
+
+   - Change the lines below:
+   ```
+   From UPDATE_MIRRORS=0
+   From MIRRORS_MODE=1
+   From WEB_CMD="/bin/false"
+   ```
+   - To these values:
+   ```
+   UPDATE_MIRRORS=1
+   MIRRORS_MODE=0
+   WEB_CMD=""
+   ```
+- Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/clam-work.sh
+- Configure a daily scans using crontab: `crontab -e`
 - Add this line: `0 2 * * * sudo bash ./clam-work.sh >/home/pi/clam-work.log`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs to a log file.
 - Add this line: `0 6 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/clam-work.log`. This line means that the log-file created in the work above will be emailed to you every night at 6 am.
-
-### RootKit Hunter
-Placeholder
 
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator). Also according to Jacob Salmela it can help prevent weird erros in your logs.
