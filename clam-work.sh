@@ -26,5 +26,5 @@ else
   echo
   echo "Initiating ClamAV scan @ $(date)"
   echo -------------------------------------
-  nice -n 19 sudo clamscan -r -i /
+  nice -n 19 sudo clamscan -r -i --exclude-dir="^/sys" /
 fi
