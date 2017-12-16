@@ -22,9 +22,9 @@ then
 else
   echo "Initiating Rootkit Hunter scan @ $(date)"
   echo -------------------------------------
-  sudo rkhunter --check --sk --rwo --enable all
+  nice -n 19 sudo rkhunter --check --sk --rwo --enable all
   echo
   echo "Initiating ClamAV scan @ $(date)"
   echo -------------------------------------
-  clamscan -r -i /
+  nice -n 19 sudo clamscan -r -i /
 fi
