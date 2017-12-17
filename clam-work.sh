@@ -1,9 +1,9 @@
 #!/bin/sh
 echo To: <your_account_name>@domain.tld
 echo From: <your_account_name>@domain.tld
-echo "Subject: Raspberry Pi ClamAV- & rkhunter-log: $(date)"
+echo "Subject: Raspberry Pi Anti-mwalware and -rootkit-log: $(date)"
 echo
-echo "Raspberry Pi ClamAV- & rkhunter-log: $(date)"
+echo "Raspberry Pi Anti-mwalware and -rootkit-log: $(date)"
 echo
 echo
 echo Initiating clamfresh database update.
@@ -18,11 +18,15 @@ sudo rkhunter --update && sudo rkhunter --propupd
 echo
 if [ "$1" = "no-scan" ]
 then
-  echo "Skipping ClamAV & Rootkit Hunter scan @ $(date)"
+  echo "Skipping scans @ $(date)"
 else
   echo "Initiating Rootkit Hunter scan @ $(date)"
   echo -------------------------------------
   nice -n 19 sudo rkhunter --check --sk --rwo --enable all
+  echo
+  echo "Initiating chkrootkit scan @ $(date)"
+  echo -------------------------------------
+  nice -n 19 sudo chkrootkit -q
   echo
   echo "Initiating ClamAV scan @ $(date)"
   echo -------------------------------------
