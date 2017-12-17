@@ -212,9 +212,10 @@ To disallow root-login and the use of old SSH-protocol versions, do the steps be
    Protocol 2
    ```
 ## Anti-malware, -virus, -exploit and -rootkits
-In order to protect yourself from an attack, or in order to prevent infection from spreading to other vulnerable systems, it is key to utilize anti-malware and -rootkit solutions. ClamAV is used to fight of malware, virusses, trojans and what not. RootKit Hunter is used to scan for rootkits and kill those.
+In order to protect yourself from an attack, or in order to prevent infection from spreading to other vulnerable systems, it is key to utilize anti-malware and -rootkit solutions. ClamAV is used to fight of malware, virusses, trojans and what not. RootKit Hunter and chkrootkit is used to scan for rootkits and kill those.
 
 - Install ClamAV using: `sudo apt-get install clamav clamav-daemon`.
+- Install chkrootkit using: `sudo apt-get install chkrootkit`.
 - Install Rootkit Hunter using: `sudo apt-get install libwww-perl rkhunter`
 - Create a local config file of rkhunter using `sudo nano /etc/rkhunter.conf.local`
 
