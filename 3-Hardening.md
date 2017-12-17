@@ -228,10 +228,10 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    SCRIPTWHITELIST=/usr/bin/lwp-request
    ALLOWHIDDENFILE=/etc/.fstab
    ```
-- Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/clam-work.sh
+- Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
-- Add this line: `0 2 * * * sudo bash ./clam-work.sh >/home/pi/clam-work.log`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs to a log file.
-- Add this line: `0 6 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/clam-work.log`. This line means that the log-file created in the work above will be emailed to you every night at 6 am.
+- Add this line: `0 2 * * * sudo bash ./pi-security-scan.sh >/home/pi/pi-security-scan.log`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs to a log file.
+- Add this line: `0 6 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every night at 6 am.
 
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator). Also according to Jacob Salmela it can help prevent weird erros in your logs.
