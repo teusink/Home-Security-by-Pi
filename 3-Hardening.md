@@ -199,11 +199,16 @@ Things I considered with building these firewall rules:
 ## Hardening OpenSSH
 To disallow root-login and the use of old SSH-protocol versions, do the steps below.
 - Edit the config file of ssh using `sudo nano /etc/ssh/sshd_config`.
-- Add the lines:
+- Add the line:
 
    ```
    PermitRootLogin no
-   ALLOW_SSH_PROT_V1=2
+   ```
+- Edit the other config file of ssh using `sudo nano /etc/ssh/ssh_config`.
+- Uncomment the lines:
+
+   ```
+   Protocol 2
    ```
 ## Anti-malware, -virus, -exploit and -rootkits
 In order to protect yourself from an attack, or in order to prevent infection from spreading to other vulnerable systems, it is key to utilize anti-malware and -rootkit solutions. ClamAV is used to fight of malware, virusses, trojans and what not. RootKit Hunter is used to scan for rootkits and kill those.
