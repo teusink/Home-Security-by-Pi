@@ -199,10 +199,11 @@ Things I considered with building these firewall rules:
 ## Hardening OpenSSH
 To disallow root-login and the use of old SSH-protocol versions, do the steps below.
 - Edit the config file of ssh using `sudo nano /etc/ssh/sshd_config`.
-- Add the line:
+- Add the lines:
 
    ```
    PermitRootLogin no
+   Protocol 2
    ```
 - Edit the other config file of ssh using `sudo nano /etc/ssh/ssh_config`.
 - Uncomment the lines:
@@ -223,6 +224,8 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    MIRRORS_MODE=0
    WEB_CMD=""
    PKGMGR=NONE
+   SCRIPTWHITELIST=/usr/bin/lwp-request
+   ALLOWHIDDENFILE=/etc/.fstab
    ```
 - Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/clam-work.sh
 - Configure a daily scans using crontab: `crontab -e`
