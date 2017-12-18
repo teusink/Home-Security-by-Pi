@@ -51,7 +51,11 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
-   - Remove stuff not needed on a server: `sudo apt-get remove --purge bluej claws-mail claws-mail-i18n geany greenfoot libreoffice* minecraft-pi nodered nuscratch python-pygame scratch scratch2 sonic-pi wolfram-engine`
+   - Remove stuff not needed on a server:
+   
+      ```
+      sudo apt-get remove --purge bluej claws-mail claws-mail-i18n dillo epiphany-browser geany greenfoot libreoffice* minecraft-pi netsurf-gtk nodered nuscratch python-pygame python3-pygame python-sense-emu python3-sense-emu python-sense-emu-doc sense-emu-tools scratch scratch2 sonic-pi timidity wolfram-engine
+      ```
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
 
