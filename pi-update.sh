@@ -6,35 +6,35 @@ echo
 echo "Raspberry Pi Update-log: $(date)"
 echo
 echo
-echo Initiating apt update and upgrade....
-echo -------------------------------------
+echo ✓ Initiating apt update and upgrade....
+echo ---------------------------------------
 sudo apt-get update && sudo apt-get upgrade -y
-echo -------------------------------------
+echo ---------------------------------------
 echo
-echo Initiating Raspberry PI update.......
-echo -------------------------------------
+echo ✓ Initiating Raspberry PI update.......
+echo ---------------------------------------
 sudo rpi-update
-echo -------------------------------------
+echo ---------------------------------------
 echo
-echo Initiating apt autoremove............
-echo -------------------------------------
+echo ✓ Initiating apt autoremove............
+echo ---------------------------------------
 sudo apt-get autoremove -y
-echo -------------------------------------
+echo ---------------------------------------
 echo
-echo Initiating apt autoclean.............
-echo -------------------------------------
+echo ✓ Initiating apt autoclean.............
+echo ---------------------------------------
 sudo apt-get autoclean -y
-echo -------------------------------------
+echo ---------------------------------------
 echo
-echo Initiating Pi-hole update............
-echo -------------------------------------
+echo ✓ Initiating Pi-hole update............
+echo ---------------------------------------
 sudo pihole -up -g
-echo -------------------------------------
+echo ---------------------------------------
 echo
 if [ "$1" = "no-reboot" ]
 then
-  echo "Skipping reboot @ $(date)"
+  echo "✗ Skipping reboot @ $(date)"
 else
-  echo "Initiating reboot @ $(date)"
+  echo "✓ Initiating reboot @ $(date)"
   sudo reboot
 fi
