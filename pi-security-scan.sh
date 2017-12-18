@@ -13,9 +13,14 @@ sudo freshclam
 sudo /etc/init.d/clamav-freshclam start
 echo ---------------------------------------
 echo
+echo ✓ Initiating rkhunter database refresh.
+echo ---------------------------------------
+sudo sudo rkhunter --propupd
+echo ---------------------------------------
+echo
 echo ✓ Initiating rkhunter database update..
 echo ---------------------------------------
-sudo rkhunter --update && sudo rkhunter --propupd
+sudo rkhunter --update
 echo ---------------------------------------
 echo
 if [ "$1" = "no-scan" ]
