@@ -13,10 +13,10 @@ Ultimally, the core practice of Security is just to install all (security) updat
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
 
 ## Monitoring
-Maintenance starts with monitoring, so install Logwatch to do just that.
+Maintenance starts with monitoring, so install Logwatch to do just that. You will get notified daily with what has happened on your Pi.
 
 - Install Logwatch using: `sudo apt-get install logwatch`.
-- Edit the Config file of Logwatch to enable emailing (rest stays default): `sudo nano /usr/share/logwatch/default.conf/logwatch.conf`
+- Edit the Config file of Logwatch with the lines below to enable emailing (rest stays default): `sudo nano /usr/share/logwatch/default.conf/logwatch.conf`
 
   ```
   MailTo your_account_name@domain.tld
@@ -49,7 +49,7 @@ When you need to restore it, you can reverse the process. Select the `yyyy-mm-dd
 Sometimes you will see in your log that a package has been kepted back with the command `sudo apt-get upgrade`. Best is to manually fix this with the following command:
 - `sudo apt-get install <packagename>`
 
-This could be automated with `sudo dist-upgrade`, but read it [here](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md) why I did not opt-in for that.
+This could be automated with `sudo dist-upgrade`, but read it [here](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md) why I did not opt-in for that (it is an option in the pi-update.sh script though).
 
 ## Package integrity issues
 I faced some package integrity issues after an upgrade. You can fix thos with the following command:
