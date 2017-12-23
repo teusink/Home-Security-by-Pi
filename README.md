@@ -10,9 +10,18 @@ Description on how I configured the installation and Security of my Raspberry Pi
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
 
 # Introduction
-The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Raspberry Pi with the following features: Pi-Hole DNS-resolver, DNSSEC, DHCP, and OpenVPN-server. It is possible that by gaining new insights features are either removed or added.
+The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Raspberry Pi with the following network-features: Pi-Hole DNS-resolver, DNSSEC, DHCP, and OpenVPN-server. It is possible that by gaining new insights features are either removed or added.
 
 My other goal is to gain a good understanding on DNS, Hardening and other Security-related aspects concerning Network Security. I feel that as a Lead Information Security Officer it is important to upkeep (general) knowledge about Technology.
+
+# The Scope
+Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
+
+The constraints are:
+- Apart from OpenVPN, there is nothing that can be reached from the outside world. I always assume that there is a network-firewall present between the Internet, and the actual Pi.
+- The networking-services this device delivers are meant to enhance security of other network-connected devices in a non-intrusive manner.
+- And although this device delivers services in a (reasonable) secure way, it is not meant to be a device that delivers security services by it self, such as network-scanning and vulnerability scans.
+- It is meant for home or small-office use. Larger companies or institutions should look at other solutions to protect their people.
 
 # The Hardware
 The hardware I use exists of the following components:
