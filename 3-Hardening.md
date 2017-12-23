@@ -61,10 +61,10 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
 
 ## Screenlock
-- Automatically locking is a handy feature to prevent access by means of the GUI when your network is compromised. I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
+- Automatically locking is an important feature to prevent access by means of the GUI (i.e. when using VNC). I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
 
 ## E-mail
-- Time to install mail-services to make sure that an email after important events are sent. Important for the detection and response part of the Security.
+- Time to install mail-services to make sure that an email after important events can be sent. Important for the detection and response part of the Security.
 
    - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
    - Edit the ssmtp.conf file: `sudo nano /etc/ssmtp/ssmtp.conf` and add/edit the lines below
@@ -168,7 +168,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - SSH is enabled by default :).
 
 ## iptables & ip6tables
-Hardening is not complete without proper firewalling. On Linux this can be done using iptables for IPv4 and ip6tables for IPv6.
+Hardening is not complete without proper local firewalling. On Linux this can be done using iptables for IPv4 and ip6tables for IPv6.
 
 I have created two scripts:
 - Populate IPv4 tables: https://github.com/teusink/Home-Security-by-Pi/blob/master/pop-ip4tables.sh
@@ -239,7 +239,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
 - Add this line: `0 6 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every night at 6 am.
 
 ## Random Number Generator
-The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator). Also according to Jacob Salmela it can help prevent weird erros in your logs.
+The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator) used in (for instance) encryption algoritms. Also according to Jacob Salmela it can help prevent weird erros in your logs.
 - Install it with this command: `sudo apt-get install rng-tools`
 - Edit the configuration file: `sudo nano /etc/default/rng-tools`
    - Add make sure the the lines below are in it the file:
