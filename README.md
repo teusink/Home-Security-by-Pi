@@ -29,7 +29,7 @@ The hardware I use exists of the following components:
 - SanDisk Ultra SDHC card Class 10 - 16GB
 - Pi-Blox Case for Raspberry Pi - Black
 
-The costs: ~ € 50,-
+The costs: ~ € 70,-
 
 **How it looks :)**
 
