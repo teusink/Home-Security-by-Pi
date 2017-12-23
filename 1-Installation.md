@@ -21,6 +21,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Raspberry Pi
 - In regard to the base image, I choose that of Raspbian Stretch with Pixel. I am rather tech-savvy, but re-entering the Linux world with shell-only was a bit to much :).
 - Concerning the installation itself, I followed the already online and well documented installation guide: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
+- When doing a headless configuration, make sure to create the file `ssh` in the `/boot` partition of your Pi from your Windows, Linux or macOS system. When booting, check your DHCP server for the Pi's IP-address and move on from there with SSH.
 
 ### Update it after install
 Updating is important, but you might want to consider removing non-neccesarry packages first to save download and update time.
