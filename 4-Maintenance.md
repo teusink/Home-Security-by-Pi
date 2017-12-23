@@ -9,6 +9,20 @@
 # Maintenance
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
+## Maintenance Sources
+- Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
+
+## Monitoring
+Maintenance starts with monitoring, so install Logwatch to do just that.
+
+- Install Logwatch using: `sudo apt-get install logwatch`.
+- Edit the Config file of Logwatch to enable emailing (rest stays default): `sudo nano /usr/share/logwatch/default.conf/logwatch.conf`
+
+  ```
+  MailTo your_account_name@domain.tld
+  MailFrom your_account_name@domain.tld
+  ```
+  
 ## Patching Raspberry Pi & Pi-hole
 Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
