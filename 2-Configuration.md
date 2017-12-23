@@ -17,7 +17,6 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Timeserver: https://wiki.archlinux.org/index.php/systemd-timesyncd
 
 ## Configuring Raspberry Pi
-- When doing a headless configuration, make sure to create the file `ssh` in the `/boot` partition of your Pi. When booting, check your DHCP server for the Pi's IP-address and move on from there with SSH.
 - Make sure you set/change the following default configurations using `sudo raspi-config`
    - Change password of the user `pi`
    - Change the hostname
@@ -57,7 +56,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    ```
 
 ## Pi-hole & PiVPN (OpenVPN)
-I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-and-running in a secure way. My focus here is to replace as many features on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
+I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-and-running in a secure way. My focus here is to replace as many features (apart from routing and firewalling!) on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
 
 ### Pi-hole
 - Go to your admin panel of Pi-hole: `http://192.168.xxx.xxx/admin/`
@@ -113,11 +112,11 @@ I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-an
       ```
    - Save and exit
    - Add a new client with: `pivpn add`
-
+   
       - Enter an username
       - Enter a password
       - Open the generated `.ovpn`
-      - Add the following line: `block-outside-dns` before the `<ca>` tag.
+      - Add the following lines: `block-outside-dns` and `auth-nocache` before the `<ca>` tag.
       - Copy the file from your Pi to your device
       - Use it in combination with the password
 
