@@ -7,7 +7,7 @@
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
 
 # Installation
-In this chapter I will explain the basics I undertook in order to install all the software required. In the chapter Hardening I will go more indepth on what has been changed after the installation.
+In this chapter I will explain the basics I undertook in order to install all the software required. In the chapters Configuration and Hardening I will go more indepth on what has been changed after the installation.
 
 ## Installation Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
@@ -19,10 +19,12 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Headless Pi Configuration: https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0
 
 ## Raspberry Pi
-- In regard to the base image, I choose that of Raspbian Jessie with Pixel. I am rather tech-savvy, but re-entering the Linux world with root only was a bit to much :).
+- In regard to the base image, I choose that of Raspbian Stretch with Pixel. I am rather tech-savvy, but re-entering the Linux world with shell-only was a bit to much :).
 - Concerning the installation itself, I followed the already online and well documented installation guide: https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 
 ### Update it after install
+Updating is important, but you might want to consider removing non-neccesarry packages first to save download and update time.
+- If you want to remove packages first, look for here: https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md#removing-software-and-games
 - After installation, execute an update first using: `sudo apt-get update && sudo apt-get upgrade -y`
 
 ## Pi-hole
