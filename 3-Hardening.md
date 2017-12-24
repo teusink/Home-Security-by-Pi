@@ -235,7 +235,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    ```
 - Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
-- Add this line: `0 2 * * * sudo sh ./pi-security-scan.sh >/home/pi/pi-security-scan.log`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs to a log file.
+- Add this line: `0 1 * * * sudo sh ./pi-security-scan.sh >/home/pi/pi-security-scan.log`. This line means that it will do an update of the definition files and scan the entire Pi every night at 1 am and it outputs it logs to a log file.
 - Add this line: `0 6 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every night at 6 am.
 
 ## Random Number Generator
