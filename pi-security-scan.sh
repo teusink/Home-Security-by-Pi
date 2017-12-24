@@ -15,12 +15,12 @@ echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database refresh.
 echo ---------------------------------------
-sudo sudo rkhunter --propupd
+sudo sudo rkhunter --propupd --nocolors
 echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database update..
 echo ---------------------------------------
-sudo rkhunter --update
+sudo rkhunter --update --nocolors
 echo ---------------------------------------
 echo
 if [ "$1" = "no-scan" ]
@@ -29,7 +29,7 @@ then
 else
   echo "✓ Initiating Rootkit Hunter scan @ $(date)"
   echo ---------------------------------------
-  nice -n 19 sudo rkhunter --check --sk --rwo --enable all
+  nice -n 19 sudo rkhunter --check --sk --rwo --enable all --nocolors
   echo ---------------------------------------  
   echo
   echo "✓ Initiating chkrootkit scan @ $(date)"
