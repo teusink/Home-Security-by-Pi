@@ -9,18 +9,18 @@ echo
 echo ✓ Initiating clamfresh database update.
 echo ---------------------------------------
 sudo /etc/init.d/clamav-freshclam stop
-sudo freshclam
+nice -n 19 sudo freshclam
 sudo /etc/init.d/clamav-freshclam start
 echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database refresh.
 echo ---------------------------------------
-sudo sudo rkhunter --propupd --nocolors
+nice -n 19 sudo sudo rkhunter --propupd --nocolors
 echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database update..
 echo ---------------------------------------
-sudo rkhunter --update --nocolors
+nice -n 19 sudo rkhunter --update --nocolors
 echo ---------------------------------------
 echo
 if [ "$1" = "no-scan" ]
