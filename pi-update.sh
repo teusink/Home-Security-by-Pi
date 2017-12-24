@@ -8,7 +8,7 @@ echo
 echo
 echo ✓ Initiating packages-list update......
 echo ---------------------------------------
-sudo apt-get update
+nice -n 19 sudo apt-get update
 echo ---------------------------------------
 echo
 if [ "$1" = "dist-upgrade" ] || [ "$2" = "dist-upgrade" ]
