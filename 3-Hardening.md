@@ -204,11 +204,19 @@ Things I considered with building these firewall rules:
 ## Hardening OpenSSH
 To disallow root-login and the use of old SSH-protocol versions, do the steps below.
 - Edit the config file of ssh using `sudo nano /etc/ssh/sshd_config`.
-- Add the lines:
+- Add/uncomment (and change) the lines:
 
    ```
    PermitRootLogin no
    Protocol 2
+   AllowAgentForwarding no
+   AllowTcpForwarding no
+   X11Forwarding no
+   ClientAliveCountMax 2
+   Compression no
+   LogLevel VERBOSE
+   MaxAuthTries 1
+   MaxSessions 2
    ```
 - Edit the other config file of ssh using `sudo nano /etc/ssh/ssh_config`.
 - Uncomment the lines:
