@@ -236,7 +236,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
 
 - Install ClamAV using: `sudo apt-get install clamav clamav-daemon`.
 - Install chkrootkit using: `sudo apt-get install chkrootkit`.
-- Install Rootkit Hunter using: `sudo apt-get install libwww-perl rkhunter`
+- Install Rootkit Hunter using: `sudo apt-get install rkhunter`
 - Create a local config file of rkhunter using `sudo nano /etc/rkhunter.conf.local`
 
    - Add the lines below:
