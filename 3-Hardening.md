@@ -25,6 +25,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Rootkit Hunter update issues: http://cybersec.linuxhorizon.ro/2017/09/the-rkhunter-142-update-issue.html
 - ClamAV & rkhunter resources: https://raspberrytips.nl/raspberry-pi-virus-malware-scanner/
 - Slimming down Raspbian Pi: https://blog.samat.org/2015/02/05/slimming-an-existing-raspbian-install/
+- Package libpam-tmpdir: https://packages.debian.org/sid/libpam-tmpdir
 
 ## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
@@ -61,7 +62,12 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
 
 ## Screenlock
-- Automatically locking is an important feature to prevent access by means of the GUI (i.e. when using VNC). I used xscreensaver for this: xscreensaver: `sudo apt-get install xscreensaver`
+Automatically locking is an important feature to prevent access by means of the GUI (i.e. when using VNC). I used xscreensaver for this.
+- Install it using: `sudo apt-get install xscreensaver`
+
+## libpam-tmpdir
+Many programs use $TMPDIR for storing temporary files. Not all of them are good at securing the permissions of those files. libpam-tmpdir sets $TMPDIR and $TMP for PAM sessions and sets the permissions quite tight. This helps system security by having an extra layer of security, making such symlink attacks and other /tmp based attacks harder or impossible.
+- Install it using: `sudo apt-get install libpam-tmpdir`
 
 ## E-mail
 - Time to install mail-services to make sure that an email after important events can be sent. Important for the detection and response part of the Security.
