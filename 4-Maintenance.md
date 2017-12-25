@@ -44,6 +44,11 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 - Add this line: `0 4 * * SUN sudo sh /home/pi/pi-update.sh >/home/pi/pi-update.log`. This line means that it will do an update every Sunday at 4 am and it outputs it logs to a log file.
 - Add this line: `0 6 * * SUN sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-update.log `. This line means that the log-file created in the update above will be emailed to you every Sunday at 6 am.
 
+Note: the script pi-update.sh has two options (parameters):
+- `no-reboot`: To prevent the reboot from happening. It might come in handy if you want to do rebooting in another way.
+- `dist-upgrade`: Instead of doing `apt-get upgrade -y` it does `apt-get dist-upgrade -y`. The difference is that dist-upgrade also removes packages, which might be dangerous to your setup.
+- Example: `sudo sudo sh /home/pi/pi-update.sh no-reboot`
+
 ## Patching PiVPN
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
