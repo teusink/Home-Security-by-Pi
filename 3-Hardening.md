@@ -246,6 +246,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    PKGMGR=NONE
    SCRIPTWHITELIST=/usr/bin/lwp-request
    ALLOWHIDDENFILE=/etc/.fstab
+   SHARED_LIB_WHITELIST=/usr/lib/arm-linux-gnueabihf/libarmmem.so
    ```
 - Create a script called clam-work.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
