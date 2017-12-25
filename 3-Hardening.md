@@ -192,7 +192,7 @@ Things I considered with building these firewall rules:
 - Drop packets from most Bogon-address-types.
 - Drop all invalid packets.
 - Forward all VPN traffic on tun0 interface.
-- Allow all local loopback traffic (127.0.0.0/8).
+- Allow all local loopback traffic.
 - Allow ICMP-traffic to go in and out.
 - Block all incoming https advertisement assets.
 - Allow incoming and outgoing DHCP traffic.
@@ -205,6 +205,7 @@ Things I considered with building these firewall rules:
 - Allow outgoing SMTP-over-TLS (for email).
 - Allow outgoing HTTPS.
 - Allow outgoing (s)FTP.
+- Do not allow port 45325. This port is being used by the avahi-daemon (DNS services), but due to it not being a reserved port number, it is disabled for now.
 - See a list of [Well-known TCP-UDP Protocols and Port-numbers](https://github.com/teusink/Home-Security-by-Pi/blob/master/Well-known-TCP-UDP-Protocols-and-Port-numbers.md)
 
 ## Hardening OpenSSH
