@@ -254,6 +254,10 @@ In order to protect yourself from an attack, or in order to prevent infection fr
 - Add this line: `0 1 * * * sudo sh ./pi-security-scan.sh >/home/pi/pi-security-scan.log`. This line means that it will do an update of the definition files and scan the entire Pi every night at 1 am and it outputs it logs to a log file.
 - Add this line: `0 6 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every night at 6 am.
 
+Note: the script pi-security-scan.sh has one option (parameter):
+- `no-scan`: To prevent the script from executing the rather long-taking scan. It just updates the security tools.
+- Example: `sudo sudo sh /home/pi/pi-security-scan.sh no-scan`
+
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator) used in (for instance) encryption algoritms. Also according to Jacob Salmela it can help prevent weird erros in your logs.
 - Install it with this command: `sudo apt-get install rng-tools`
