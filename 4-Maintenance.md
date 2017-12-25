@@ -11,6 +11,8 @@ Ultimally, the core practice of Security is just to install all (security) updat
 
 ## Maintenance Sources
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
+- Lynis: https://cisofy.com/documentation/lynis/
+- Debsecan: https://packages.debian.org/stretch/debsecan
 
 ## Monitoring
 Maintenance starts with monitoring, so install Logwatch to do just that. You will get notified daily with what has happened on your Pi.
@@ -23,6 +25,17 @@ Maintenance starts with monitoring, so install Logwatch to do just that. You wil
   MailFrom your_account_name@domain.tld
   ```
   
+## Security Auditing
+You can also audit your own setup against some security best-practices and known vulnerabilities. There are two tools for that. One is Lynis (configuration and best-practices analyzer), and the other is Debsecan (known vulnerabilities scan in packages).
+- To install Lynis: `sudo apt-get install lynis`.
+- To install Debsecan `sudo apt-get install debsecan`.
+- To run a Lynis audit: `sudo lynis audit system --nocolors >lynis-audit.log`.
+- To run a Debsecan audit: `sudo debsecan >debsecan.log`.
+
+The files can then be found in your home-folder. I have created two tickets based on the scans per 2017/12/25.
+- Lynis: https://github.com/teusink/Home-Security-by-Pi/issues/23
+- Debsecan: https://github.com/teusink/Home-Security-by-Pi/issues/28
+
 ## Patching Raspberry Pi & Pi-hole
 Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
