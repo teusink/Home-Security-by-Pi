@@ -15,12 +15,12 @@ if [ "$1" = "dist-upgrade" ] || [ "$2" = "dist-upgrade" ]
 then
    echo ⚠ Initiating distribution upgrade......
    echo ---------------------------------------
-   sudo sudo apt-get dist-upgrade -y
+   sudo apt-get dist-upgrade -y
    echo ---------------------------------------
 else
    echo ✓ Initiating packages upgrade..........
    echo ---------------------------------------
-   sudo sudo apt-get upgrade -y
+   sudo apt-get upgrade -y
    echo ---------------------------------------
 fi
 echo
