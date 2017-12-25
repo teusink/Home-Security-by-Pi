@@ -6,6 +6,12 @@ echo
 echo "Raspberry Pi Anti-mwalware and -rootkit-log: $(date)"
 echo
 echo
+echo ✓ Initiating packages update...........
+echo ---------------------------------------
+nice -n 19 sudo apt-get update
+sudo apt-get install -y --only-upgrade clamav clamav-daemon chkrootkit rkhunter
+echo ---------------------------------------
+echo
 echo ✓ Initiating clamfresh database update.
 echo ---------------------------------------
 sudo /etc/init.d/clamav-freshclam stop
