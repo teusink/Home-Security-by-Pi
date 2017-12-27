@@ -60,6 +60,14 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       ```
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
+   
+- Check with this if there are any packages needed to be purged: `dpkg --get-selections | grep deinstall`.
+
+   - It is likely that the following packages can be purged (leftovers due to the removal of the previous pacakges). Do that with the following command:
+   
+   ```
+   sudo apt-get purge -y coinor-libcbc3 coinor-libcgl1 coinor-libcoinmp1v5:armhf coinor-libipopt1v5 coinor-libosi1v5 epiphany-browser-data erlang-base esound-common geany-common libesd0:armhf liblockfile1:armhf libmad0:armhf libmhash2:armhf libpisock9 libraptor2-0:armhf librasqal3:armhf libsdl-mixer1.2:armhf libsdl-ttf2.0-0:armhf libyajl2:armhf squeak-vm
+   ```
 
 ## Screenlock
 Automatically locking is an important feature to prevent access by means of the GUI (i.e. when using VNC). I used xscreensaver for this.
