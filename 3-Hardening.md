@@ -213,7 +213,7 @@ Things I considered with building these firewall rules:
 - Allow outgoing SMTP-over-TLS (for email).
 - Allow outgoing HTTPS.
 - Allow outgoing (s)FTP.
-- Do not allow port 45325. This port is being used by the avahi-daemon (DNS services), but due to it not being a reserved port number, it is disabled for now.
+- Do not allow Dynamic ports (also called private ports) that range from 49152 to 65535. A random port is being used by the avahi-daemon (DNS services), but due to it not being a reserved port number, it is disabled for now.
 - See a list of [Well-known TCP-UDP Protocols and Port-numbers](https://github.com/teusink/Home-Security-by-Pi/blob/master/Well-known-TCP-UDP-Protocols-and-Port-numbers.md)
 
 ## Hardening OpenSSH
