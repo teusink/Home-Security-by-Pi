@@ -13,6 +13,7 @@ Ultimally, the core practice of Security is just to install all (security) updat
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
 - Lynis: https://cisofy.com/documentation/lynis/
 - Debsecan: https://packages.debian.org/stretch/debsecan
+- Force firmware update Pi: https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=84887
 
 ## Monitoring
 Maintenance starts with monitoring, so install Logwatch to do just that. You will get notified daily with what has happened on your Pi.
@@ -39,15 +40,22 @@ The files can then be found in your home-folder. I have created two tickets base
 ## Patching Raspberry Pi & Pi-hole
 Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
+### Automated Patching
 - Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
 - Add this line: `0 4 * * SUN sudo sh /home/pi/pi-update.sh >/home/pi/pi-update.log`. This line means that it will do an update every Sunday at 4 am and it outputs it logs to a log file.
 - Add this line: `0 6 * * SUN sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-update.log `. This line means that the log-file created in the update above will be emailed to you every Sunday at 6 am.
 
+### Manual Patching
 Note: the script pi-update.sh has two options (parameters):
 - `no-reboot`: To prevent the reboot from happening. It might come in handy if you want to do rebooting in another way.
 - `dist-upgrade`: Instead of doing `apt-get upgrade -y` it does `apt-get dist-upgrade -y`. The difference is that dist-upgrade also removes packages, which might be dangerous to your setup.
 - Example: `sudo sudo sh /home/pi/pi-update.sh no-reboot`
+
+### Force Firwmare Update
+If you replaced your hardware, but not your SD-card, you might want to redo the firmware update.
+- First, change the hash value of the current installment (just change one character): `sudo nano /boot/.firmware_revision`.
+- Then execute the firmware update again: `sudo rpi-update`
 
 ## Patching PiVPN
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
