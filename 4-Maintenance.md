@@ -53,9 +53,10 @@ Note: the script pi-update.sh has two options (parameters):
 - Example: `sudo sudo sh /home/pi/pi-update.sh no-reboot`
 
 ### Force Firmware Update
-If you replaced your hardware, but not your SD-card, you might want to redo the firmware update.
+If you replaced your hardware, but not your SD-card, you might want to redo the firmware update. The same applies if you cloned the SD-card for a new Pi-unit.
 - First, change the hash value of the current installment (just change one character): `sudo nano /boot/.firmware_revision`.
-- Then execute the firmware update again: `sudo rpi-update`
+- Then execute the firmware update again: `sudo rpi-update`.
+- And then do a reboot: `sudo reboot`.
 
 ## Patching PiVPN
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
