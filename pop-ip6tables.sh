@@ -4,7 +4,7 @@
 ## tun0: OpenVPN
 ## Eth0: LAN
 
-#Flush all current rules (uncomment this to disable it)
+# Flush all current rules (uncomment this to disable it)
 ip6tables -F
 ip6tables -X
 
@@ -92,6 +92,9 @@ ip6tables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 # Allow HTTP - incoming
 ip6tables -A INPUT -p tcp --dport 80 -j ACCEPT
 
+# Allow HTTPS - incoming
+ip6tables -A INPUT -p tcp --dport 443 -j ACCEPT
+
 # Allow VNC - incoming & outgoing
 ip6tables -A INPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
 ip6tables -A OUTPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
@@ -112,8 +115,8 @@ ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 443,8443 -j ACCEPT
 ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 465,587 -j ACCEPT
 
 # Allow (s)FTP(S) (LAN) - outgoing
-ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 21,22,989,990 -j ACCEPT
-ip6tables -A OUTPUT -o eth0 -p udp --match multiport --dports 989,990 -j ACCEPT
+#ip6tables -A OUTPUT -o eth0 -p tcp --match multiport --dports 21,22,989,990 -j ACCEPT
+#ip6tables -A OUTPUT -o eth0 -p udp --match multiport --dports 989,990 -j ACCEPT
 
 ## TEST FASE
 
