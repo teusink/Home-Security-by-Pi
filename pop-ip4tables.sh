@@ -4,7 +4,7 @@
 ## tun0: OpenVPN
 ## Eth0: LAN
 
-#Flush all current rules (uncomment this to disable it)
+# Flush all current rules (uncomment this to disable it)
 iptables -F
 iptables -X
 
@@ -85,6 +85,9 @@ iptables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 # Allow HTTP - incoming
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
+# Allow HTTPS - incoming
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
 # Allow VNC - incoming & outgoing
 iptables -A INPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
 iptables -A OUTPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
@@ -105,8 +108,8 @@ iptables -A OUTPUT -o eth0 -p tcp --match multiport --dports 443,8443 -j ACCEPT
 iptables -A OUTPUT -o eth0 -p tcp --match multiport --dports 465,587 -j ACCEPT
 
 # Allow (s)FTP(S) (LAN) - outgoing
-iptables -A OUTPUT -o eth0 -p tcp --match multiport --dports 21,22,989,990 -j ACCEPT
-iptables -A OUTPUT -o eth0 -p udp --match multiport --dports 989,990 -j ACCEPT
+#iptables -A OUTPUT -o eth0 -p tcp --match multiport --dports 21,22,989,990 -j ACCEPT
+#iptables -A OUTPUT -o eth0 -p udp --match multiport --dports 989,990 -j ACCEPT
 
 ## TEST FASE
 
