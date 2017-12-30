@@ -14,7 +14,7 @@ echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database refresh.
 echo ---------------------------------------
-nice -n 19 sudo sudo rkhunter --propupd --nocolors
+nice -n 19 sudo rkhunter --propupd --nocolors
 echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database update..
