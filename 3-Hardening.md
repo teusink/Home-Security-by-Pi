@@ -59,7 +59,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
       sudo apt-get remove --purge bluej claws-mail claws-mail-i18n dillo epiphany-browser geany greenfoot libreoffice* minecraft-pi netsurf-gtk nodered nuscratch python-pygame python3-pygame python-sense-emu python3-sense-emu python-sense-emu-doc sense-emu-tools scratch scratch2 sonic-pi timidity wolfram-engine
       ```
    - Remove Python Games: `rm -rf ~/python_games`
-   - And finish it up with: `sudo apt-get autoremove` and `sudo apt-get clean`
+   - And finish it up with: `sudo apt-get autoremove --purge` and `sudo apt-get clean`
    
 - Check with this if there are any packages needed to be purged: `dpkg --get-selections | grep deinstall`.
 
