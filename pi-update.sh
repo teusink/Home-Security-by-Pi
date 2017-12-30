@@ -31,7 +31,7 @@ echo ---------------------------------------
 echo
 echo ✓ Initiating packages autoremove.......
 echo ---------------------------------------
-sudo apt-get autoremove -y
+sudo apt-get autoremove -y --purge
 echo ---------------------------------------
 echo
 echo ✓ Initiating packages autoclean........
