@@ -4,7 +4,7 @@
 ## tun0: OpenVPN
 ## Eth0: LAN
 
-# Flush all current rules (uncomment this to disable it)
+# Flush all current rules (comment this to disable it)
 iptables -F
 iptables -X
 
