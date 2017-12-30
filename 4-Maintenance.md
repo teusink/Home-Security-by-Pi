@@ -72,6 +72,17 @@ Once in a while backing up your SD-card might be smart. Especially when you have
 
 When you need to restore it, you can reverse the process. Select the `yyyy-mm-dd Backup Pi.img` file, the SD-card as the destination and press `Write`.
 
+## Removed packages not purged yet
+Sometimes (dependency) packages can be left behind when removed. You still can purge them.
+- Check with this if there are any packages needed to be purged: `dpkg --get-selections | grep deinstall`.
+
+  - You can remove the listed packages with: `sudo apt-get purge -y <package-name>`.
+  - After following this guide, it is likely that the following packages can be purged. Do that with the following command:
+  
+     ```
+     sudo apt-get purge -y coinor-libcbc3 coinor-libcgl1 coinor-libcoinmp1v5:armhf coinor-libipopt1v5 coinor-libosi1v5 epiphany-browser-data erlang-base esound-common geany-common libesd0:armhf liblockfile1:armhf libmad0:armhf libmhash2:armhf libpisock9 libraptor2-0:armhf librasqal3:armhf libsdl-mixer1.2:armhf libsdl-ttf2.0-0:armhf libyajl2:armhf squeak-vm
+     ```
+
 ## Package kept back
 Sometimes you will see in your log that a package has been kepted back with the command `sudo apt-get upgrade`. Best is to manually fix this with the following command:
 - `sudo apt-get install <packagename>`
