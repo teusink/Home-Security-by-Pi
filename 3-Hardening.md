@@ -229,7 +229,7 @@ To disallow root-login and the use of old SSH-protocol versions, do the steps be
    ```
    Protocol 2
    ```
-## Anti-malware, -virus, -exploit and -rootkits
+## Anti-exploit & -rootkit solutions
 In order to protect yourself from an attack, or in order to prevent infection from spreading to other vulnerable systems, it is key to utilize solutions against malicious software. Classic anti-virus is skipped, because file-sharing is not done on this system. And in order to fight off rootkits and other nasty things, RootKit Hunter and chkrootkit is going to be used.
 
 - Install chkrootkit using: `sudo apt-get install chkrootkit`.
@@ -245,6 +245,17 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    SCRIPTWHITELIST=/usr/bin/lwp-request
    ALLOWHIDDENFILE=/etc/.fstab
    SHARED_LIB_WHITELIST=/usr/lib/arm-linux-gnueabihf/libarmmem.so
+   ALLOWHIDDENDIR=/etc/.java
+   ALLOWHIDDENDIR=/etc/.pihole
+   ALLOWHIDDENDIR=/etc/.pivpn
+   PORT_PATH_WHITELIST="/usr/sbin/openvpn"
+   PORT_WHITELIST="UDP:1194"
+   PORT_PATH_WHITELIST="/usr/sbin/dnsmasq"
+   PORT_WHITELIST="UDP:53 UDP:67"
+   PORT_PATH_WHITELIST="/sbin/dhcpcd5"
+   PORT_WHITELIST="UDP:546 UDP:68"
+   PORT_PATH_WHITELIST="/usr/sbin/avahi-daemon"
+   PORT_WHITELIST="UDP:5353"
    ```
 - Create a script called pi-security-scan.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
