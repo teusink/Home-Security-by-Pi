@@ -9,14 +9,7 @@ echo
 echo ✓ Initiating packages update...........
 echo ---------------------------------------
 nice -n 19 sudo apt-get update
-sudo apt-get install -y --only-upgrade clamav clamav-daemon chkrootkit rkhunter
-echo ---------------------------------------
-echo
-echo ✓ Initiating clamfresh database update.
-echo ---------------------------------------
-sudo /etc/init.d/clamav-freshclam stop
-nice -n 19 sudo freshclam
-sudo /etc/init.d/clamav-freshclam start
+sudo apt-get install -y --only-upgrade chkrootkit rkhunter
 echo ---------------------------------------
 echo
 echo ✓ Initiating rkhunter database refresh.
@@ -41,10 +34,5 @@ else
   echo "✓ Initiating chkrootkit scan @ $(date)"
   echo ---------------------------------------
   nice -n 19 sudo chkrootkit -q
-  echo ---------------------------------------
-  echo
-  echo "✓ Initiating ClamAV scan @ $(date)"
-  echo ---------------------------------------
-  nice -n 19 sudo clamscan -r -i --exclude-dir="^/sys" /
   echo ---------------------------------------
 fi
