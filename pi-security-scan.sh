@@ -1,9 +1,9 @@
 #!/bin/sh
 echo To: <your_account_name>@domain.tld
 echo From: <your_account_name>@domain.tld
-echo "Subject: Raspberry Pi Anti-mwalware and -rootkit-log: $(date)"
+echo "Subject: Raspberry Pi Rootkit-detection-log: $(date)"
 echo
-echo "Raspberry Pi Anti-mwalware and -rootkit-log: $(date)"
+echo "Raspberry Pi Rootkit-detection-log: $(date)"
 echo
 echo
 echo ✓ Initiating packages update...........
