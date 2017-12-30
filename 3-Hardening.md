@@ -53,10 +53,11 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
+   - The software that is going to be removed: Integrated Development Editors, Non-Chromium browsers, LibreOffice, Claws Mail client, PDF-Viewer, Emulators and all the Games.
    - Remove stuff not needed on a server:
    
       ```
-      sudo apt-get remove --purge bluej claws-mail claws-mail-i18n dillo epiphany-browser geany greenfoot libreoffice* minecraft-pi netsurf-gtk nodered nuscratch python-pygame python3-pygame python-sense-emu python3-sense-emu python-sense-emu-doc sense-emu-tools scratch scratch2 sonic-pi timidity wolfram-engine
+      sudo apt-get remove --purge bluej claws-mail claws-mail-i18n dillo epiphany-browser geany greenfoot libreoffice* minecraft-pi netsurf-gtk nodered nuscratch python-pygame python3-pygame python-sense-emu python3-sense-emu python-sense-emu-doc sense-emu-tools scratch scratch2 sonic-pi timidity wolfram-engine idle-python2.7 idle-python3.5 python3-thonny python3-jedi cups-bsd cups-client gsfonts gsfonts-x11 libcupsfilters1 libcupsimage2 libmotif-common libpoppler64 libxm4 poppler-data poppler-utils xpdf
       ```
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove --purge` and `sudo apt-get clean`
