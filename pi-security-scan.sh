@@ -1,6 +1,6 @@
 #!/bin/sh
-echo To: <your_account_name>@domain.tld
-echo From: <your_account_name>@domain.tld
+echo To: dummy@example.com
+echo From: dummy@example.com
 echo "Subject: Raspberry Pi Rootkit-detection-log: $(date)"
 echo
 echo "Raspberry Pi Rootkit-detection-log: $(date)"
