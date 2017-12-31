@@ -9,7 +9,7 @@
 # Configuration
 This part is about the basic configuration of your installment. It has parts of hardening, but it is primarly aimed at configuring or removing installed software and hardware. 
 
->Important note: everywhere xxx is mentioned in an IP-address and everywhere where an email-address is mentioned, use your own details!
+>Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
 
 ## Configuration Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
