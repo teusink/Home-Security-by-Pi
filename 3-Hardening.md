@@ -91,6 +91,16 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       root:<your_account_name>@domain.tld:smtp.domain.tld:587
       pi:<your_account_name>@domain.tld:smtp.domain.tld:587
       ```
+   
+   - Change the default email-address (add the line below) used by Cron: `sudo nano /etc/default/cron`
+      ```
+      MAILTO=<your_account_name>@domain.tld
+      ```
+
+   - Change the email-address (add the line below) used by the user Pi: `crontab -e`
+      ```
+      MAILTO=<your_account_name>@domain.tld
+      ```
 
 ## fail2ban
 - Now install fail2ban to add some security to SSH and OpenVPN by blocking brute-force password guesses.
