@@ -111,9 +111,9 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       # Custom settings for jail.conf
 
       [DEFAULT]
-      ignoreip = 127.0.0.1/8 192.168.178.0/24
-      destemail = security@teusink.eu
-      sender = joram@teusink.eu
+      ignoreip = 127.0.0.1/8 192.168.xxx.0/24
+      destemail = <your_account_name>@domain.tld
+      sender = <your_account_name>@domain.tld
       ```
 
 ### PiVPN (OpenVPN)
