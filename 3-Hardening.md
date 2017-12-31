@@ -9,6 +9,8 @@
 # Hardening
 Hardening is the process of disabling or uninstalling application, services and hardware which are not used. To be fair, if you really want hardening, use the minimum image without Jessie, but apart from that, you can get it safe enough. So, while you are busy with some configuration work, harden your Pi also.
 
+>Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
+
 ## Hardening Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Tips for accessing your pi-hole remotely: https://pi-hole.net/2016/09/15/tips-for-accessing-your-pi-hole-remotely/
@@ -74,10 +76,10 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
    - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
    - Edit the ssmtp.conf file: `sudo nano /etc/ssmtp/ssmtp.conf` and add/edit the lines below
       ```
-      root=<your_account_name>@domain.tld
+      root=dummy@example.com
       mailhub=smtp.domain.tld:587
-      hostname=<Your Raspberry pi’s name should already be here>
-      AuthUser=<your_account_name>@domain.tld
+      hostname=<your_hostname>
+      AuthUser=dummy@example.com
       AuthPass=<your_password>
       useTLS=YES
       useSTARTTLS=YES
@@ -88,18 +90,18 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       ```
       # Port 587 for STARTTLS
       # Port 465 for TLS
-      root:<your_account_name>@domain.tld:smtp.domain.tld:587
-      pi:<your_account_name>@domain.tld:smtp.domain.tld:587
+      root:dummy@example.com:smtp.example.com:587
+      pi:dummy@example.com:smtp.example.com:587
       ```
    
    - Change the default email-address (add the line below) used by Cron: `sudo nano /etc/default/cron`
       ```
-      MAILTO=<your_account_name>@domain.tld
+      MAILTO=dummy@example.com
       ```
 
    - Change the email-address (add the line below) used by the user Pi: `crontab -e`
       ```
-      MAILTO=<your_account_name>@domain.tld
+      MAILTO=dummy@example.com
       ```
 
 ## fail2ban
@@ -112,8 +114,8 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
 
       [DEFAULT]
       ignoreip = 127.0.0.1/8 192.168.xxx.0/24
-      destemail = <your_account_name>@domain.tld
-      sender = <your_account_name>@domain.tld
+      destemail = dummy@example.com
+      sender = dummy@example.com
       ```
 
 ### PiVPN (OpenVPN)
@@ -270,7 +272,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
 - Create a script called pi-security-scan.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
 - Add this line: `0 2 * * * sudo sh /home/pi/pi-security-scan.sh >/home/pi/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs (including errors!) to a log file.
-- Add this line: `0 7 * * * sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every morning at 7 am.
+- Add this line: `0 7 * * * sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every morning at 7 am.
 
 Note: the script pi-security-scan.sh has one option (parameter):
 - `no-scan`: To prevent the script from executing the rather long-taking scan. It just updates the security tools.
