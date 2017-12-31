@@ -9,6 +9,8 @@
 # Maintenance
 Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
+>Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
+
 ## Maintenance Sources
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
 - Lynis: https://cisofy.com/documentation/lynis/
@@ -22,8 +24,8 @@ Maintenance starts with monitoring, so install Logwatch to do just that. You wil
 - Edit the Config file of Logwatch with the lines below to enable emailing (rest stays default): `sudo nano /usr/share/logwatch/default.conf/logwatch.conf`
 
   ```
-  MailTo your_account_name@domain.tld
-  MailFrom your_account_name@domain.tld
+  MailTo dummy@example.com
+  MailFrom dummy@example.com
   ```
   
 ## Security Auditing
@@ -44,7 +46,7 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 - Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
 - Add this line: `0 4 * * SUN sudo sh /home/pi/pi-update.sh >/home/pi/pi-update.log 2>&1`. This line means that it will do an update every Sunday at 4 am and it outputs it logs (including errors!) to a log file.
-- Add this line: `0 7 * * SUN sudo /usr/sbin/ssmtp your_account_name@domain.tld < /home/pi/pi-update.log `. This line means that the log-file created in the update above will be emailed to you every Sunday at 7 am.
+- Add this line: `0 7 * * SUN sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-update.log `. This line means that the log-file created in the update above will be emailed to you every Sunday at 7 am.
 
 ### Manual Patching
 Note: the script pi-update.sh has two options (parameters):
