@@ -277,18 +277,6 @@ In order to protect yourself from an attack, or in order to prevent infection fr
 Note: the script pi-security-scan.sh has one option (parameter):
 - `no-scan`: To prevent the script from executing the rather long-taking scan. It just updates the security tools.
 - Example: `sudo bash /home/pi/pi-security-scan.sh no-scan`
-
-## Random Number Generator
-The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator) used in (for instance) encryption algoritms. Also according to Jacob Salmela it can help prevent weird erros in your logs.
-- Install it with this command: `sudo apt-get install rng-tools`
-- Edit the configuration file: `sudo nano /etc/default/rng-tools`
-   - Add make sure the the lines below are in it the file:
-   
-      ```
-      #HRNGDEVICE=/dev/hwrng
-      #HRNGDEVICE=/dev/null
-      HRNGDEVICE=/dev/urandom
-      ```
    
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
