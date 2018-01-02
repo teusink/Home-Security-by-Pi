@@ -1,9 +1,9 @@
 #!/bin/sh
 echo To: dummy@example.com
 echo From: dummy@example.com
-echo "Subject: Raspberry Pi Update-log: $(date)"
+echo "Subject: Raspberry Pi [$HOSTNAME] - Update-log: $(date)"
 echo
-echo "Raspberry Pi Update-log: $(date)"
+echo "Raspberry Pi [$HOSTNAME] - Update-log: $(date)"
 echo
 echo
 echo ✓ Initiating packages-list update......
