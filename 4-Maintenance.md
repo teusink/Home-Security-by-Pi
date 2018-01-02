@@ -45,14 +45,14 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 ### Automated Patching
 - Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
-- Add this line: `0 4 * * SUN sudo sh /home/pi/pi-update.sh >/home/pi/pi-update.log 2>&1`. This line means that it will do an update every Sunday at 4 am and it outputs it logs (including errors!) to a log file.
+- Add this line: `0 4 * * SUN sudo bash /home/pi/pi-update.sh >/home/pi/pi-update.log 2>&1`. This line means that it will do an update every Sunday at 4 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * SUN sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-update.log `. This line means that the log-file created in the update above will be emailed to you every Sunday at 7 am.
 
 ### Manual Patching
 Note: the script pi-update.sh has two options (parameters):
 - `no-reboot`: To prevent the reboot from happening. It might come in handy if you want to do rebooting in another way.
 - `dist-upgrade`: Instead of doing `apt-get upgrade -y` it does `apt-get dist-upgrade -y`. The difference is that dist-upgrade also removes packages, which might be dangerous to your setup.
-- Example: `sudo sudo sh /home/pi/pi-update.sh no-reboot`
+- Example: `sudo sudo bash /home/pi/pi-update.sh no-reboot`
 
 ### Force Firmware Update
 If you replaced your hardware, but not your SD-card, you might want to redo the firmware update. The same applies if you cloned the SD-card for a new Pi-unit.
