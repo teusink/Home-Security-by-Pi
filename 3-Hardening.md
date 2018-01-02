@@ -271,12 +271,12 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    ```
 - Create a script called pi-security-scan.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
-- Add this line: `0 2 * * * sudo sh /home/pi/pi-security-scan.sh >/home/pi/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs (including errors!) to a log file.
+- Add this line: `0 2 * * * sudo bash /home/pi/pi-security-scan.sh >/home/pi/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * * sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every morning at 7 am.
 
 Note: the script pi-security-scan.sh has one option (parameter):
 - `no-scan`: To prevent the script from executing the rather long-taking scan. It just updates the security tools.
-- Example: `sudo sudo sh /home/pi/pi-security-scan.sh no-scan`
+- Example: `sudo bash /home/pi/pi-security-scan.sh no-scan`
 
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator) used in (for instance) encryption algoritms. Also according to Jacob Salmela it can help prevent weird erros in your logs.
