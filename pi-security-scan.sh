@@ -1,9 +1,9 @@
 #!/bin/sh
 echo To: dummy@example.com
 echo From: dummy@example.com
-echo "Subject: Raspberry Pi Rootkit-detection-log: $(date)"
+echo "Subject: Raspberry Pi [$HOSTNAME] - Rootkit-detection-log: $(date)"
 echo
-echo "Raspberry Pi Rootkit-detection-log: $(date)"
+echo "Raspberry Pi [$HOSTNAME] - Rootkit-detection-log: $(date)"
 echo
 echo
 echo ✓ Initiating packages update...........
