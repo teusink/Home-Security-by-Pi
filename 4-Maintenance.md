@@ -51,7 +51,7 @@ Your Pi and all software installed through `apt-get` can be updated with a singl
 ### Manual Patching
 Note: the script pi-update.sh has two options (parameters):
 - `no-reboot`: To prevent the reboot from happening. It might come in handy if you want to do rebooting in another way.
-- `dist-upgrade`: Instead of doing `apt-get upgrade -y` it does `apt-get dist-upgrade -y`. The difference is that dist-upgrade also removes packages, which might be dangerous to your setup.
+- `dist-upgrade`: Instead of doing `apt-get upgrade` it does `apt-get dist-upgrade`. The difference is that dist-upgrade also removes packages, which might be dangerous to your setup.
 - Example: `sudo sudo bash /home/pi/pi-update.sh no-reboot`
 
 ### Force Firmware Update
@@ -78,11 +78,11 @@ When you need to restore it, you can reverse the process. Select the `yyyy-mm-dd
 Sometimes (dependency) packages can be left behind when removed. You still can purge them.
 - Check with this if there are any packages needed to be purged: `dpkg --get-selections | grep deinstall`.
 
-  - You can remove the listed packages with: `sudo apt-get purge -y <package-name>`.
+  - You can remove the listed packages with: `sudo apt-get purge <package-name>`.
   - After following this guide, it is likely that the following packages can be purged. Do that with the following command:
   
      ```
-     sudo apt-get purge -y coinor-libcbc3 coinor-libcgl1 coinor-libcoinmp1v5:armhf coinor-libipopt1v5 coinor-libosi1v5 epiphany-browser-data erlang-base esound-common geany-common libesd0:armhf liblockfile1:armhf libmad0:armhf libmhash2:armhf libpisock9 libraptor2-0:armhf librasqal3:armhf libsdl-mixer1.2:armhf libsdl-ttf2.0-0:armhf libyajl2:armhf squeak-vm
+     sudo apt-get purge coinor-libcbc3 coinor-libcgl1 coinor-libcoinmp1v5:armhf coinor-libipopt1v5 coinor-libosi1v5 epiphany-browser-data erlang-base esound-common geany-common libesd0:armhf liblockfile1:armhf libmad0:armhf libmhash2:armhf libpisock9 libraptor2-0:armhf librasqal3:armhf libsdl-mixer1.2:armhf libsdl-ttf2.0-0:armhf libyajl2:armhf squeak-vm
      ```
 
 ## Package kept back
