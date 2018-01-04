@@ -261,13 +261,10 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    ALLOWHIDDENDIR=/etc/.pihole
    ALLOWHIDDENDIR=/etc/.pivpn
    PORT_PATH_WHITELIST="/usr/sbin/openvpn"
-   PORT_WHITELIST="UDP:1194"
    PORT_PATH_WHITELIST="/usr/sbin/dnsmasq"
-   PORT_WHITELIST="UDP:53 UDP:67"
    PORT_PATH_WHITELIST="/sbin/dhcpcd5"
-   PORT_WHITELIST="UDP:546 UDP:68"
    PORT_PATH_WHITELIST="/usr/sbin/avahi-daemon"
-   PORT_WHITELIST="UDP:5353"
+   PORT_PATH_WHITELIST="/usr/bin/vncagent"
    ```
 - Create a script called pi-security-scan.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
 - Configure a daily scans using crontab: `crontab -e`
