@@ -65,6 +65,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Screenlock
 Automatically locking is an important feature to prevent access by means of the GUI (i.e. when using VNC). I used xscreensaver for this.
 - Install it using: `sudo apt-get install xscreensaver`
+- Than configure it using `xscreensaver-command -prefs` and enable on the tab `Display` the setting `Lock Screen After` and set it to 5 minutes.
 
 ## libpam-tmpdir
 Many programs use $TMPDIR for storing temporary files. Not all of them are good at securing the permissions of those files. libpam-tmpdir sets $TMPDIR and $TMP for PAM sessions and sets the permissions quite tight. This helps system security by having an extra layer of security, making such symlink attacks and other /tmp based attacks harder or impossible.
