@@ -62,16 +62,16 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - Remove Python Games: `rm -rf ~/python_games`
    - And finish it up with: `sudo apt-get autoremove --purge` and `sudo apt-get clean`
 
-## Screenlock
+## Screenlock protection with xscreensaver
 Automatically locking is an important feature to prevent access by means of the GUI (i.e. when using VNC). I used xscreensaver for this.
 - Install it using: `sudo apt-get install xscreensaver`
 - Than configure it using `xscreensaver-command -prefs` and enable on the tab `Display` the setting `Lock Screen After` and set it to 5 minutes.
 
-## libpam-tmpdir
+## PAM sessions tempory files with libpam-tmpdir
 Many programs use $TMPDIR for storing temporary files. Not all of them are good at securing the permissions of those files. libpam-tmpdir sets $TMPDIR and $TMP for PAM sessions and sets the permissions quite tight. This helps system security by having an extra layer of security, making such symlink attacks and other /tmp based attacks harder or impossible.
 - Install it using: `sudo apt-get install libpam-tmpdir`
 
-## E-mail
+## E-mail capabilities
 - Time to install mail-services to make sure that an email after important events can be sent. Important for the detection and response part of the Security.
 
    - Install mail-services: `sudo apt-get -y install ssmtp mailutils mpack`
@@ -105,7 +105,7 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       MAILTO=dummy@example.com
       ```
 
-## fail2ban
+## Brute-force protection with fail2ban
 - Now install fail2ban to add some security to SSH and OpenVPN by blocking brute-force password guesses.
 
    - Install it with: `sudo apt-get install fail2ban`
@@ -119,7 +119,7 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       sender = dummy@example.com
       ```
 
-### PiVPN (OpenVPN)
+### fail2ban for PiVPN (OpenVPN)
    - Create the openvpn.local file: `sudo nano /etc/fail2ban/filter.d/openvpn.local` and add the lines below
       ```
       # Fail2Ban filter for selected OpenVPN rejections
@@ -152,7 +152,7 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       logpath  = /var/log/openvpn.log
       maxretry = 3
       ```
-### VNC
+### fail2ban for VNC
    - Create the vnc.local file: `sudo nano /etc/fail2ban/filter.d/vnc.local` and add the lines below
       ```
       # Fail2Ban filter for vnc or screensharingd
@@ -182,10 +182,10 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       maxretry = 3
       ```
 
-### SSH
+### fail2ban for SSH
    - SSH is enabled by default :).
 
-## iptables & ip6tables
+## Firewalling with iptables & ip6tables
 Hardening is not complete without proper local firewalling. On Linux this can be done using iptables for IPv4 and ip6tables for IPv6.
 
 I have created two scripts:
@@ -219,7 +219,7 @@ Things I considered with building these firewall rules:
 - Do not allow Dynamic ports (also called private ports) that range from 49152 to 65535. A random port is being used by the avahi-daemon (DNS services), but due to it not being a reserved port number, it is disabled for now.
 - See a list of [Well-known TCP-UDP Protocols and Port-numbers](https://github.com/teusink/Home-Security-by-Pi/blob/master/Well-known-TCP-UDP-Protocols-and-Port-numbers.md)
 
-## Hardening OpenSSH
+## Hardening of OpenSSH
 To disallow root-login and the use of old SSH-protocol versions, do the steps below.
 - Edit the config file of ssh using `sudo nano /etc/ssh/sshd_config`.
 - Add/uncomment (and change) the lines:
