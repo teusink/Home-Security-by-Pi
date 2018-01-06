@@ -63,10 +63,9 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    net.ipv6.conf.all.accept_source_route = 0
    ```
 
-## Pi-hole & PiVPN (OpenVPN)
-I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-and-running in a secure way. My focus here is to replace as many features (apart from routing and firewalling!) on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
+## Pi-hole
+I did some additional configuration to get the Pi-hole up-and-running in a secure way. My focus here is to replace as many features (apart from routing and firewalling!) on my router with the Pi as possible. Therefore, the Pi-hole takes over all DNS requests and serves as a DHCP-server.
 
-### Pi-hole
 - Go to your admin panel of Pi-hole: `http://192.168.xxx.xxx/admin/`
 
    - Go to Settings.
@@ -103,30 +102,30 @@ I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-an
    - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
    - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
 
-### PiVPN (OpenVPN)
-- Now we need to do some stuff to configure PiVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
+## PiVPN (OpenVPN)
+Now we need to do some stuff to configure PiVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
 
-   - Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
-   - Add line: `interface=tun0`, save and exit
-   - Edit the file: `sudo nano /etc/dnsmasq.d/01-pihole.conf`
-   - Add line: `interface=tun0` below the line: `interface=eth0`, save and exit
-   - Edit the file: `sudo nano /etc/openvpn/server.conf`
-   - Add line: `dev tun` at te top
-   - Add the following lines after the `push "route` lines:
-   
-      ```
-      push "dhcp-option DNS 192.168.xxx.xxx"
-      push "redirect-gateway def1"
-      ```
-   - Save and exit
-   - Add a new client with: `pivpn add`
-   
-      - Enter an username
-      - Enter a password
-      - Open the generated `.ovpn`
-      - Add the following lines: `block-outside-dns` and `auth-nocache` before the `<ca>` tag.
-      - Copy the file from your Pi to your device
-      - Use it in combination with the password
+- Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
+- Add line: `interface=tun0`, save and exit
+- Edit the file: `sudo nano /etc/dnsmasq.d/01-pihole.conf`
+- Add line: `interface=tun0` below the line: `interface=eth0`, save and exit
+- Edit the file: `sudo nano /etc/openvpn/server.conf`
+- Add line: `dev tun` at te top
+- Add the following lines after the `push "route` lines:
+
+   ```
+   push "dhcp-option DNS 192.168.xxx.xxx"
+   push "redirect-gateway def1"
+   ```
+- Save and exit
+- Add a new client with: `pivpn add`
+
+   - Enter an username
+   - Enter a password
+   - Open the generated `.ovpn`
+   - Add the following lines: `block-outside-dns` and `auth-nocache` before the `<ca>` tag.
+   - Copy the file from your Pi to your device
+   - Use it in combination with the password
 
 ## DNS-server
 This part is about setting up a DNS-server on the Pi, so you can have your own internal DNS-server. This prevent leaning on hosts-files on individual computers in your lan.
