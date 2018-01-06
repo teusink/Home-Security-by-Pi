@@ -7,7 +7,7 @@ The list of the TCP and UDP protocols and their port-numbers listed below are ai
 - TCP/IP Ports and Protocols (Pearsons): http://www.pearsonitcertification.com/articles/article.aspx?p=1868080
 - Ports Database (Speed Guide): https://www.speedguide.net/ports.php
 
-## General Network Services
+## Network Services
 - DNS: 53 (TCP/UDP)
 - DHCP: 67 (UDP), 68 (UDP)
 - NTP: 123 (UDP)
