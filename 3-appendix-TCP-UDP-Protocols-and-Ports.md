@@ -1,4 +1,11 @@
 # Well-known TCP-UDP Protocols and Port-numbers
+The list of the TCP and UDP protocols and their port-numbers listed below are aimed at home and small-office use. It is likely that in larger networks other services (such as databases and the like) are present which might, or might not, impact the list below.
+
+## Information Sources
+- List of TCP and UDP port numbers (Wikipedia): https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+- List of Well-Known TCP Port Numbers (Webopedia): https://www.webopedia.com/quick_ref/portnumbers.asp
+- TCP/IP Ports and Protocols (Pearsons): http://www.pearsonitcertification.com/articles/article.aspx?p=1868080
+- Ports Database (Speed Guide): https://www.speedguide.net/ports.php
 
 ## General Network Services
 - DNS: 53 (TCP/UDP)
