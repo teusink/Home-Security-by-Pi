@@ -57,12 +57,6 @@ The base image that is used to build this guid is the following:
 1. Rest of the hardening - [Chapter 3]
 1. Rest of the maintenance - [Chapter 4]
 
-## General Informational Sources
-- StackExchange: https://raspberrypi.stackexchange.com/
-- Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
-- Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
-- Pi-hole OpenVPN-server Wiki: https://github.com/pi-hole/pi-hole/wiki/Pi-hole---OpenVPN-server
-
 # Word of thanks
 A special word of thanks goes to Jacob Salmela with his up-to-date [manual](http://users.telenet.be/MySQLplaylist/pi-hole.pdf) (PDF). This guide is inspired on his, although I go a step further in terms of features. Nevertheless, his contribution to (not only) this guide is worth my sincere gratitude. Thanks!
 
