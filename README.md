@@ -3,10 +3,10 @@ Description on how I configured the installation and Security of my Raspberry Pi
 
 **Table of Contents**
 - Introduction
-  - [1.1 - The Scope](#the-scope)
-  - [1.2 - The Hardware](#the-hardware)
-  - [1.3 - The Software](#the-software)
-  - [1.4 - Steps to take](#steps-to-take)
+  - [The Scope](#the-scope)
+  - [The Hardware](#the-hardware)
+  - [The Software](#the-software)
+  - [Steps to take](#steps-to-take)
 - [1 - Installation](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md)
 - [2 - Configuration](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-Configuration.md)
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
