@@ -51,6 +51,7 @@ The base image that is used to build this guid is the following:
 1. Install PiVPN - [Chapter 1]
 1. Rest of the configuration - [Chapter 2]
 1. Rest of the hardening - [Chapter 3]
+1. Rest of the maintenance - [Chapter 4]
 
 # General Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
