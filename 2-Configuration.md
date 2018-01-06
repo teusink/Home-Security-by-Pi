@@ -16,7 +16,7 @@ This part is about the basic configuration of your installment. It has parts of 
 
 >Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
 
-## Configuration Sources
+## Information Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
 - Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
