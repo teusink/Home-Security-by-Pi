@@ -62,7 +62,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
 
-   - The software that is going to be removed: Integrated Development Editors, Non-Chromium browsers, LibreOffice, Claws Mail client, PDF-Viewer, Emulators, Samba-protocol and all the Games.
+   - The software that is going to be removed: Integrated Development Editors, Internet Browsers, LibreOffice, Mail clients, PDF-Viewer, Emulators, Samba-protocol and all the Games.
    - Remove stuff not needed on a server:
    
       ```
