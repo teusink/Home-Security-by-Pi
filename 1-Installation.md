@@ -19,6 +19,9 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - PiVPN (OpenVPN): http://www.pivpn.io/ - `sudo curl -L https://install.pivpn.io | bash`
 
 ## Information Sources
+- Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
+- Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
+- Pi-hole OpenVPN-server Wiki: https://github.com/pi-hole/pi-hole/wiki/Pi-hole---OpenVPN-server
 - Headless Pi Configuration: https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0
 
 ## Raspberry Pi
