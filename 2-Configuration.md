@@ -17,6 +17,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 - Timeserver: https://wiki.archlinux.org/index.php/systemd-timesyncd
+- DNS-server Capability: https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533/6
 
 ## Configuring Raspberry Pi
 - Make sure you set/change the following default configurations using `sudo raspi-config`
@@ -122,6 +123,18 @@ I did some additional configuration to get the Pi-hole and PiVPN (OpenVPN) up-an
       - Add the following lines: `block-outside-dns` and `auth-nocache` before the `<ca>` tag.
       - Copy the file from your Pi to your device
       - Use it in combination with the password
+
+## DNS-server
+This part is about setting up a DNS-server on the Pi, so you can have your own internal DNS-server. This prevent leaning on hosts-files on individual computers in your lan.
+- First, create a second dnsmasq file with: `echo "addn-hosts=/etc/pihole/lan.list" | sudo tee /etc/dnsmasq.d/02-lan.conf`.
+- Then create the list of IPs with domain-names to resolve: `sudo nano /etc/pihole/lan.list`.
+
+   Add in that file the following lines in the format
+   ```
+   192.168.xxx.xxx   hostname.domain.tld  hostname
+   ```
+- Make sure you have added your own `domain.tld` in the search list with: `sudo nano /etc/dhcpcd.conf`
+   - And check for the line `static domain_search=local` and make sure that `local` matches your own choosen `domain.tld`.
 
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator) used in (for instance) encryption algoritms. Also according to Jacob Salmela it can help prevent weird erros in your logs.
