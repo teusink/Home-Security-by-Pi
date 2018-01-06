@@ -2,6 +2,10 @@
 - [Introduction](https://github.com/teusink/Home-Security-by-Pi/blob/master/README.md)
 - [1 - Installation](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md)
 - 2 - Configuration
+   - [2.1 - Configuring Raspberry Pi](#configuring-raspberry-pi)
+   - [2.2 - Pi-hole & PiVPN (OpenVPN)](#pi-hole--pivpn-openvpn)
+   - [2.3 - DNS-server](#dns-server)
+   - [2.4 - Random Number Generator](#random-number-generator)
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
