@@ -129,9 +129,10 @@ This part is about setting up a DNS-server on the Pi, so you can have your own i
 - First, create a second dnsmasq file with: `echo "addn-hosts=/etc/pihole/lan.list" | sudo tee /etc/dnsmasq.d/02-lan.conf`.
 - Then create the list of IPs with domain-names to resolve: `sudo nano /etc/pihole/lan.list`.
 
-   Add in that file the following lines in the format
+   Add in that file the following lines in the format: `IPv4/IPv6  dns-name hostname`
    ```
-   192.168.xxx.xxx   hostname.domain.tld  hostname
+   192.168.xxx.xxx                      dnsname.domain.tld  hostname
+   2001:0DB8:1337:1337:1337:1337:1337   dnsname.domain.tld  hostname
    ```
 - Make sure you have added your own `domain.tld` in the search list with: `sudo nano /etc/dhcpcd.conf`
    - And check for the line `static domain_search=local` and make sure that `local` matches your own choosen `domain.tld`.
