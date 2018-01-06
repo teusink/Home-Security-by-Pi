@@ -198,8 +198,8 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
 Hardening is not complete without proper local firewalling. On Linux this can be done using iptables for IPv4 and ip6tables for IPv6.
 
 I have created two scripts:
-- Populate IPv4 tables: https://github.com/teusink/Home-Security-by-Pi/blob/master/pop-ip4tables.sh
-- Populate IPv6 tables: https://github.com/teusink/Home-Security-by-Pi/blob/master/pop-ip6tables.sh
+- Populate [IPv4 tables](https://github.com/teusink/Home-Security-by-Pi/blob/master/scripts/pop-ip4tables.sh)
+- Populate [IPv6 tables](https://github.com/teusink/Home-Security-by-Pi/blob/master/scripts/pop-ip6tables.sh)
 
 The file can be created in your homefolder and run with the following commands:
 - `sudo bash ./pop-ip4tables.sh`
@@ -276,7 +276,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    PORT_PATH_WHITELIST="/usr/sbin/avahi-daemon"
    PORT_PATH_WHITELIST="/usr/bin/vncagent"
    ```
-- Create a script called pi-security-scan.sh and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-security-scan.sh
+- Create a script called [pi-security-scan.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-security-scan.sh) and place it in the Pi's home folder.
 - Configure a daily scans using crontab: `crontab -e`
 - Add this line: `0 2 * * * sudo bash /home/pi/pi-security-scan.sh >/home/pi/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * * sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every morning at 7 am.
