@@ -134,8 +134,11 @@ This part is about setting up a DNS-server on the Pi, so you can have your own i
    192.168.xxx.xxx                      dnsname.domain.tld  hostname
    2001:0DB8:1337:1337:1337:1337:1337   dnsname.domain.tld  hostname
    ```
+   Note: replace domain.tld with your own imagined domain-name!
 - Make sure you have added your own `domain.tld` in the search list with: `sudo nano /etc/dhcpcd.conf`
    - And check for the line `static domain_search=local` and make sure that `local` matches your own choosen `domain.tld`.
+- For better privacy, add the line below to prevent DNS-look-ups going upstream with: `sudo nano /etc/dnsmasq.d/01-pihole.conf`.
+   - Add the line: `local=/domain.tld/`
 
 ## Random Number Generator
 The rngd daemon acts as a bridge between a Hardware TRNG (true random number generator) such as the ones in some Intel/AMD/VIA chipsets, and the kernel's PRNG (pseudo-random number generator) used in (for instance) encryption algoritms. Also according to Jacob Salmela it can help prevent weird erros in your logs.
