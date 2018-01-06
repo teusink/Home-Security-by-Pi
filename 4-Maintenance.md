@@ -32,12 +32,21 @@ Maintenance starts with monitoring, so install Logwatch to do just that. You wil
 You can also audit your own setup against some security best-practices and known vulnerabilities. There are two tools for that. One is Lynis (configuration and best-practices analyzer), and the other is Debsecan (known vulnerabilities scan in packages).
 - To install Lynis: `sudo apt-get install lynis`.
 - To install Debsecan `sudo apt-get install debsecan`.
-- To run a Lynis audit: `sudo lynis audit system --nocolors >lynis-audit.log`.
-- To run a Debsecan audit: `sudo debsecan >debsecan.log`.
 
-The files can then be found in your home-folder. I have created two tickets based on the scans per 2017/12/25.
+### Manual audit
+- To run a Lynis audit: `sudo lynis audit system`.
+- To run a Debsecan audit: `sudo debsecan`.
+
+I have created two tickets based on the scans per 2017/12/25.
 - Lynis: https://github.com/teusink/Home-Security-by-Pi/issues/23
 - Debsecan: https://github.com/teusink/Home-Security-by-Pi/issues/28
+
+### Automated audit weekly after patching
+To really stay on par with new found weaknesses on your Pi, create a weekly audit on your system.
+- Create a script called `pi-audit.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-audit.sh
+- Edit your crontab to plan a regular execution of the script using `crontab -e`.
+- Add this line: `0 6 * * MON sudo bash /home/pi/pi-audit.sh >/home/pi/pi-audit.log 2>&1`. This line means that it will do an audit every Monday at 6 am and it outputs it logs (including errors!) to a log file.
+- Add this line: `0 7 * * MON sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-audit.log `. This line means that the log-file created in the update above will be emailed to you every Monday at 7 am.
 
 ## Patching Raspberry Pi & Pi-hole
 Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
