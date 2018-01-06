@@ -19,7 +19,7 @@ Ultimally, the core practice of Security is just to install all (security) updat
 
 >Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
 
-## Maintenance Sources
+## Information Sources
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
 - Lynis: https://cisofy.com/documentation/lynis/
 - Debsecan: https://packages.debian.org/stretch/debsecan
