@@ -3,7 +3,7 @@
 - [1 - Installation](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md)
   - [1.1 - Raspberry Pi](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md#raspberry-pi)
   - [1.2 - Pi-hole](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md#pi-hole)
-  - [1.2 - PiVPN (OpenVPN)](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md#pivpn-openvpn)
+  - [1.3 - PiVPN (OpenVPN)](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md#pivpn-openvpn)
 - [2 - Configuration](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-Configuration.md)
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
