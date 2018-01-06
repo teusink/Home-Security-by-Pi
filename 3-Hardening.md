@@ -3,6 +3,15 @@
 - [1 - Installation](https://github.com/teusink/Home-Security-by-Pi/blob/master/1-Installation.md)
 - [2 - Configuration](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-Configuration.md)
 - 3 - Hardening
+   - [3.1 - Disabling hardware](#disabling-hardware)
+   - [3.2 - Removing Software and Games](#removing-software-and-games)
+   - [3.3 - Screenlock protection with xscreensaver](#screenlock-protection-with-xscreensaver)
+   - [3.4 - PAM sessions tempory files with libpam-tmpdir](#pam-sessions-tempory-files-with-libpam-tmpdir)
+   - [3.5 - E-mail capabilities](#e-mail-capabilities)
+   - [3.6 - Brute-force protection with fail2ban](#brute-force-protection-with-fail2ban)
+   - [3.7 - Firewalling with iptables & ip6tables](#firewalling-with-iptables--ip6tables)
+   - [3.8 - Hardening of OpenSSH](#hardening-of-openssh)
+   - [3.9 - Anti-exploit & -rootkit solutions](#anti-exploit---rootkit-solutions)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
 
