@@ -18,7 +18,7 @@ The goal of this project is to make a secure (or at least secure within a reason
 
 My other goal is to gain a good understanding on DNS, Hardening and other Security-related aspects concerning Network Security. I feel that as a Lead Information Security Officer it is important to upkeep (general) knowledge about Technology.
 
-# The Scope
+## The Scope
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
@@ -27,7 +27,7 @@ The constraints are:
 - And although this device delivers services in a (reasonable) secure way, it is not meant to be a device that delivers security services by it self, such as network-scanning and vulnerability scans.
 - It is meant for home or small-office use. Larger companies or institutions should look at other solutions to protect their people.
 
-# The Hardware
+## The Hardware
 The hardware I use exists of the following components:
 - Raspberry Pi 3 Model B 1GB
 - SDHC card Class 10 - 16GB
@@ -39,14 +39,14 @@ The costs: ~ € 70,-
 
 ![Pi-Blox Case](https://3.bp.blogspot.com/-35IKtcxvbds/Wh_wxulKH_I/AAAAAAAC-qM/ZFdeJaGM5j0Rzs1o9cJ1gWrJ4--BZcxAQCPcBGAYYCw/s1600/Pi-Blox-Case.jpg)
 
-# The Software
+## The Software
 The base image that is used to build this guid is the following:
 - Image with desktop based on Debian Stretch
 - Version: November 2017
 - Release date: 2017-11-29
 - Kernel version: 4.9
 
-# Steps to take
+## Steps to take
 1. Install Pi - [Chapter 1]
 1. Configure Pi - [Chapter 2]
 1. Remove software & games - [Chapter 3]
@@ -57,7 +57,7 @@ The base image that is used to build this guid is the following:
 1. Rest of the hardening - [Chapter 3]
 1. Rest of the maintenance - [Chapter 4]
 
-# General Informational Sources
+## General Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
 - Raspberry Pi NOOBS: https://github.com/raspberrypi/noobs
 - Pi-hole Wiki: https://github.com/pi-hole/pi-hole/wiki
