@@ -23,7 +23,9 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Timeserver: https://wiki.archlinux.org/index.php/systemd-timesyncd
 - DNS-server Capability: https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533/6
 
-## Configuring Raspberry Pi
+## Raspberry Pi
+This part is about the basic configuration of your Raspberry Pi.
+
 - Make sure you set/change the following default configurations using `sudo raspi-config`
    - Change password of the user `pi`
    - Change the hostname
