@@ -45,13 +45,12 @@ The base image that is used to build this guid is the following:
 # Steps to take
 1. Install Pi - [Chapter 1]
 1. Configure Pi - [Chapter 2]
-1. Remove software - [Chapter 3]
-1. Update/upgrade Pi - [Chapter 4]
+1. Remove software & games - [Chapter 3]
+1. Update/upgrade Pi and firmware - [Chapter 4]
 1. Install Pi-hole - [Chapter 1]
 1. Install PiVPN - [Chapter 1]
-1. Configure Pi-hole - [Chapter 2]
-1. Configure PiVPN - [Chapter 2]
-1. Rest of hardening - [Chapter 3]
+1. Rest of the configuration - [Chapter 2]
+1. Rest of the hardening - [Chapter 3]
 
 # General Informational Sources
 - StackExchange: https://raspberrypi.stackexchange.com/
