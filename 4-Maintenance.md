@@ -51,7 +51,7 @@ I have created two tickets based on the scans per 2017/12/25.
 
 ### Automated audit weekly after patching
 To really stay on par with new found weaknesses on your Pi, create a weekly audit on your system.
-- Create a script called `pi-audit.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-audit.sh
+- Create a script called [pi-audit.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-audit.sh) and place it in the Pi's home folder.
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
 - Add this line: `0 6 * * MON sudo bash /home/pi/pi-audit.sh >/home/pi/pi-audit.log 2>&1`. This line means that it will do an audit every Monday at 6 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * MON sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-audit.log `. This line means that the log-file created in the update above will be emailed to you every Monday at 7 am.
@@ -60,7 +60,7 @@ To really stay on par with new found weaknesses on your Pi, create a weekly audi
 Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
 
 ### Automated Patching
-- Create a script called `pi-update.sh` and place it in the Pi's home folder. You can find the contents of the script here: https://github.com/teusink/Secure-my-Pi/blob/master/pi-update.sh
+- Create a script called [pi-update.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-update.sh) and place it in the Pi's home folder.
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
 - Add this line: `0 4 * * SUN sudo bash /home/pi/pi-update.sh >/home/pi/pi-update.log 2>&1`. This line means that it will do an update every Sunday at 4 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * SUN sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/pi-update.log `. This line means that the log-file created in the update above will be emailed to you every Sunday at 7 am.
