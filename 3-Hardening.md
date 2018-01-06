@@ -20,7 +20,7 @@ Hardening is the process of disabling or uninstalling application, services and 
 
 >Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
 
-## Hardening Sources
+## Information Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - Tips for accessing your pi-hole remotely: https://pi-hole.net/2016/09/15/tips-for-accessing-your-pi-hole-remotely/
 - Block Ads Network-wide with A Raspberry Pi-hole (PDF): http://users.telenet.be/MySQLplaylist/pi-hole.pdf
