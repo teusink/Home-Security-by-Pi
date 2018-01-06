@@ -4,6 +4,14 @@
 - [2 - Configuration](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-Configuration.md)
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - 4 - Maintenance
+  - [4.1 - Monitoring](#monitoring)
+  - [4.2 - Security Auditing](#security-auditing)
+  - [4.3 - Patching Raspberry Pi & Pi-hole](#patching-raspberry-pi--pi-hole)
+  - [4.4 - Patching PiVPN](#patching-pivpn)
+  - [4.5 - Back-up the SD-card](#back-up-the-sd-card)
+  - [4.6 - Removed packages not purged yet](#removed-packages-not-purged-yet)
+  - [4.7 - Package kept back](#package-kept-back)
+  - [4.8 - Package integrity issues](#package-integrity-issues)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
 
 # Maintenance
