@@ -27,15 +27,23 @@ echo ---------------------------------------
 nice -n 19 sudo tmpreaper 30d /var/tmp --showdeleted
 echo ---------------------------------------
 echo
-echo ✓ Clean 30 days old package files......
-echo ---------------------------------------
 if [ `date +%d` == "01" ] 
 then
-  echo "✓ Cleaning of old package files needed, it is day `date +%d`"
-  echo
+  echo ✓ Monthly clean-up old package files...
+  echo ---------------------------------------
   sudo apt-get clean
   sudo apt-get purge -y $(dpkg -l | grep '^rc' | awk '{print $2}')
+  echo ---------------------------------------
+  echo
+  echo ✓ Monthly clean-up of /boot.bak, remnent from upgrade
+  echo ---------------------------------------
+  if [ -d /boot.bak ]
+  then 
+    rm /boot.bak -r -d -v
+  else
+    echo ✗ Directory /boot.bak does not exists
+  fi
+  echo ---------------------------------------
 else
-  echo "✗ Cleaning of old package files not needed, it is day `date +%d`"
+  echo "✗ Monthly clean-up of files not needed, it is day `date +%d`"
 fi
-echo ---------------------------------------
