@@ -56,7 +56,7 @@ To really stay on par with new found weaknesses on your Pi, create a weekly audi
 - Create a script called [pi-audit.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-audit.sh) and place it in the Pi's scripts folder in the home-directory. Also create the folder `scripts` and `logs` in the home-directory if they don't exists yet.
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
 - Add this line: `0 6 * * MON sudo bash /home/pi/scripts/pi-audit.sh >/home/pi/logs/pi-audit.log 2>&1`. This line means that it will do an audit every Monday at 6 am and it outputs it logs (including errors!) to a log file.
-- Add this line: `0 7 * * MON sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-audit.log `. This line means that the log-file created in the update above will be emailed to you every Monday at 7 am.
+- If you want an email of the log, add this line: `0 7 * * MON sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-audit.log `. This line means that the log-file created in the update above will be emailed to you every Monday at 7 am.
 
 ## Patching Raspberry Pi & Pi-hole
 Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
@@ -90,7 +90,7 @@ Just as any other system, the Pi accumalates temporary and log data. This part i
 - Create a script called [pi-cleaner.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-cleaner.sh) and place it in the Pi's scripts folder in the home-directory. Also create the folder `scripts` and `logs` in the home-directory if they don't exists yet.
 - Edit your crontab to plan a regular execution of the script using `crontab -e`.
 - Add this line: `0 3 * * * sudo bash /home/pi/scripts/pi-cleaner.sh >/home/pi/logs/pi-cleaner.log 2>&1`. This line means that it will do an update every night at 3 am and it outputs it logs (including errors!) to a log file.
-- And if you want an email about it, add this line: `0 7 * * SUN sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-cleaner.log`. This line means that the log-file created in the update above will be emailed to you every Sunday at 7 am.
+- If you want an email of the log, add this line: `0 7 * * SUN sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-cleaner.log`. This line means that the log-file created in the update above will be emailed to you every Sunday at 7 am.
 
 ## Back-up the SD-card
 Once in a while backing up your SD-card might be smart. Especially when you have the tendency to tinker with it :). The steps below here can help you do this.
