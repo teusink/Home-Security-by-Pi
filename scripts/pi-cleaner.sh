@@ -8,28 +8,28 @@ echo
 echo
 echo ✓ Clean 7 days old downloaded files....
 echo ---------------------------------------
-nice -n 19 sudo tmpreaper 7d /home/pi/Downloads
+nice -n 19 sudo tmpreaper 7d /home/pi/Downloads --showdeleted
 echo ---------------------------------------
 echo
 echo ✓ Clean 30 days old config files.......
 echo ---------------------------------------
-nice -n 19 sudo tmpreaper 30d /home/pi/oldconffiles
+nice -n 19 sudo tmpreaper 30d /home/pi/oldconffiles --showdeleted
 echo ---------------------------------------
 echo
 echo ✓ Clean 1 day old /tmp files.....
 echo ---------------------------------------
-nice -n 19 sudo tmpreaper 1d /tmp
+nice -n 19 sudo tmpreaper 1d /tmp --showdeleted
 echo ---------------------------------------
 echo
 echo ✓ Clean 30 days old /var/tmp files.....
 #### WARNING: /tmp gets cleaned upon reboot, but /var/tmp needs to be more persistent!
 echo ---------------------------------------
-nice -n 19 sudo tmpreaper 30d /var/tmp
+nice -n 19 sudo tmpreaper 30d /var/tmp --showdeleted
 echo ---------------------------------------
 echo
 echo ✓ Clean 30 days old package files......
 echo ---------------------------------------
-if [ `date +%d` != "01" ] 
+if [ `date +%d` == "01" ] 
 then
   echo "✓ Cleaning of old package files needed, it is day `date +%d`"
   echo
