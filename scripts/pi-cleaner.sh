@@ -1,0 +1,41 @@
+#!/bin/sh
+echo To: dummy@example.com
+echo From: dummy@example.com
+echo "Subject: Raspberry Pi [$HOSTNAME] - Cleaning-log: $(date)"
+echo
+echo "Raspberry Pi [$HOSTNAME] - Cleaning-log: $(date)"
+echo
+echo
+echo ✓ Clean 7 days old downloaded files....
+echo ---------------------------------------
+nice -n 19 sudo tmpreaper -t 7d /home/pi/Downloads
+echo ---------------------------------------
+echo
+echo ✓ Clean 30 days old config files.......
+echo ---------------------------------------
+nice -n 19 sudo tmpreaper -t 30d /home/pi/oldconffiles
+echo ---------------------------------------
+echo
+echo ✓ Clean 1 day old /tmp files.....
+echo ---------------------------------------
+nice -n 19 sudo tmpreaper -t 1d /tmp
+echo ---------------------------------------
+echo
+echo ✓ Clean 30 days old /var/tmp files.....
+#### WARNING: /tmp gets cleaned upon reboot, but /var/tmp needs to be more persistent!
+echo ---------------------------------------
+nice -n 19 sudo tmpreaper -t 30d /var/tmp
+echo ---------------------------------------
+echo
+echo ✓ Clean 30 days old package files......
+echo ---------------------------------------
+if [ `date +%d` != "01" ] 
+then
+  echo "✓ Cleaning of old package files needed, it is day `date +%d`"
+  echo
+  sudo apt-get clean
+  sudo apt-get purge -y $(dpkg -l | grep '^rc' | awk '{print $2}')
+else
+  echo "✗ Cleaning of apt cache files not needed, it is day `date +%d`"
+fi
+echo ---------------------------------------
