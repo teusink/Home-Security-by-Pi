@@ -26,7 +26,7 @@ fi
 echo
 echo ✓ Initiating Pi Firmware update........
 echo ---------------------------------------
-sudo rpi-update
+sudo PRUNE_MODULES=1 rpi-update
 echo ---------------------------------------
 echo
 echo ✓ Initiating packages autoremove.......
