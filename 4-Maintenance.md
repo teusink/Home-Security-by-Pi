@@ -25,6 +25,7 @@ Ultimally, the core practice of Security is just to install all (security) updat
 - Lynis: https://cisofy.com/documentation/lynis/
 - Debsecan: https://packages.debian.org/stretch/debsecan
 - Force firmware update Pi: https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=84887
+- tmpreaper package: https://www.thegeekstuff.com/2013/10/tmpreaper-examples/
 
 ## Monitoring
 Maintenance starts with monitoring, so install Logwatch to do just that. You will get notified daily with what has happened on your Pi.
