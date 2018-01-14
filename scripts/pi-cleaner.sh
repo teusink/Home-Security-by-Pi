@@ -36,6 +36,6 @@ then
   sudo apt-get clean
   sudo apt-get purge -y $(dpkg -l | grep '^rc' | awk '{print $2}')
 else
-  echo "✗ Cleaning of apt cache files not needed, it is day `date +%d`"
+  echo "✗ Cleaning of old package files not needed, it is day `date +%d`"
 fi
 echo ---------------------------------------
