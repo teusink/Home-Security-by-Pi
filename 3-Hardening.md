@@ -39,13 +39,13 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 ## Disabling hardware
 - Wifi and Bluetooth are two hardware components that I do not use and which could allow remote access. Therefore, I disabled both.
 
-   Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
+   - Add the lines below in the config.txt file: `sudo nano /boot/config.txt`
    ```
    # Uncomment this to disable WiFi and Bluetooth
    dtoverlay=pi3-disable-wifi
    dtoverlay=pi3-disable-bt
    ```
-   Add the lines below in the raspi-blacklist.conf file: `sudo nano /etc/modprobe.d/raspi-blacklist.conf`
+   - Add the lines below in the raspi-blacklist.conf file: `sudo nano /etc/modprobe.d/raspi-blacklist.conf`
    ```
    # disable WLAN
    blacklist brcmfmac
@@ -57,7 +57,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    blacklist btbcm
    blacklist hci_uart
    ```
-   And then run this command to disable the Bluetooth service: `sudo systemctl disable hciuart`
+   - Then execute this command to process the blacklist: `sudo update-initramfs -u`
 
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
