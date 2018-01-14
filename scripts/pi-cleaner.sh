@@ -39,7 +39,7 @@ then
   echo ---------------------------------------
   if [ -d /boot.bak ]
   then 
-    rm /boot.bak -r -d -v
+    nice -n 19 sudo rm /boot.bak -r -d -v
   else
     echo ✗ Directory /boot.bak does not exists
   fi
