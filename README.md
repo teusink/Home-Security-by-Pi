@@ -1,5 +1,5 @@
 # Home-Security-by-Pi
-Description on how I configured the installation and Security of my Raspberry Pi and how I keep it fit for use and purpose.
+Description on how I configured the installation and Security of Raspberry Pi and how I keep it fit for use and purpose.
 
 **Table of Contents**
 - Introduction
