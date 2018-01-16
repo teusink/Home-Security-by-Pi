@@ -16,7 +16,7 @@ Description on how I configured the installation and Security of Raspberry Pi an
 # Introduction
 The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Raspberry Pi with the following network-features: Pi-Hole DNS-resolver, DNSSEC, DHCP, and OpenVPN-server. It is possible that by gaining new insights features are either removed or added.
 
-My other goal is to gain a good understanding on DNS, Hardening and other Security-related aspects concerning Network Security. I feel that as a Lead Information Security Officer it is important to upkeep (general) knowledge about Technology.
+My other goal is to gain a good understanding on DNS, Hardening and other Security-related aspects concerning Network Security. I feel that as a Lead Information Security Officer it is important to upkeep (general) knowledge about Technology and it's Security.
 
 ## The Scope
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
