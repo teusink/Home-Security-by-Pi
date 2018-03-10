@@ -4,6 +4,7 @@ To not cripple the Google search-engine to much (and annoy the spouse :), I have
 
 - ad.doubleclick.net
 - archive.raspberrypi.org
+- cdn.optimizely.com
 - cdn.ywxi.net
 - clickserve.dartsearch.net
 - googleads.g.doubleclick.net
