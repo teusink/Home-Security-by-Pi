@@ -77,7 +77,7 @@ I did some additional configuration to get the Pi-hole up-and-running in a secur
    - Fill in custom IPv4 DNS (Quad9): 9.9.9.9
    - Fill in custom IPv6 DNS (Quad9): 2620:fe::fe
    - Make sure you update your [whitelisted domains](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-whitelist.md) (if you want/need).   
-   - Add the following source to Pi-Hole's Block Lists: `https://www.malwaredomainlist.com/hostslist/hosts.txt`
+   - Make sure you update your [blocklists](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-blocklists.md) (if you want/need).
    - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
 
 ## PiVPN (OpenVPN)
