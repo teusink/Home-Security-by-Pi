@@ -38,6 +38,8 @@ Maintenance starts with monitoring, so install Logwatch to do just that. You wil
   MailFrom dummy@example.com
   ```
   
+And here you can see the entire contents of the crontab file that is used: [crontab](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-appendix-crontab.md)
+  
 ## Security Auditing
 You can also audit your own setup against some security best-practices and known vulnerabilities. There are two tools for that. One is Lynis (configuration and best-practices analyzer), and the other is Debsecan (known vulnerabilities scan in packages).
 - To install Lynis: `sudo apt-get install lynis`.
