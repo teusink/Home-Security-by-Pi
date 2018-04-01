@@ -85,8 +85,6 @@ Now we need to do some stuff to configure PiVPN (so make sure it is installed) i
 
 - Create new file: `sudo nano /etc/dnsmasq.d/02-addint.conf`
 - Add line: `interface=tun0`, save and exit
-- Edit the file: `sudo nano /etc/dnsmasq.d/01-pihole.conf`
-- Add line: `interface=tun0` below the line: `interface=eth0`, save and exit
 - Edit the file: `sudo nano /etc/openvpn/server.conf`
 - Add line: `dev tun` at te top
 - Add the following lines after the `push "route` lines:

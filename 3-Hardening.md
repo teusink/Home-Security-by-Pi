@@ -109,11 +109,16 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       MAILTO=dummy@example.com
       ```
 
-   - Change the email-address (add the line below) used by the user Pi: `crontab -e`
+   - Change the email-address (add the line below) used by the user Pi: `crontab -u pi -e`
       ```
       MAILTO=dummy@example.com
       ```
-
+   - Change the email-address (add the line below) used by the user Root: `crontab -u root -e`
+      ```
+      MAILTO=dummy@example.com
+      ```
+   - Now change the permissions of ssmtp.conf to a more secure setting with `sudo chmod 0640 /etc/ssmtp/ssmtp.conf`. This is needed to protect the plain-text password in the config file!
+	  
 ## Brute-force protection with fail2ban
 - Now install fail2ban to add some security to SSH and OpenVPN by blocking brute-force password guesses.
 
