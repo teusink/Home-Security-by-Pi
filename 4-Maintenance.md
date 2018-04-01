@@ -20,6 +20,8 @@ Ultimally, the core practice of Security is just to install all (security) updat
 
 >Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
 
+And here you can see the entire contents of the crontab file that is used: [crontab](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-appendix-crontab.md).
+
 ## Information Sources
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
 - Lynis: https://cisofy.com/documentation/lynis/
@@ -37,8 +39,6 @@ Maintenance starts with monitoring, so install Logwatch to do just that. You wil
   MailTo dummy@example.com
   MailFrom dummy@example.com
   ```
-  
-And here you can see the entire contents of the crontab file that is used: [crontab](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-appendix-crontab.md)
   
 ## Security Auditing
 You can also audit your own setup against some security best-practices and known vulnerabilities. There are two tools for that. One is Lynis (configuration and best-practices analyzer), and the other is Debsecan (known vulnerabilities scan in packages).
