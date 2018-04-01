@@ -1,3 +1,4 @@
+```
 MAILTO=dummy@example.com
 #
 # m h  dom mon dow   command
@@ -17,3 +18,4 @@ MAILTO=dummy@example.com
 # Pi Audit (weekly)
 0 6 * * MON sudo bash /home/pi/scripts/pi-audit.sh >/home/pi/logs/pi-audit.log 2>&1
 # 0 7 * * MON sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-audit.log
+```
