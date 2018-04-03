@@ -6,6 +6,11 @@ echo
 echo "Raspberry Pi [$HOSTNAME] - Cleaning-log: $(date)"
 echo
 echo
+echo ✓ Clean dead.letter email file.........
+echo ---------------------------------------
+nice -n 19 sudo rm /home/pi/dead.letter
+echo ---------------------------------------
+echo
 echo ✓ Clean 7 days old downloaded files....
 echo ---------------------------------------
 nice -n 19 sudo tmpreaper 7d /home/pi/Downloads --showdeleted
