@@ -87,7 +87,7 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
    - Edit the ssmtp.conf file: `sudo nano /etc/ssmtp/ssmtp.conf` and add/edit the lines below
       ```
       root=dummy@example.com
-      mailhub=smtp.domain.tld:587
+      mailhub=smtp.domain.tld:587 # or :465, or :25 (insecure)
       hostname=<your_hostname>
       AuthUser=dummy@example.com
       AuthPass=<your_password>
@@ -101,15 +101,9 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       # Port 587 for STARTTLS
       # Port 465 for TLS
       root:dummy@example.com:smtp.example.com:587
-      pi:dummy@example.com:smtp.example.com:587
       ```
    
-   - Change the default email-address (add the line below) used by Cron: `sudo nano /etc/default/cron`
-      ```
-      MAILTO=dummy@example.com
-      ```
-
-   - Change the email-address (add the line below) used by the user Pi: `crontab -u pi -e`
+   - DEPRECATED! Change the default email-address (add the line below) used by Cron: `sudo nano /etc/default/cron`
       ```
       MAILTO=dummy@example.com
       ```
@@ -282,7 +276,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    PORT_PATH_WHITELIST="/usr/bin/vncagent"
    ```
 - Create a script called [pi-security-scan.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-security-scan.sh) and place it in the Pi's scripts folder in the home-directory. Also create the folder `scripts` and `logs` in the home-directory if they don't exists yet.
-- Configure a daily scans using crontab: `crontab -e`
+- Configure a daily scans using crontab: `sudo crontab -u root -e`
 - Add this line: `0 2 * * * sudo bash /home/pi/scripts/pi-security-scan.sh >/home/pi/logs/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * * sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every morning at 7 am.
 
