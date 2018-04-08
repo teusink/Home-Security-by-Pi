@@ -1,34 +1,33 @@
 # Pi-Hole whitelist
 
-To not cripple the Google search-engine to much (and annoy the spouse :), I have added the Google ad-servers, but Google Analytics is not whitelisted though. I also added some CDN-stuff and Microsoft sources in here. And not to forget, whitelisted the domains with the blocklists, so in case of (rare) errors a new list can always be downloaded.
+This is a list with potential urls you might want to whitelist. Think about the blocklists itself, but also the Pi repositories, CDNs and indeed some ads and tracking sources. Choice is up to you!
 
-- ad.doubleclick.net
+Whitelist the Blocklists-sources:
+- ransomwaretracker.abuse.ch
+- zeustracker.abuse.ch
+- www.malwaredomainlist.com
+- mirror1.malwaredomains.com
+- isc.sans.edu
+- hosts-file.net
+- sysctl.org
+- s3.amazonaws.com
+
+Whitelist the repositories:
 - archive.raspberrypi.org
-- cdn.innity.net
+- downloads.raspberrypi.org
+- mirrordirector.raspbian.org
+- raspbian.org
+
+Whitelist CDN-sources:
 - cdn.optimizely.com
-- cdn.ywxi.net
+
+Whitelist to enable Google, Youtube & Facebook ads:
+- ad.doubleclick.net
 - clickserve.dartsearch.net
 - connect.facebook.net
-- downloads.raspberrypi.org
 - googleads.g.doubleclick.net
-- hosts-file.net
-- ipv6.msftncsi.com
-- isc.sans.edu
-- malc0de.com
-- mirror1.malwaredomains.com
-- mirrordirector.raspbian.org
-- msftncsi.com
-- osint.bambenekconsulting.com
 - pubads.g.doubleclick.net
-- ransomwaretracker.abuse.ch
-- raspbian.org
-- raw.githubusercontent.com
 - s.youtube.com
-- s3.amazonaws.com
-- sysctl.org
 - www.googleadservices.com
 - www.googletagmanager.com
 - www.googletagservices.com
-- www.malwaredomainlist.com
-- www.msftncsi.com
-- zeustracker.abuse.ch
