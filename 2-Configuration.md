@@ -79,6 +79,7 @@ I did some additional configuration to get the Pi-hole up-and-running in a secur
    - Make sure you update your [whitelisted domains](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-whitelist.md) (if you want/need).   
    - Make sure you update your [blocklists](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-blocklists.md) (if you want/need).
    - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
+   - Create the file `pihole-FTL.conf` with `sudo touch /etc/pihole/pihole-FTL.conf` to suppress a daily cron-error in your email (see the commit here to permanently fix it: https://github.com/pi-hole/pi-hole/commit/82d5afe9961a7964bc22e70f44ec8fdd504fa855)
 
 ## PiVPN (OpenVPN)
 Now we need to do some stuff to configure PiVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
