@@ -4,6 +4,8 @@
 ## tun0: OpenVPN
 ## Eth0: LAN
 
+# This scripts needs to be executed with `sudo`
+
 # Flush all current rules (comment this to disable it)
 ip6tables -F
 ip6tables -X
@@ -18,6 +20,11 @@ ip6tables -P FORWARD DROP
 # Drop Invalid Packets
 ip6tables -A INPUT -m conntrack --ctstate INVALID -j DROP
 ip6tables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
+
+# Drop all ANY queries to DNS server to prevent DDOS DNS amplification attack
+ip6tables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -m recent --set --name dnsanyquery
+ip6tables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -m recent --name dnsanyquery --rcheck --seconds 60 --hitcount 1 -j DROP
+ip6tables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -j DROP
 
 # Accept all already established connections
 ip6tables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT

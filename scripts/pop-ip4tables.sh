@@ -4,6 +4,8 @@
 ## tun0: OpenVPN
 ## Eth0: LAN
 
+# This scripts needs to be executed with `sudo`
+
 # Flush all current rules (comment this to disable it)
 iptables -F
 iptables -X
@@ -18,6 +20,11 @@ iptables -P FORWARD DROP
 # Drop Invalid Packets
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
+
+# Drop all ANY queries to DNS server to prevent DDOS DNS amplification attack
+iptables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -m recent --set --name dnsanyquery
+iptables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -m recent --name dnsanyquery --rcheck --seconds 60 --hitcount 1 -j DROP
+iptables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -j DROP
 
 # Accept all already established connections
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
