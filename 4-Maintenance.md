@@ -28,6 +28,7 @@ And here you can see the entire contents of the crontab file that is used: [cron
 - Debsecan: https://packages.debian.org/stretch/debsecan
 - Force firmware update Pi: https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=84887
 - tmpreaper package: https://www.thegeekstuff.com/2013/10/tmpreaper-examples/
+- Regenerate CRL for VPN: https://github.com/pivpn/pivpn/issues/343
 
 ## Monitoring
 Maintenance starts with monitoring, so install Logwatch to do just that. You will get notified daily with what has happened on your Pi.
@@ -127,6 +128,18 @@ I faced some package integrity issues after an upgrade. You can fix thos with th
 - `sudo apt-get install --reinstall <packagename>`
 
 That way the package are reinstalled, no matter you have the latest version or not.
+
+## VPN CRL expire issues after distro-upgrade
+It is possible that you face connection issues with your VPN after an upgrade of your system. Execute the steps below in your terminal to fix that.
+- Check service status: `sudo systemctl status openvpn@server.service`
+- Verify following error: `VERIFY ERROR: depth=0, error=CRL has expired: CN=xxx`
+- Go to directory: `cd /etc/openvpn/easy-rsa`
+- Generate new CRL: `sudo ./easyrsa gen-crl`
+- Verify that folder is correct (`/etc/openvpn/crl.pem`): `sudo cat ../server.conf | grep "crl-verify"`
+- Copy new CRL to directory: `sudo cp /etc/openvpn/easy-rsa/pki/crl.pem ../crl.pem `
+- Reboot service: `sudo systemctl restart openvpn@server.service`
+
+New VPN-connections can be initiated again.
 
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
