@@ -52,3 +52,11 @@ then
 else
   echo "✗ Monthly clean-up of files not needed, it is day `date +%d`"
 fi
+echo
+if [ "$1" = "no-reboot" ]
+then
+  echo "✗ Skipping reboot @ $(date)"
+else
+  echo "✓ Initiating reboot @ $(date)"
+  sudo reboot
+fi

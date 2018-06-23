@@ -277,7 +277,7 @@ In order to protect yourself from an attack, or in order to prevent infection fr
    ```
 - Create a script called [pi-security-scan.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-security-scan.sh) and place it in the Pi's scripts folder in the home-directory. Also create the folder `scripts` and `logs` in the home-directory if they don't exists yet.
 - Configure a daily scans using crontab: `sudo crontab -u root -e`
-- Add this line: `0 2 * * * sudo bash /home/pi/scripts/pi-security-scan.sh >/home/pi/logs/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 2 am and it outputs it logs (including errors!) to a log file.
+- Add this line: `0 3 * * * sudo bash /home/pi/scripts/pi-security-scan.sh >/home/pi/logs/pi-security-scan.log 2>&1`. This line means that it will do an update of the definition files and scan the entire Pi every night at 3 am and it outputs it logs (including errors!) to a log file.
 - Add this line: `0 7 * * * sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-security-scan.log`. This line means that the log-file created in the work above will be emailed to you every morning at 7 am.
 
 Note: the script pi-security-scan.sh has one option (parameter):
