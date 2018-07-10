@@ -26,30 +26,33 @@ iptables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '
 iptables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -m recent --name dnsanyquery --rcheck --seconds 60 --hitcount 1 -j DROP
 iptables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -j DROP
 
+# Drop all Guest-network packages - WARNING: Change this to your quest-network-range
+iptables -A INPUT -s 192.168.1.0/24  -j DROP
+
 # Accept all already established connections
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
-# Drop everything that comes from Bogon-addresses
+# Drop everything that comes from Bogon-addresses - WARNING: THIS CAN SLOW DOWN FIREWALL SIGNIFICANTLY
 #iptables -A INPUT -s 0.0.0.0/0 -j DROP        # Default (can be advertised in BGP if desired)
 #iptables -A INPUT -s 0.0.0.0/8 -j DROP        # Self identification (RFC 1700)
 #iptables -A INPUT -s 0.0.0.0/32 -j DROP       # Broadcast
 #iptables -A INPUT -s 10.0.0.0/8 -j DROP       # Private Networks (RFC 1918)
-iptables -A INPUT -s 39.0.0.0/8 -j DROP       # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 39.0.0.0/8 -j DROP       # IANA Reserved (RFC 3330)
 #iptables -A INPUT -s 127.0.0.0/8 -j DROP      # Loopback (RFC 1700)
-iptables -A INPUT -s 128.0.0.0/16 -j DROP     # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 128.0.0.0/16 -j DROP     # IANA Reserved (RFC 3330)
 #iptables -A INPUT -s 169.254.0.0/16 -j DROP   # Local (RFC 3330)
-iptables -A INPUT -s 172.16.0.0/12 -j DROP    # Private Networks (RFC 1918)
-iptables -A INPUT -s 191.255.0.0/16 -j DROP   # IANA Reserved (RFC 3330)
-iptables -A INPUT -s 192.0.0.0/24  -j DROP    # IANA Reserved (RFC 3330)
-iptables -A INPUT -s 192.0.2.0/24 -j DROP     # Test-Net (RFC 3330)
+#iptables -A INPUT -s 172.16.0.0/12 -j DROP    # Private Networks (RFC 1918)
+#iptables -A INPUT -s 191.255.0.0/16 -j DROP   # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 192.0.0.0/24  -j DROP    # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 192.0.2.0/24 -j DROP     # Test-Net (RFC 3330)
 #iptables -A INPUT -s 192.168.0.0/16 -j DROP   # Private Networks (RFC 1918)
-iptables -A INPUT -s 198.18.0.0/15 -j DROP    # Network Interconnect Device Benchmark Testing (RFC 2544)
-iptables -A INPUT -s 223.255.255.0/24 -j DROP # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 198.18.0.0/15 -j DROP    # Network Interconnect Device Benchmark Testing (RFC 2544)
+#iptables -A INPUT -s 223.255.255.0/24 -j DROP # IANA Reserved (RFC 3330)
 #iptables -A INPUT -s 224.0.0.0/4 -j DROP      # Multicast (RFC 3171)
-iptables -A INPUT -s 240.0.0.0/4 -j DROP      # IANA Reserved (RFC 3330)
+#iptables -A INPUT -s 240.0.0.0/4 -j DROP      # IANA Reserved (RFC 3330)
 
-# Block incoming HTTPS advertisement assets (anywhere)
+# Block incoming HTTPS requests which Pi-hole can't handle (anywhere)
 iptables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
 
 ## REQUIRED FOR SYSTEM
@@ -92,8 +95,8 @@ iptables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 # Allow HTTP - incoming
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
-# Allow HTTPS - incoming
-iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+# Allow HTTPS - incoming - WARNING: By default Pi-hole GUI does not utilize https
+#iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 # Allow VNC - incoming & outgoing
 iptables -A INPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT

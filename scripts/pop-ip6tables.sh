@@ -26,11 +26,14 @@ ip6tables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string 
 ip6tables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -m recent --name dnsanyquery --rcheck --seconds 60 --hitcount 1 -j DROP
 ip6tables -A INPUT -p udp --dport 53 -m string --from 50 --algo bm --hex-string '|0000FF0001|' -j DROP
 
+# Drop all Guest-network packages - WARNING: Change this to your quest-network-range
+#ip6tables -A INPUT -s 2001:DB8::/32 -j DROP
+
 # Accept all already established connections
 ip6tables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 ip6tables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
-# Drop everything that comes from Bogon-addresses
+# Drop everything that comes from Bogon-addresses - WARNING: THIS CAN SLOW DOWN FIREWALL SIGNIFICANTLY
 #ip6tables -A INPUT -s ::/0 -j DROP              # Default (can be advertised as a route in BGP to peers if desired)
 #ip6tables -A INPUT -s ::/96 -j DROP             # IPv4-compatible IPv6 address – deprecated by RFC4291
 #ip6tables -A INPUT -s ::/128 -j DROP            # Unspecified address
@@ -41,9 +44,9 @@ ip6tables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 #ip6tables -A INPUT -s ::0.0.0.0/104 -j DROP     # Compatible address (IPv4 format)
 #ip6tables -A INPUT -s ::255.0.0.0/104 -j DROP   # Compatible address (IPv4 format)
 #ip6tables -A INPUT -s 0000::/8 -j DROP          # Pool used for unspecified, loopback and embedded IPv4 addresses
-ip6tables -A INPUT -s 0200::/7 -j DROP          # OSI NSAP-mapped prefix set (RFC4548) – deprecated by RFC4048
-ip6tables -A INPUT -s 3ffe::/16 -j DROP         # Former 6bone, now decommissioned
-ip6tables -A INPUT -s 2001:db8::/32 -j DROP     # Reserved by IANA for special purposes and documentation
+#ip6tables -A INPUT -s 0200::/7 -j DROP          # OSI NSAP-mapped prefix set (RFC4548) – deprecated by RFC4048
+#ip6tables -A INPUT -s 3ffe::/16 -j DROP         # Former 6bone, now decommissioned
+#ip6tables -A INPUT -s 2001:db8::/32 -j DROP     # Reserved by IANA for special purposes and documentation
 #ip6tables -A INPUT -s 2002:e000::/20 -j DROP    # Invalid 6to4 packets (IPv4 multicast)
 #ip6tables -A INPUT -s 2002:7f00::/24 -j DROP    # Invalid 6to4 packets (IPv4 loopback)
 #ip6tables -A INPUT -s 2002:0000::/24 -j DROP    # Invalid 6to4 packets (IPv4 default)
@@ -53,10 +56,10 @@ ip6tables -A INPUT -s 2001:db8::/32 -j DROP     # Reserved by IANA for special p
 #ip6tables -A INPUT -s 2002:c0a8::/32 -j DROP    # Invalid 6to4 packets (IPv4 private 192.168.0.0/16 network)
 #ip6tables -A INPUT -s fc00::/7 -j DROP         # Unicast Unique Local Addresses (ULA) – RFC 4193
 #ip6tables -A INPUT -s fe80::/10 -j DROP         # Link-local Unicast
-ip6tables -A INPUT -s fec0::/10 -j DROP         # Site-local Unicast – deprecated by RFC 3879 (replaced by ULA)
+#ip6tables -A INPUT -s fec0::/10 -j DROP         # Site-local Unicast – deprecated by RFC 3879 (replaced by ULA)
 #ip6tables -A INPUT -s ff00::/8 -j DROP         # Multicast
 
-# Block incoming HTTPS advertisement assets (anywhere)
+# Block incoming HTTPS requests which Pi-hole can't handle (anywhere)
 ip6tables -A INPUT -p tcp --dport 443 -j REJECT --reject-with tcp-reset
 
 ## REQUIRED FOR SYSTEM
@@ -99,8 +102,8 @@ ip6tables -A OUTPUT -p udp --dport 1194 -j ACCEPT
 # Allow HTTP - incoming
 ip6tables -A INPUT -p tcp --dport 80 -j ACCEPT
 
-# Allow HTTPS - incoming
-ip6tables -A INPUT -p tcp --dport 443 -j ACCEPT
+# Allow HTTPS - incoming - WARNING: By default Pi-hole GUI does not utilize https
+#ip6tables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 # Allow VNC - incoming & outgoing
 ip6tables -A INPUT -p tcp --match multiport --dports 5900:5903 -j ACCEPT
