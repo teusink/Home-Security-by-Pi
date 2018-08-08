@@ -31,6 +31,8 @@ The list of the TCP and UDP protocols and their port-numbers listed below are ai
 - FTP-control-over-TLS: 990 (TCP/UDP)
 - IMAP4-over-SSL: 993 (TCP)
 - POP3-over-SSL: 995 (TCP)
+- Session Initiation Protocol (SIP): 5060 (TCP/UDP)
+- Session Initiation Protocol (SIP) over TLS: 5061 (TCP)
 - HTTP-alternative: 8080 (TCP), 8880 (TCP)
 - HTTPS-alternative: 8443 (TCP)
 
@@ -66,7 +68,8 @@ List of TCP port-numbers to block (on the LAN-Internet interface) when opening t
 1294-1700
 1702-1722
 1724-4499
-4501-5352
+4501-5059
+5062-5352
 5354-8079
 8081-8442
 8444-8879
@@ -88,5 +91,6 @@ List of UDP port-numbers to block (on the LAN-Internet interface) when opening t
 1195-1292
 1294-1722
 1724-4499
-4501-5352
+4501-5059
+5061-5352
 5354-65535
