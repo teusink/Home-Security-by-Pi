@@ -117,7 +117,7 @@ This part is about setting up a DNS-server on the Pi, so you can have your own i
    Note: replace domain.tld with your own imagined domain-name!
 - Make sure you have added your own `domain.tld` in the search list with: `sudo nano /etc/dhcpcd.conf`
    - And check for the line `static domain_search=local` and make sure that `local` matches your own choosen `domain.tld`.
-- For better privacy, add the line below to prevent DNS-look-ups going upstream with: `sudo nano /etc/dnsmasq.d/01-pihole.conf`.
+- For better privacy, add the line below to prevent DNS-look-ups going upstream with: `sudo nano /etc/dnsmasq.d/02-lan.conf`.
    - Add the line: `local=/domain.tld/`
 
 ## Random Number Generator
