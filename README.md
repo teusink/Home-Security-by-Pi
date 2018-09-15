@@ -40,11 +40,13 @@ The costs: ~ € 70,-
 ![Pi-Blox Case](https://3.bp.blogspot.com/-35IKtcxvbds/Wh_wxulKH_I/AAAAAAAC-qM/ZFdeJaGM5j0Rzs1o9cJ1gWrJ4--BZcxAQCPcBGAYYCw/s1600/Pi-Blox-Case.jpg)
 
 ## The Software
-The base image that is used to build this guid is the following:
+The base image that is used to build this guide is the following:
 - Image with desktop based on Debian Stretch
 - Version: November 2017
 - Release date: 2017-11-29
 - Kernel version: 4.9
+
+Note: there are no indications that newer versions of Debian Stretch cause glitches with this guide. But if so, please let me know!
 
 ## Steps to take
 1. Install Pi - [Chapter 1]
