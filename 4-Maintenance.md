@@ -82,6 +82,13 @@ If you replaced your hardware, but not your SD-card, you might want to redo the 
 - Then execute the firmware update again: `sudo rpi-update`.
 - And then do a reboot: `sudo reboot`.
 
+## Repair Pi-hole
+If for some reason your Pi-hole gives errors (for instance with updating) try repairing first.
+- Change the nameserver to `9.9.9.9` as the resolver with `sudo nano /etc/resolv.conf`.
+- Execute repair with `sudo pihole -r`.
+- Change the nameserver back to `127.0.0.1` as the resolver with `sudo nano /etc/resolv.conf`.
+- And then do a reboot: `sudo reboot`. 
+
 ## Patching PiVPN
 OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
