@@ -23,6 +23,8 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 - Timeserver: https://wiki.archlinux.org/index.php/systemd-timesyncd
 - DNS-server Capability: https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533/6
+- DNS-over-HTTPS: https://docs.pi-hole.net/guides/dns-over-https/
+- DNS-over-HTTPS (IPv6 lookup): https://bendews.com/posts/implement-dns-over-https/
 
 ## Raspberry Pi
 This part is about the basic configuration of your Raspberry Pi.
@@ -74,12 +76,54 @@ I did some additional configuration to get the Pi-hole up-and-running in a secur
    - Go to Settings.
    - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
    - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
-   - Fill in custom IPv4 DNS (Quad9): 9.9.9.9
-   - Fill in custom IPv6 DNS (Quad9): 2620:fe::fe
+   - Select preferred upstream DNS servers (such as Quad9, Cloudflare or Google). Tip: also enable IPv6.
    - Make sure you update your [whitelisted domains](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-whitelist.md) (if you want/need).   
    - Make sure you update your [blocklists](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-blocklists.md) (if you want/need).
    - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
    - Create the file `pihole-FTL.conf` with `sudo touch /etc/pihole/pihole-FTL.conf` to suppress a daily cron-error in your email (see the commit here to permanently fix it: https://github.com/pi-hole/pi-hole/commit/82d5afe9961a7964bc22e70f44ec8fdd504fa855)
+
+### Optional: Enable DNS-over-HTTPS with Cloudflared
+It is possible to encrypt DNS-look-ups upstream using DNS-over-HTTPS. The 'downside' of this is that it requires Cloudflare DNS (https://1.1.1.1/). It is private and secure, but does not block malicious domains like Quad9 does. So it is a choice you have to make, whether or not you want to trust Cloudflare.
+
+- Execute the following commands to install Cloudflared:
+   - `wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz`
+   - `tar -xvzf cloudflared-stable-linux-arm.tgz`
+   - sudo `cp ./cloudflared /usr/local/bin`
+   - sude `chmod +x /usr/local/bin/cloudflared`
+   - sudo cloudflared -v
+- Create a cloudflared user for running the daemon: `sudo useradd -s /usr/sbin/nologin -r -M cloudflared`.
+- Create the configuration file with `sudo nano /etc/default/cloudflared` and add the contents below.
+	```# Commandline args for cloudflared
+	CLOUDFLARED_OPTS=--port 5053 --upstream https://1.1.1.1/dns-query --upstream https://1.0.0.1/dns-query --upstream https://2606:4700:4700::1111/dns-query --upstream https://2606:4700:4700::1001/dns-query
+	```
+- Permissions needs updating with the cloudflared user:
+	- `sudo chown cloudflared:cloudflared /etc/default/cloudflared`
+	- `sudo chown cloudflared:cloudflared /usr/local/bin/cloudflared`
+- Create the systemd file with `sudo nano /lib/systemd/system/cloudflared.service` and add the contents below.
+	```[Unit]
+	Description=cloudflared DNS over HTTPS proxy
+	After=syslog.target network-online.target
+
+	[Service]
+	Type=simple
+	User=cloudflared
+	EnvironmentFile=/etc/default/cloudflared
+	ExecStart=/usr/local/bin/cloudflared proxy-dns $CLOUDFLARED_OPTS
+	Restart=on-failure
+	RestartSec=10
+	KillMode=process
+
+	[Install]
+	WantedBy=multi-user.target
+	```
+- Enable the systemd service to run on startup and validate if its working:
+	- `sudo systemctl enable cloudflared`
+	- `sudo systemctl start cloudflared`
+	- `sudo systemctl status cloudflared`
+- Run two tests and see if it gives a response:
+	- dig @127.0.0.1 -p 5053 google.com A
+	- dig @127.0.0.1 -p 5053 google.com AAAA
+- Now change the Upstream DNS Servers in the Pi-Hole admin-panel. Only select IPv4 and fill in `127.0.0.1#5053`
 
 ## PiVPN (OpenVPN)
 Now we need to do some stuff to configure PiVPN (so make sure it is installed) in such a way that it uses the Pi-hole as a DNS-resolver, and therefore utilizing the Pi-hole capabilities.
