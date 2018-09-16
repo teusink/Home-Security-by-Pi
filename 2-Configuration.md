@@ -121,8 +121,8 @@ It is possible to encrypt DNS-look-ups upstream using DNS-over-HTTPS. The 'downs
 	- `sudo systemctl start cloudflared`
 	- `sudo systemctl status cloudflared`
 - Run two tests and see if it gives a response:
-	- dig @127.0.0.1 -p 5053 google.com A
-	- dig @127.0.0.1 -p 5053 google.com AAAA
+	- `dig @127.0.0.1 -p 5053 google.com A`
+	- `dig @127.0.0.1 -p 5053 google.com AAAA`
 - Now change the Upstream DNS Servers in the Pi-Hole admin-panel. Only select IPv4 and fill in `127.0.0.1#5053`
 
 ## PiVPN (OpenVPN)
