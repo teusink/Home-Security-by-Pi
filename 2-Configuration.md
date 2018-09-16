@@ -88,9 +88,9 @@ It is possible to encrypt DNS-look-ups upstream using DNS-over-HTTPS. The 'downs
 - Execute the following commands to install Cloudflared:
    - `wget https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-arm.tgz`
    - `tar -xvzf cloudflared-stable-linux-arm.tgz`
-   - sudo `cp ./cloudflared /usr/local/bin`
-   - sude `chmod +x /usr/local/bin/cloudflared`
-   - sudo cloudflared -v
+   - `sudo cp ./cloudflared /usr/local/bin`
+   - `sudo chmod +x /usr/local/bin/cloudflared`
+   - `sudo cloudflared -v`
 - Create a cloudflared user for running the daemon: `sudo useradd -s /usr/sbin/nologin -r -M cloudflared`.
 - Create the configuration file with `sudo nano /etc/default/cloudflared` and add the contents below.
 	```# Commandline args for cloudflared
