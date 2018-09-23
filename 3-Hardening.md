@@ -107,7 +107,7 @@ Many programs use $TMPDIR for storing temporary files. Not all of them are good 
       ```
       MAILTO=dummy@example.com
       ```
-   - Change the email-address (add the line below) used by the user Root: `crontab -u root -e`
+   - Change the email-address (add the line below) used by the user Root: `sudo crontab -u root -e`
       ```
       MAILTO=dummy@example.com
       ```
