@@ -45,6 +45,7 @@ Maintenance starts with monitoring, so install Logwatch to do just that. You wil
 You can also audit your own setup against some security best-practices and known vulnerabilities. There are two tools for that. One is Lynis (configuration and best-practices analyzer), and the other is Debsecan (known vulnerabilities scan in packages).
 - To install Lynis: `sudo apt-get install lynis`.
 - To install Debsecan `sudo apt-get install debsecan`.
+- Configure Debsecan with `sudo dpkg-reconfigure debsecan`, select `stretch` as the distro and disable email notifications (we do that ourselves).
 
 ### Manual audit
 - To run a Lynis audit: `sudo lynis audit system`.
