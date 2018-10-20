@@ -2,6 +2,8 @@
 
 This is a list with potential urls you might want to whitelist. Think about the blocklists itself, but also the Pi repositories, CDNs and indeed some ads and tracking sources. Choice is up to you!
 
+## Safe to do
+
 Whitelist the Blocklists-sources:
 - ransomwaretracker.abuse.ch
 - zeustracker.abuse.ch
@@ -14,9 +16,12 @@ Whitelist the Blocklists-sources:
 
 Whitelist the repositories:
 - archive.raspberrypi.org
+- raspbian.raspberrypi.org
 - downloads.raspberrypi.org
 - mirrordirector.raspbian.org
 - raspbian.org
+
+## Optional, if you need it
 
 Whitelist CDN-sources:
 - cdn.optimizely.com
