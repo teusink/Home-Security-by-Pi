@@ -26,6 +26,11 @@ echo ---------------------------------------
 nice -n 19 sudo tmpreaper 1d /tmp --showdeleted
 echo ---------------------------------------
 echo
+echo ✓ Clean 30 days old /home/pi/logs/ files.....
+echo ---------------------------------------
+nice -n 19 sudo tmpreaper 30d /home/pi/logs/ --showdeleted
+echo ---------------------------------------
+echo
 echo ✓ Clean 30 days old /var/tmp files.....
 #### WARNING: /tmp gets cleaned upon reboot, but /var/tmp needs to be more persistent!
 echo ---------------------------------------
