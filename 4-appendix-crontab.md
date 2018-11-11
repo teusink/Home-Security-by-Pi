@@ -3,8 +3,8 @@ MAILTO=dummy@example.com
 #
 # m h  dom mon dow   command
 #
-# Pi Log Folder creation (daily)
-0 1 * * * sudo bash /home/pi/scripts/pi-log-folder.sh
+# Create Pi Daily Log Folder (daily)
+0 1 * * * sudo mkdir /home/pi/logs/`date +\%Y-\%m-\%d`
 #
 # Pi Security Scan (daily)
 0 3 * * * sudo bash /home/pi/scripts/pi-security-scan.sh >/home/pi/logs/`date +\%Y-\%m-\%d`/pi-security-scan.log 2>&1

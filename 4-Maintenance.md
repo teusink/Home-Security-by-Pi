@@ -22,7 +22,7 @@ Ultimally, the core practice of Security is just to install all (security) updat
 
 And here you can see the entire contents of the crontab file that is used: [crontab](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-appendix-crontab.md).
 
-Please not with the crontab above, it is expanded with putting log-files in different folders and an additional script [pi-log-folder.sh](https://github.com/teusink/Home-Security-by-Pi/blob/master/scripts/pi-log-folder.sh) to create the daily folder for the logs. My advice is to follow this practice and disable emailing the logs (put the # comment before the email command in cron). This prevents deleting emails you don't read anyway, but keeping the log-files in case of issues. The Pi-Cleaner scripts cleans out the logs-folder of anything older than 30 days, so don't worry on a growing set of logs.
+Please not with the crontab above, it is expanded with putting log-files in different folders and an additional command to create the daily folder for the logs. My advice is to follow this practice and disable emailing the logs (put the # comment before the email command in cron). This prevents deleting emails you don't read anyway, but keeping the log-files in case of issues. The Pi-Cleaner scripts cleans out the logs-folder of anything older than 30 days, so don't worry on a growing set of logs.
 
 ## Information Sources
 - Logwatch: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-logwatch-log-analyzer-and-reporter-on-a-vps
