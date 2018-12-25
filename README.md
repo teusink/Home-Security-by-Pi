@@ -37,7 +37,7 @@ The costs: ~ € 70,-
 
 **How it looks :)**
 
-![Pi-Blox Case](https://3.bp.blogspot.com/-35IKtcxvbds/Wh_wxulKH_I/AAAAAAAC-qM/ZFdeJaGM5j0Rzs1o9cJ1gWrJ4--BZcxAQCPcBGAYYCw/s1600/Pi-Blox-Case.jpg)
+![Pi-Blox Case](https://cdn-images-1.medium.com/max/1200/1*c7rI_eUQ4yP-8r6gVb1QkQ.jpeg)
 
 ## The Software
 The base image that is used to build this guide is the following:
