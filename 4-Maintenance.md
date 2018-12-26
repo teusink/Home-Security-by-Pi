@@ -153,5 +153,25 @@ It is possible that you face connection issues with your VPN after an upgrade of
 
 New VPN-connections can be initiated again.
 
+## Raspberry Pi Greater
+An update to the system might give this message when using apt-get:
+
+```
+Setting up pi-greeter (0.9) ...
+
+Configuration file '/etc/lightdm/pi-greeter.conf'
+ ==> Modified (by you or by a script) since installation.
+ ==> Package distributor has shipped an updated version.
+   What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+      D     : show the differences between the versions
+      Z     : start a shell to examine the situation
+ The default action is to keep your current version.
+*** pi-greeter.conf (Y/I/N/O/D/Z) [default=N] ? ^C
+```
+
+In this case it was about the wallpaper that has been changed. Either keeping your own or the maintainer's would suffice.
+
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
