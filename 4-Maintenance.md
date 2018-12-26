@@ -168,7 +168,7 @@ Configuration file '/etc/lightdm/pi-greeter.conf'
       D     : show the differences between the versions
       Z     : start a shell to examine the situation
  The default action is to keep your current version.
-*** pi-greeter.conf (Y/I/N/O/D/Z) [default=N] ? ^C
+*** pi-greeter.conf (Y/I/N/O/D/Z) [default=N] ?
 ```
 
 In this case it was about the wallpaper that has been changed. Either keeping your own or the maintainer's would suffice.
