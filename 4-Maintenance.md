@@ -153,7 +153,7 @@ It is possible that you face connection issues with your VPN after an upgrade of
 
 New VPN-connections can be initiated again.
 
-## Raspberry Pi Greater
+## Raspberry Pi Greeter
 An update to the system might give this message when using apt-get:
 
 ```
