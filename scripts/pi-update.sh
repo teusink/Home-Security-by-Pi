@@ -44,6 +44,11 @@ echo ---------------------------------------
 sudo pihole -up -g
 echo ---------------------------------------
 echo
+echo ✓ Initiating Cloudflared update........
+echo ---------------------------------------
+sudo cloudflared update
+echo ---------------------------------------
+echo
 if [ "$1" = "no-reboot" ] || [ "$2" = "no-reboot" ]
 then
   echo "✗ Skipping reboot @ $(date)"
