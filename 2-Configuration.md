@@ -4,9 +4,10 @@
 - 2 - Configuration
    - [2.1 - Raspberry Pi](#raspberry-pi)
    - [2.2 - Pi-hole](#pi-hole)
-   - [2.3 - PiVPN (OpenVPN)](#pivpn-openvpn)
-   - [2.4 - DNS-server](#dns-server)
-   - [2.5 - Random Number Generator](#random-number-generator)
+   - [2.3 - Cloudflared](#cloudflared-dns-over-https)
+   - [2.4 - PiVPN (OpenVPN)](#pivpn-openvpn)
+   - [2.5 - DNS-server](#dns-server)
+   - [2.6 - Random Number Generator](#random-number-generator)
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
@@ -76,13 +77,13 @@ I did some additional configuration to get the Pi-hole up-and-running in a secur
    - Go to Settings.
    - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
    - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
-   - Select preferred upstream DNS servers (such as Quad9, Cloudflare or Google). Tip: also enable IPv6.
+   - Select preferred upstream DNS servers for both IPv4 and IPv6 (such as Quad9, Cloudflare or Google). When using Cloudflared (see further down below) you will change the DNS upstream to the local resolver.
    - Make sure you update your [whitelisted domains](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-whitelist.md) (if you want/need).   
    - Make sure you update your [blocklists](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-blocklists.md) (if you want/need).
    - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
    - Create the file `pihole-FTL.conf` with `sudo touch /etc/pihole/pihole-FTL.conf` to suppress a daily cron-error in your email (see the commit here to permanently fix it: https://github.com/pi-hole/pi-hole/commit/82d5afe9961a7964bc22e70f44ec8fdd504fa855)
 
-### Optional: Enable DNS-over-HTTPS with Cloudflared
+## Cloudflared DNS-over-HTTPS
 It is possible to encrypt DNS-look-ups upstream using DNS-over-HTTPS. The 'downside' of this is that it requires Cloudflare DNS (https://1.1.1.1/). It is private and secure, but does not block malicious domains like Quad9 does. So it is a choice you have to make, whether or not you want to trust Cloudflare.
 
 - Execute the following commands to install Cloudflared:
