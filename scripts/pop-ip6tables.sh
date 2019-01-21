@@ -137,4 +137,4 @@ echo -------------------------
 echo
 echo Now test the functionality of your Pi-Hole yourself!
 echo - If anything is faulty, just restart your Pi.
-echo - If all looks well, run 'sudo netfilter-persistent save' to make it persit through reboot.
+echo - If all looks well, run [sudo netfilter-persistent save] to make it persit through reboot.

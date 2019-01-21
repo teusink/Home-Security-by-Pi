@@ -173,5 +173,10 @@ Configuration file '/etc/lightdm/pi-greeter.conf'
 
 In this case it was about the wallpaper that has been changed. Either keeping your own or the maintainer's would suffice.
 
+## My PiHole suddenly stopped resolved DNS
+This might be the cause to the time being out-of-sync. And when that happens, the DNS to the time-servers also doesn't work. This can be done by doing the following in CLI: `sudo date --set '2018-12-31 23:59:00` (obviously change the date and time with your present date and time). Then reboot after `sudo reboot`.
+
+Resolving should work now again.
+
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`
