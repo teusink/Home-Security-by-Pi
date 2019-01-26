@@ -10,13 +10,11 @@
   - [4.4 - Patching PiVPN](#patching-pivpn)
   - [4.5 - Keep disk-usage in control](#keep-disk-usage-in-control)
   - [4.6 - Back-up the SD-card](#back-up-the-sd-card)
-  - [4.7 - Removed packages not purged yet](#removed-packages-not-purged-yet)
-  - [4.8 - Package kept back](#package-kept-back)
-  - [4.9 - Package integrity issues](#package-integrity-issues)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
+- [6 - Common issues](https://github.com/teusink/Home-Security-by-Pi/blob/master/6-Common-issues.md)
 
 # Maintenance
-Ultimally, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
+Ultimately, the core practice of Security is just to install all (security) updates. This is not different from your Pi. Below I will explain how I did that.
 
 >Important note: everywhere xxx is mentioned in an IP-address and everywhere where an example email-address is mentioned, use your own details!
 
@@ -30,7 +28,6 @@ Please not with the crontab above, it is expanded with putting log-files in diff
 - Debsecan: https://packages.debian.org/stretch/debsecan
 - Force firmware update Pi: https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=84887
 - tmpreaper package: https://www.thegeekstuff.com/2013/10/tmpreaper-examples/
-- Regenerate CRL for VPN: https://github.com/pivpn/pivpn/issues/343
 
 ## Monitoring
 Maintenance starts with monitoring, so install Logwatch to do just that. You will get notified daily with what has happened on your Pi.
@@ -64,10 +61,12 @@ To really stay on par with new found weaknesses on your Pi, create a weekly audi
 - Add this line: `0 5 * * MON sudo bash /home/pi/scripts/pi-audit.sh >/home/pi/logs/pi-audit.log 2>&1`. This line means that it will do an audit every Monday at 5 am and it outputs it logs (including errors!) to a log file.
 - If you want an email of the log, add this line: `0 7 * * MON sudo /usr/sbin/ssmtp dummy@example.com < /home/pi/logs/pi-audit.log `. This line means that the log-file created in the update above will be emailed to you every Monday at 7 am.
 
-## Patching Raspberry Pi & Pi-hole
-Your Pi and all software installed through `apt-get` can be updated with a single script, and you can incorporate additional commands to update additional sources.
+## Patch management
+This part is all about patching your Raspberry Pi system.
 
 ### Automated Patching
+The following packages are included in this automation script: Raspberry Pi OS, Raspberry Pi Firmware, Pi-hole, Cloudflared. OpenVPN (PiVPN) has unattended upgrades and it upgrades itself. Therefore, this is not included in the script.
+
 - Create a script called [pi-update.sh](https://github.com/teusink/Secure-my-Pi/blob/master/scripts/pi-update.sh) and place it in the Pi's scripts folder in the home-directory. Also create the folder `scripts` and `logs` in the home-directory if they don't exists yet.
 - Edit your crontab to plan a regular execution of the script using `sudo crontab -u root -e`.
 - Add this line: `0 5 * * SUN sudo bash /home/pi/scripts/pi-update.sh >/home/pi/logs/pi-update.log 2>&1`. This line means that it will do an update every Sunday at 5 am and it outputs it logs (including errors!) to a log file.
@@ -84,16 +83,6 @@ If you replaced your hardware, but not your SD-card, you might want to redo the 
 - First, change the hash value of the current installment (just change one character): `sudo nano /boot/.firmware_revision`.
 - Then execute the firmware update again: `sudo rpi-update`.
 - And then do a reboot: `sudo reboot`.
-
-### Repair Pi-hole
-If for some reason your Pi-hole gives errors (for instance with updating) try repairing first.
-- Change the nameserver to `9.9.9.9` as the resolver with `sudo nano /etc/resolv.conf`.
-- Execute repair with `sudo pihole -r`.
-- Change the nameserver back to `127.0.0.1` as the resolver with `sudo nano /etc/resolv.conf`.
-- And then do a reboot: `sudo reboot`. 
-
-## Patching PiVPN
-OpenVPN has unattended upgrades and it upgrades itself. No further configuration required here.
 
 ## Keep disk-usage in control
 Just as any other system, the Pi accumalates temporary and log data. This part is about keeping control of the disk-usage of the SD-card.
@@ -117,66 +106,6 @@ Once in a while backing up your SD-card might be smart. Especially when you have
 - Press the button `Read`.
 
 When you need to restore it, you can reverse the process. Select the `yyyy-mm-dd Backup Pi.img` file, the SD-card as the destination and press `Write`.
-
-## Removed packages not purged yet
-Sometimes (dependency) packages can be left behind when removed. You still can purge them.
-- Check with this if there are any packages needed to be purged: `dpkg --get-selections | grep deinstall`.
-
-  - You can remove the listed packages with: `sudo apt-get purge <package-name>`.
-  - After following this guide, it is likely that a good set of packages can be purged. Do that automated with the following command:
-  
-     ```
-     sudo apt-get purge -y $(dpkg -l | grep '^rc' | awk '{print $2}')
-     ```
-
-## Package kept back
-Sometimes you will see in your log that a package has been kepted back with the command `sudo apt-get upgrade`. Best is to manually fix this with the following command:
-- `sudo apt-get install <packagename>`
-
-This could be automated with `sudo dist-upgrade`, but read it [here](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md) why I did not opt-in for that (it is an option in the pi-update.sh script though).
-
-## Package integrity issues
-I faced some package integrity issues after an upgrade. You can fix thos with the following command:
-- `sudo apt-get install --reinstall <packagename>`
-
-That way the package are reinstalled, no matter you have the latest version or not.
-
-## VPN CRL expire issues after distro-upgrade
-It is possible that you face connection issues with your VPN after an upgrade of your system. Execute the steps below in your terminal to fix that.
-- Check service status: `sudo systemctl status openvpn@server.service`
-- Verify following error: `VERIFY ERROR: depth=0, error=CRL has expired: CN=xxx`
-- Go to directory: `cd /etc/openvpn/easy-rsa`
-- Generate new CRL: `sudo ./easyrsa gen-crl`
-- Verify that folder is correct (`/etc/openvpn/crl.pem`): `sudo cat ../server.conf | grep "crl-verify"`
-- Copy new CRL to directory: `sudo cp /etc/openvpn/easy-rsa/pki/crl.pem ../crl.pem `
-- Reboot service: `sudo systemctl restart openvpn@server.service`
-
-New VPN-connections can be initiated again.
-
-## Raspberry Pi Greeter
-An update to the system might give this message when using apt-get:
-
-```
-Setting up pi-greeter (0.9) ...
-
-Configuration file '/etc/lightdm/pi-greeter.conf'
- ==> Modified (by you or by a script) since installation.
- ==> Package distributor has shipped an updated version.
-   What would you like to do about it ?  Your options are:
-    Y or I  : install the package maintainer's version
-    N or O  : keep your currently-installed version
-      D     : show the differences between the versions
-      Z     : start a shell to examine the situation
- The default action is to keep your current version.
-*** pi-greeter.conf (Y/I/N/O/D/Z) [default=N] ?
-```
-
-In this case it was about the wallpaper that has been changed. Either keeping your own or the maintainer's would suffice.
-
-## My PiHole suddenly stopped resolved DNS
-This might be the cause to the time being out-of-sync. And when that happens, the DNS to the time-servers also doesn't work. This can be done by doing the following in CLI: `sudo date --set '2018-12-31 23:59:00` (obviously change the date and time with your present date and time). Then reboot after `sudo reboot`.
-
-Resolving should work now again.
 
 # Done
 - This part is done now, so do a reboot now: `sudo reboot`

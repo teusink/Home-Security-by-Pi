@@ -5,6 +5,7 @@
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 - 5- Skipped
+- [6 - Common issues](https://github.com/teusink/Home-Security-by-Pi/blob/master/6-Common-issues.md)
 
 # Skipped
 There were also security configurations suggested by others on the web that I skipped. I will try to be as complete as possible on which I did not include and why. If you feel it should be included, please open an issue [here](https://github.com/teusink/Home-Security-by-Pi/issues).

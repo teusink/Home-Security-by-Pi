@@ -8,6 +8,7 @@
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
+- [6 - Common issues](https://github.com/teusink/Home-Security-by-Pi/blob/master/6-Common-issues.md)
 
 # Installation
 In this chapter I will explain the basics I undertook in order to install all the software required. In the chapters Configuration and Hardening I will go more indepth on what has been changed after the installation.
