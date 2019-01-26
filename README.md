@@ -23,7 +23,7 @@ My other goal is to gain a good understanding on DNS, Hardening and other Securi
 Scope is an important part for this project. Otherwise you can endlessly install security tools and solutions which in the end have a trade-off. This might be resources and performance, but also your own precious time to keep it running :).
 
 The constraints are:
-- Apart from OpenVPN, there is nothing that can be reached from the outside world. I always assume that there is a network-firewall present between the Internet, and the actual Pi.
+- Apart from OpenVPN, there is nothing that can be reached from the outside world. In this guide I assume that there is a network-firewall present between the Internet, and the actual Pi.
 - The networking-services this device delivers are meant to enhance security of other network-connected devices in a non-intrusive manner.
 - And although this device delivers services in a (reasonable) secure way, it is not meant to be a device that delivers security services by it self, such as network-scanning and vulnerability scans.
 - It is meant for home or small-office use. Larger companies or institutions should look at other solutions to protect their people.
@@ -48,17 +48,6 @@ The base image that is used to build this guide is the following:
 - Kernel version: 4.9
 
 Note: there are no indications that newer versions of Debian Stretch cause glitches with this guide. But if so, please let me know!
-
-## Steps to take
-1. Install Pi - [Chapter 1]
-1. Configure Pi - [Chapter 2]
-1. Remove software & games - [Chapter 3]
-1. Update/upgrade Pi and firmware - [Chapter 4]
-1. Install Pi-hole - [Chapter 1]
-1. Install PiVPN - [Chapter 1]
-1. Rest of the configuration - [Chapter 2]
-1. Rest of the hardening - [Chapter 3]
-1. Rest of the maintenance - [Chapter 4]
 
 # Word of thanks
 A special word of thanks goes to Jacob Salmela with his up-to-date [manual](http://users.telenet.be/MySQLplaylist/pi-hole.pdf) (PDF). This guide is inspired on his, although I go a step further in terms of features. Nevertheless, his contribution to (not only) this guide is worth my sincere gratitude. Thanks!
