@@ -12,6 +12,7 @@ Description on how I configured the installation and Security of Raspberry Pi an
 - [3 - Hardening](https://github.com/teusink/Home-Security-by-Pi/blob/master/3-Hardening.md)
 - [4 - Maintenance](https://github.com/teusink/Home-Security-by-Pi/blob/master/4-Maintenance.md)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
+- [6 - Common issues](https://github.com/teusink/Home-Security-by-Pi/blob/master/6-Common-issues.md)
 
 # Introduction
 The goal of this project is to make a secure (or at least secure within a reasonable amount of effort) Raspberry Pi with the following network-features: Pi-Hole DNS-resolver, DNSSEC, DNS-over-HTTPS, DHCP, and OpenVPN-server. It is possible that by gaining new insights features are either removed or added.
