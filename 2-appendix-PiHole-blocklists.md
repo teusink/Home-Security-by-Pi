@@ -14,7 +14,7 @@ Phishing & Fraud:
 - https://hosts-file.net/fsa.txt
 - https://hosts-file.net/psh.txt
 
-Highjacked:
+Hijacked:
 - https://hosts-file.net/hjk.txt
 
 Spam:
