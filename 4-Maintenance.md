@@ -6,10 +6,9 @@
 - 4 - Maintenance
   - [4.1 - Monitoring](#monitoring)
   - [4.2 - Security Auditing](#security-auditing)
-  - [4.3 - Patching Raspberry Pi & Pi-hole](#patching-raspberry-pi--pi-hole)
-  - [4.4 - Patching PiVPN](#patching-pivpn)
-  - [4.5 - Keep disk-usage in control](#keep-disk-usage-in-control)
-  - [4.6 - Back-up the SD-card](#back-up-the-sd-card)
+  - [4.3 - Patch management](#patch-management)
+  - [4.4 - Keep disk-usage in control](#keep-disk-usage-in-control)
+  - [4.5 - Back-up the SD-card](#back-up-the-sd-card)
 - [5 - Skipped](https://github.com/teusink/Home-Security-by-Pi/blob/master/5-Skipped.md)
 - [6 - Common issues](https://github.com/teusink/Home-Security-by-Pi/blob/master/6-Common-issues.md)
 
