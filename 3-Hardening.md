@@ -59,6 +59,12 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    blacklist hci_uart
    ```
    - Then execute this command to process the blacklist: `sudo update-initramfs -u`
+- In case you want to use WiFi, harden wpasupplicant by only using TLS 1.2 and strong ciphers. Little warning here, your WiFi network must support this! Add the lines below in the wpa_supplicant.conf file: `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`.
+   ```
+   tls_disable_tlsv1_0=1
+   tls_disable_tlsv1_1=1
+   openssl_ciphers=DEFAULT@SECLEVEL=2
+   ```
 
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
