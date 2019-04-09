@@ -61,10 +61,24 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    - Then execute this command to process the blacklist: `sudo update-initramfs -u`
 - In case you want to use WiFi, harden wpasupplicant by only using TLS 1.2 and strong ciphers. Little warning here, your WiFi network must support this! Add the lines below in the wpa_supplicant.conf file: `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`.
    ```
-   tls_disable_tlsv1_0=1
-   tls_disable_tlsv1_1=1
-   openssl_ciphers=DEFAULT@SECLEVEL=2
+   network={
+       ssid="your_wifi_ssid_name" 
+       psk="your_wifi_psk_passphrase"
+       phase1="tls_disable_tlsv1_0=1 tls_disable_tlsv1_1=1" # <-- add this line
+       phase2="tls_disable_tlsv1_0=1 tls_disable_tlsv1_1=1" # <-- add this line
+   }
+   
+   openssl_ciphers=DEFAULT@SECLEVEL=2 # <-- add this line
    ```
+- By default, WiFi passwords are stored as clear text in `/etc/wpa_supplicant/wpa_supplicant.conf`, and the problem is that this file has chmod of 0644, which means it can be read by anyone. Either `sudo chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf`, or generate WPA PSK using `wpa_passphrase [ ssid ] [ passphrase ]`, the output should look like this:
+   ```
+   network={
+       ssid="your_wifi_ssid_name"
+       #psk="your_wifi_psk_passphrase"
+       psk=59e0d07fa4c7741797a4e394f38a5c321e3bed51d54ad5fcbd3f84bc7415d73d
+   }
+   ```
+   - Then replace the line `psk="your_wifi_psk_passphrase"` with `psk=59e0d07fa4c7741797a4e394f38a5c321e3bed51d54ad5fcbd3f84bc7415d73d` in your `/etc/wpa_supplicant/wpa_supplicant.conf`, beware of the `"`.
 
 ## Removing Software and Games
 - Now it is time to remove some unneeded software and games from Pi.
