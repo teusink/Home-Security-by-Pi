@@ -11,7 +11,7 @@ echo ---------------------------------------
 nice -n 19 sudo apt-get update
 echo ---------------------------------------
 echo
-if [ "$1" = "dist-upgrade" ] || [ "$2" = "dist-upgrade" ]
+if [ "$1" = "dist-upgrade" ] || [ "$2" = "dist-upgrade" ] || [ "$3" = "dist-upgrade" ]
 then
    echo ⚠ Initiating distribution upgrade......
    echo ---------------------------------------
@@ -24,10 +24,15 @@ else
    echo ---------------------------------------
 fi
 echo
-echo ✓ Initiating Pi Firmware update........
-echo ---------------------------------------
-sudo PRUNE_MODULES=1 rpi-update
-echo ---------------------------------------
+if [ "$1" = "rpi-update" ] || [ "$2" = "rpi-update" ] || [ "$3" = "rpi-update" ]
+then
+   echo ⚠ Initiating Pi Firmware update........
+   echo ---------------------------------------
+   sudo PRUNE_MODULES=1 rpi-update
+   echo ---------------------------------------
+else
+   echo ✓ Skipping Pi Fireware update.......
+fi
 echo
 echo ✓ Initiating packages autoremove.......
 echo ---------------------------------------
@@ -49,10 +54,10 @@ echo ---------------------------------------
 sudo cloudflared update
 echo ---------------------------------------
 echo
-if [ "$1" = "no-reboot" ] || [ "$2" = "no-reboot" ]
+if [ "$1" = "no-reboot" ] || [ "$2" = "no-reboot" ] || [ "$3" = "no-reboot" ]
 then
-  echo "✗ Skipping reboot @ $(date)"
+   echo "✗ Skipping reboot @ $(date)"
 else
-  echo "✓ Initiating reboot @ $(date)"
-  sudo reboot
+   echo "✓ Initiating reboot @ $(date)"
+   sudo reboot
 fi
