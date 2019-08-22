@@ -147,8 +147,9 @@ Now we need to do some stuff to configure PiVPN (so make sure it is installed) i
    - Enter a password
    - Open the generated `.ovpn`
    - Add the following lines: `block-outside-dns` and `auth-nocache` before the `<ca>` tag.
-   - Copy the file from your Pi to your device
+   - Copy the file from your Pi to your device on which you want to have VPN
    - Use it in combination with the password
+   - Make sure to disable compression, and to always use TLS 1.2
 
 ## DNS-server
 This part is about setting up a DNS-server on the Pi, so you can have your own internal DNS-server. This prevent leaning on hosts-files on individual computers in your lan.
