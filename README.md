@@ -32,13 +32,8 @@ The constraints are:
 The hardware I use exists of the following components:
 - Raspberry Pi 3 Model B 1GB
 - SDHC card Class 10 - 16GB
-- Pi-Blox Case for Raspberry Pi - Black
 
 The costs: ~ € 70,-
-
-**How it looks :)**
-
-![Pi-Blox Case](https://cdn-images-1.medium.com/max/1200/1*c7rI_eUQ4yP-8r6gVb1QkQ.jpeg)
 
 ## The Software
 The base image that is used to build this guide is the following:
