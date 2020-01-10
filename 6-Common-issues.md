@@ -22,9 +22,9 @@ In this part of the guide there are common issues (and solutions) mentioned you 
 
 ## Repair Pi-hole
 If for some reason your Pi-hole gives errors (for instance with updating) try repairing first.
-- Change the nameserver to `1.1.1.1` as the resolver with `sudo nano /etc/resolv.conf`.
+- If you use Cloudflared: Change the nameserver to `1.1.1.1` as the resolver with `sudo nano /etc/resolv.conf`.
 - Execute repair with `sudo pihole -r`.
-- Change the nameserver back to `127.0.0.1` as the resolver with `sudo nano /etc/resolv.conf`.
+- If you use Cloudflared: Change the nameserver back to `127.0.0.1` as the resolver with `sudo nano /etc/resolv.conf`.
 - And then do a reboot: `sudo reboot`. 
 
 ## Removed packages not purged yet
