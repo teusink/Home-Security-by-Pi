@@ -12,7 +12,7 @@ ip6tables -X
 
 ## DEFAULT MODUS OPERANDI
 
-# Drop everything (we are going for whitelisting)
+# Drop everything (we are going for allowlisting)
 ip6tables -P INPUT DROP
 ip6tables -P OUTPUT DROP
 ip6tables -P FORWARD DROP

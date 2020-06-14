@@ -58,7 +58,7 @@ Below is a list of sources online I used in order to come to this repo. Thanks f
    blacklist btbcm
    blacklist hci_uart
    ```
-   - Then execute this command to process the blacklist: `sudo update-initramfs -u`
+   - Then execute this command to process the blocklist: `sudo update-initramfs -u`
 - In case you want to use WiFi, harden wpasupplicant by only using TLS 1.2 and strong ciphers. Little warning here, your WiFi network must support this! Add the lines below in the wpa_supplicant.conf file: `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`.
    ```
    network={

@@ -12,7 +12,7 @@ iptables -X
 
 ## DEFAULT MODUS OPERANDI
 
-# Drop everything (we are going for whitelisting)
+# Drop everything (we are going for allowlisting)
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP

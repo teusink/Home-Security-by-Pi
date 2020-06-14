@@ -21,7 +21,7 @@ This part is about the basic configuration of your installment. It has parts of 
 ## Information Sources
 Below is a list of sources online I used in order to come to this repo. Thanks for the contributers!
 - See my PiHole enabled OpenVPN Server: https://discourse.pi-hole.net/t/see-my-pihole-enabled-openvpn-server/111/2
-- Commonly Whitelisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
+- Commonly Allowlisted Domains: https://discourse.pi-hole.net/t/commonly-whitelisted-domains/212
 - Quad9 Secure DNS Resolvers: https://www.quad9.net/#/faq
 - Timeserver: https://wiki.archlinux.org/index.php/systemd-timesyncd
 - DNS-server Capability: https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533/6
@@ -79,7 +79,7 @@ I did some additional configuration to get the Pi-hole up-and-running in a secur
    - Enable DHCP and under Advanced DHCP settings, enable IPv6 DHCP.
    - Under Upstream DNS Servers and then Advanced DNS settings enable DNSSEC. This requires a modern DNS resolver by the way.
    - Select preferred upstream DNS servers for both IPv4 and IPv6 (such as Quad9, Cloudflare or Google). When using Cloudflared (see further down below) you will change the DNS upstream to the local resolver.
-   - Make sure you update your [whitelisted domains](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-whitelist.md) (if you want/need).   
+   - Make sure you update your [allowlists](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-allowlists.md) (if you want/need).   
    - Make sure you update your [blocklists](https://github.com/teusink/Home-Security-by-Pi/blob/master/2-appendix-PiHole-blocklists.md) (if you want/need).
    - Change the short random generated password with a longer random generated one: `sudo pihole -a -p`.
    - Create the file `pihole-FTL.conf` with `sudo touch /etc/pihole/pihole-FTL.conf` to suppress a daily cron-error in your email (see the commit here to permanently fix it: https://github.com/pi-hole/pi-hole/commit/82d5afe9961a7964bc22e70f44ec8fdd504fa855)

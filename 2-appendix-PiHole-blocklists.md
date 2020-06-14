@@ -1,4 +1,4 @@
-# Pi-Hole blacklists
+# Pi-Hole blocklists
 
 This is a list with urls in order to block malware, phishing and spam domains. I also included the ad and tracking blocklists.
 

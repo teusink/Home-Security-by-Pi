@@ -1,10 +1,10 @@
-# Pi-Hole whitelist
+# Pi-Hole allowlists
 
-This is a list with potential urls you might want to whitelist. Think about the blocklists itself, but also the Pi repositories, CDNs and indeed some ads and tracking sources. Choice is up to you!
+This is a list with potential urls you might want to allowlist. Think about the blocklists itself, but also the Pi repositories, CDNs and indeed some ads and tracking sources. Choice is up to you!
 
 ## Safe to do
 
-Whitelist the Blocklists-sources:
+Allowlist the Blocklists-sources:
 - ransomwaretracker.abuse.ch
 - zeustracker.abuse.ch
 - www.malwaredomainlist.com
@@ -14,7 +14,7 @@ Whitelist the Blocklists-sources:
 - sysctl.org
 - s3.amazonaws.com
 
-Whitelist the repositories:
+Allowlist the repositories:
 - archive.raspberrypi.org
 - raspbian.raspberrypi.org
 - downloads.raspberrypi.org
@@ -23,10 +23,10 @@ Whitelist the repositories:
 
 ## Optional, if you need it
 
-Whitelist CDN-sources:
+Allowlist CDN-sources:
 - cdn.optimizely.com
 
-Whitelist to enable Google, Youtube & Facebook ads:
+Allowlist to enable Google, Youtube & Facebook ads:
 - ad.doubleclick.net
 - clickserve.dartsearch.net
 - connect.facebook.net
